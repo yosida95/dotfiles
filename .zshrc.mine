@@ -1,0 +1,47 @@
+##############################
+#          exports           #
+##############################
+
+if [[ "${OSTYPE}" = darwin* ]]; then
+    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+else;
+    export EDITOR='/usr/bin/vim'  # Set default Editor
+fi
+
+export LESS='-R'
+export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
+
+export HGENCODING='utf-8'  # Encode used by Mercurial
+
+export PY2ROOT=/usr/Python2.7  # Directory of Python2
+export PY3ROOT=/usr/Python3.2  # Directory of Python3
+export GOROOT=/usr/Go1.0  # Directory of Go
+export MECABROOT=/usr/mecab0.993  # Directory of Mecab
+export NODEROOT=/usr/node  # Directory of Node
+export PATH=$PATH:$PY2ROOT/bin:$PY3ROOT/bin:$GOROOT/bin:$NODEROOT/bin:$MECABROOT/bin:~/local/bin
+
+
+##############################
+#  VirtualenvWrapperの設定   #
+##############################
+if [ -f /usr/Python2.7/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python2.7
+    source $PY2ROOT/bin/virtualenvwrapper.sh
+fi
+
+
+##############################
+#バージョン管理システムを表示#
+##############################
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=ja_JP.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%U%1(v|%F{green}%1v%f|)%u $RPROMPT"
