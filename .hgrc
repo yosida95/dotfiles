@@ -1,0 +1,8 @@
+[ui]
+username = yosida95 <kohei@yosida95.com>
+ssh = ssh -i ~/.ssh/id_rsa -C
+ignore = ~/.hgignore
+
+[extensions]
+hggit =
+hgext.convert=
