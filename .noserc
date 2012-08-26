@@ -1,0 +1,5 @@
+[nosetests]
+verbosity=2
+with-doctest=true
+with-coverage=true
+cover-erase=true
