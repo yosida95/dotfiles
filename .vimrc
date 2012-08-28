@@ -70,6 +70,9 @@ colorscheme wombat256mod
 " sudo.vim
 Bundle 'sudo.vim'
 
+" vim-coffee-script
+Bundle 'vim-coffee-script'
+
 " go
 set rtp+=$GOROOT/misc/vim
 
