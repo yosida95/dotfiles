@@ -44,7 +44,6 @@ setopt transient_rprompt  # コピーするときに$RPROMPT を非表示にす�
 PROMPT="%F{green}%n%f@%F{cyan}%m%f[%F{red}%.%f]%(!.#.$) "
 PROMPT2="%F{magenta}%_ %%%f "
 SPROMPT='Correct: %F{red}%R%f -> %F{green}%r%f ? [n, y, a, e] '
-RPROMPT="%F{cyan}[%T]%f"
 
 if test ${UID} -eq 0; then
     PROMPT="%B${PROMPT}%b"
