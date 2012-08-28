@@ -1,6 +1,6 @@
 current = $(shell pwd)
 
-all: vim zsh hg nose tmux
+all: vim zsh hg git nose tmux
 
 vim:
 	ln -s -i $(current)/.vimrc ~/.vimrc
@@ -16,6 +16,9 @@ zsh:
 hg:
 	ln -s -i $(current)/.hgrc ~/.hgrc
 	ln -s -i $(current)/.hgignore ~/.hgignore
+
+git:
+	ln -s -i $(current)/.gitconfig ~/.gitconfig
 
 tmux:
 	ln -s -i $(current)/.tmux.conf ~/.tmux.conf
