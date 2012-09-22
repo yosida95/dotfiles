@@ -15,21 +15,20 @@ export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 
 export HGENCODING='utf-8'  # Encode used by Mercurial
 
-export PY2ROOT=/usr/Python2.7  # Directory of Python2
-export PY3ROOT=/usr/Python3.2  # Directory of Python3
-export GOROOT=/usr/Go1.0  # Directory of Go
-export MECABROOT=/usr/mecab0.993  # Directory of Mecab
-export NODEROOT=/usr/node  # Directory of Node
-export PATH=$PATH:$PY2ROOT/bin:$PY3ROOT/bin:$GOROOT/bin:$NODEROOT/bin:$MECABROOT/bin:~/local/bin
+PY2ROOT=/opt/python/2.7  # Directory of Python2
+PY3ROOT=/opt/python/3.2  # Directory of Python3
+GOROOT=/opt/go/1.0  # Directory of Go
+NODEROOT=/opt/node/0.8  # Directory of Node
+export PATH=$PY2ROOT/bin:$PY3ROOT/bin:$NODEROOT/bin:$GOROOT/bin:$PATH
 
 
 ##############################
 #  VirtualenvWrapperの設定   #
 ##############################
-if [ -f /usr/Python2.7/bin/virtualenvwrapper.sh ]; then
+if [ -f $PY2ROOT/bin/virtualenvwrapper_lazy.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python2.7
-    source $PY2ROOT/bin/virtualenvwrapper.sh
+    source $PY2ROOT/bin/virtualenvwrapper_lazy.sh
 fi
 
 
