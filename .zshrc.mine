@@ -13,12 +13,12 @@ fi
 export LESS='-R'
 export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 
-export HGENCODING='utf-8'  # Encode used by Mercurial
+export HGENCODING='utf-8' # Encode used by Mercurial
 
-PY2ROOT=/opt/python/2.7  # Directory of Python2
-PY3ROOT=/opt/python/3.2  # Directory of Python3
-export GOROOT=/opt/go/1.0  # Directory of Go
-NODEROOT=/opt/node/0.8  # Directory of Node
+PY2ROOT=/opt/python/2.7   # Directory of Python2
+PY3ROOT=/opt/python/3.2   # Directory of Python3
+export GOROOT=/opt/go/1.0 # Directory of Go
+NODEROOT=/opt/node/0.8    # Directory of Node
 export PATH=$PY2ROOT/bin:$PY3ROOT/bin:$NODEROOT/bin:$GOROOT/bin:$PATH
 
 
