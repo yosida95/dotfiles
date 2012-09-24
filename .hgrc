@@ -4,5 +4,4 @@ ssh = ssh -i ~/.ssh/id_rsa -C
 ignore = ~/.hgignore
 
 [extensions]
-hggit =
 hgext.convert=
