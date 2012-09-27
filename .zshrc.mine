@@ -5,7 +5,7 @@ PATH=/opt/python/2.7/bin:$PATH                   # Python 2.7
 PATH=/opt/python/3.2/bin:$PATH                   # Payhon 3.2
 PATH=/opt/node/0.8/bin:$PATH                     # Node 0.8
 PATH=/opt/haskell/ghc/7.4/bin:$PATH              # GHC 7.4
-PATH=/opt/haskell/platform/2012.2.2.0/bin:$PATH  # Haskell Platform 2012.2.2.0
+PATH=/opt/haskell/platform/2012.2.0.0/bin:$PATH  # Haskell Platform 2012.2.0.0
 PATH=/opt/go/1.0/bin:$PATH                       # Go 1.0
 export PATH
 
@@ -28,10 +28,13 @@ fi
 ##############################
 #  VirtualenvWrapperの設定   #
 ##############################
-if [ -f $PY2ROOT/bin/virtualenvwrapper_lazy.sh ]; then
+PYTHON27=`which python2.7`
+PYTHON27DIR=`dirname $PYTHON27`
+
+if [ -f $PYTHON27DIR/virtualenvwrapper_lazy.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python2.7
-    source $PY2ROOT/bin/virtualenvwrapper_lazy.sh
+    export VIRTUALENVWRAPPER_PYTHON=$PYTHON27
+    source $PYTHON27DIR/virtualenvwrapper_lazy.sh
     alias mkvirtualenv='mkvirtualenv --distribute'
 fi
 
