@@ -1,27 +1,29 @@
 ##############################
 #          exports           #
 ##############################
+PATH=/opt/python/2.7/bin:$PATH                   # Python 2.7
+PATH=/opt/python/3.2/bin:$PATH                   # Payhon 3.2
+PATH=/opt/node/0.8/bin:$PATH                     # Node 0.8
+PATH=/opt/haskell/ghc/7.4/bin:$PATH              # GHC 7.4
+PATH=/opt/haskell/platform/2012.2.2.0/bin:$PATH  # Haskell Platform 2012.2.2.0
+PATH=/opt/go/1.0/bin:$PATH                       # Go 1.0
+export PATH
 
+export LESS='-R'
+export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'  # GNU Source Highlight
+export HGENCODING='utf-8'                               # Encode used by Mercurial
+export GOROOT=/opt/go/1.0                               # Directory of Go
+
+##############################
+#         Vimの設定          #
+##############################
 if [[ "${OSTYPE}" = darwin* ]]; then
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 else;
-    export EDITOR='/usr/bin/vim'  # Set default Editor
+    export EDITOR='/usr/bin/vim'
 fi
-
-export LESS='-R'
-export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
-
-export HGENCODING='utf-8' # Encode used by Mercurial
-
-PY2ROOT=/opt/python/2.7   # Directory of Python2
-PY3ROOT=/opt/python/3.2   # Directory of Python3
-export GOROOT=/opt/go/1.0 # Directory of Go
-NODEROOT=/opt/node/0.8    # Directory of Node
-GHCROOT=/opt/ghc/7.6/     # Directory of GHC
-export PATH=$PY2ROOT/bin:$PY3ROOT/bin:$GOROOT/bin:$NODEROOT/bin:$GHCROOT/bin:$PATH
-
 
 ##############################
 #  VirtualenvWrapperの設定   #
@@ -30,8 +32,8 @@ if [ -f $PY2ROOT/bin/virtualenvwrapper_lazy.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python2.7
     source $PY2ROOT/bin/virtualenvwrapper_lazy.sh
+    alias mkvirtualenv='mkvirtualenv --distribute'
 fi
-
 
 ##############################
 #バージョン管理システムを表示#
