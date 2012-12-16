@@ -12,6 +12,7 @@ vim:
 zsh:
 	ln -s -i $(current)/.zshrc ~/.zshrc
 	ln -s -i $(current)/.zshrc.mine ~/.zshrc.mine
+	ln -s -i $(current)/.zlogin ~/.zlogin
 
 hg:
 	ln -s -i $(current)/.hgrc ~/.hgrc
