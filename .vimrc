@@ -30,7 +30,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_enable_caching_message = 0
 if has('unix')
-    let g:neocomplcache_temporary_dir = '/tmp/.neocon'
+    let g:neocomplcache_temporary_dir = '/tmp/.neocon-' . $USER
 endif
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
