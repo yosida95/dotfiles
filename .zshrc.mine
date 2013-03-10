@@ -50,3 +50,8 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 RPROMPT="%U%1(v|%F{green}%1v%f|)%u $RPROMPT"
+
+##############################
+#         雑多な設定         #
+##############################
+alias gofmt="gofmt --tabs=false --tabwidth=4"
