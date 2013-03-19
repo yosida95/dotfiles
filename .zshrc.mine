@@ -7,6 +7,9 @@ PATH=/opt/node/0.8/bin:$PATH                     # Node 0.8
 PATH=/opt/haskell/ghc/7.4/bin:$PATH              # GHC 7.4
 PATH=/opt/haskell/platform/2012.2.0.0/bin:$PATH  # Haskell Platform 2012.2.0.0
 PATH=/opt/go/1.0/bin:$PATH                       # Go 1.0
+if [[ "${OSTYPE}" = darwin* ]]; then
+    PATH=/usr/local/bin:/usr/local/sbin:$PATH    # For MacBrew
+fi
 export PATH
 
 export LESS='-R'
