@@ -74,7 +74,7 @@ Bundle 'sudo.vim'
 Bundle 'vim-coffee-script'
 
 " go
-set rtp+=$GOROOT/misc/vim
+"set rtp+=$GOROOT/misc/vim
 
 filetype plugin indent on
 syntax enable
@@ -128,3 +128,5 @@ set shiftwidth=4
 
 "Mouse
 set mouse= " Disable mouse
+
+set completeopt-=preview
