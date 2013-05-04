@@ -74,6 +74,8 @@ Bundle 'sudo.vim'
 Bundle 'vim-coffee-script'
 
 Bundle 'Jinja'
+Bundle 'https://github.com/ocim/htmljinja.vim.git'
+autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
 
 " go
 set rtp+=$GOROOT/misc/vim
