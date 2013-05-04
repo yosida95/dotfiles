@@ -73,8 +73,10 @@ Bundle 'sudo.vim'
 " vim-coffee-script
 Bundle 'vim-coffee-script'
 
+Bundle 'Jinja'
+
 " go
-"set rtp+=$GOROOT/misc/vim
+set rtp+=$GOROOT/misc/vim
 
 filetype plugin indent on
 syntax enable
