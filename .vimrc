@@ -76,8 +76,13 @@ Bundle 'vim-coffee-script'
 " Markdown
 Bundle 'Markdown'
 
+" Jinja2
+Bundle 'Jinja'
+Bundle 'https://github.com/ocim/htmljinja.vim.git'
+autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
+
 " go
-"set rtp+=$GOROOT/misc/vim
+set rtp+=$GOROOT/misc/vim
 
 filetype plugin indent on
 syntax enable
