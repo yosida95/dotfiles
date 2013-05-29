@@ -73,6 +73,9 @@ Bundle 'sudo.vim'
 " vim-coffee-script
 Bundle 'vim-coffee-script'
 
+" Markdown
+Bundle 'Markdown'
+
 " go
 "set rtp+=$GOROOT/misc/vim
 
