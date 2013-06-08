@@ -41,7 +41,7 @@ fi
 setopt prompt_subst  # $PROMPT 内の変数を展開する
 setopt transient_rprompt  # コピーするときに$RPROMPT を非表示にする
 
-PROMPT="%F{green}%n%f@%F{cyan}%m%f[%F{red}%.%f]%(!.#.$) "
+PROMPT="[%F{red}%.%f]%(!.#.$) "
 PROMPT2="%F{magenta}%_ %%%f "
 SPROMPT='Correct: %F{red}%R%f -> %F{green}%r%f ? [n, y, a, e] '
 RPROMPT=""
