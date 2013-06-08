@@ -73,6 +73,10 @@ Bundle 'sudo.vim'
 " vim-coffee-script
 Bundle 'vim-coffee-script'
 
+" Markdown
+Bundle 'Markdown'
+
+" Jinja2
 Bundle 'Jinja'
 Bundle 'https://github.com/estin/htmljinja.git'
 autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
