@@ -1,28 +1,26 @@
-current = $(shell pwd)
-
 all: vim zsh hg git nose tmux
 
 vim:
-	ln -s -i $(current)/.vimrc ~/.vimrc
-	ln -s -i $(current)/.vim ~/
-	if [ ! -d ~/.vim-backup ]; then \
-		mkdir ~/.vim-backup; \
+	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
+	ln -s -f ${PWD}/.vim ${HOME}/
+	if [ ! -d ${HOME}/.vim-backup ]; then \
+		mkdir ${HOME}/.vim-backup; \
 	fi
 
 zsh:
-	ln -s -i $(current)/.zshrc ~/.zshrc
-	ln -s -i $(current)/.zshrc.mine ~/.zshrc.mine
-	ln -s -i $(current)/.zlogin ~/.zlogin
+	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
+	ln -s -f ${PWD}/.zshrc.mine ${HOME}/.zshrc.mine
+	ln -s -f ${PWD}/.zlogin ${HOME}/.zlogin
 
 hg:
-	ln -s -i $(current)/.hgrc ~/.hgrc
-	ln -s -i $(current)/.hgignore ~/.hgignore
+	ln -s -f ${PWD}/.hgrc ${HOME}/.hgrc
+	ln -s -f ${PWD}/.hgignore ${HOME}/.hgignore
 
 git:
-	ln -s -i $(current)/.gitconfig ~/.gitconfig
+	ln -s -f ${PWD}/.gitconfig ${HOME}/.gitconfig
 
 tmux:
-	ln -s -i $(current)/.tmux.conf ~/.tmux.conf
+	ln -s -f ${PWD}/.tmux.conf ${HOME}/.tmux.conf
 
 nose:
-	ln -s -i $(current)/.noserc ~/.noserc
+	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
