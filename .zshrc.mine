@@ -31,13 +31,13 @@ fi
 ##############################
 #  VirtualenvWrapperの設定   #
 ##############################
-PYTHON27=`which python2.7`
-PYTHON27DIR=`dirname $PYTHON27`
+if which virtualenvwrapper_lazy.sh > /dev/null 2>&1; then
+    VENVWRAPPER=`which virtualenvwrapper_lazy.sh`
+    PYTHONDIR=`dirname $VENVWRAPPER`
 
-if [ -f $PYTHON27DIR/virtualenvwrapper_lazy.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
-    export VIRTUALENVWRAPPER_PYTHON=$PYTHON27
-    source $PYTHON27DIR/virtualenvwrapper_lazy.sh
+    export VIRTUALENVWRAPPER_PYTHON=$PYTHONDIR/python
+    source $VENVWRAPPER
     alias mkvirtualenv='mkvirtualenv --distribute'
 fi
 
