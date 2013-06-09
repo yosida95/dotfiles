@@ -76,6 +76,10 @@ Bundle 'vim-coffee-script'
 " Markdown
 Bundle 'Markdown'
 
+" Mako
+Bundle 'mako.vim'
+autocmd BufNewFile,BufRead *.mak set filetype=mako
+
 " Jinja2
 Bundle 'Jinja'
 Bundle 'https://github.com/estin/htmljinja.git'
