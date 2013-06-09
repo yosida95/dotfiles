@@ -17,7 +17,9 @@ if which tmux > /dev/null 2>&1; then
         fi
     fi
 elif which screen > /dev/null 2>&1; then
-    waitEnter
+    if [[ $TERM != "screen" ]]; then
+        waitEnter
 
-    exec screen -R
+        exec screen -D -RR
+    fi
 fi
