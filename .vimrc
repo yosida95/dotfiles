@@ -110,6 +110,10 @@ NeoBundle 'vim-coffee-script'
 " Markdown
 NeoBundle 'Markdown'
 
+" Mako
+NeoBundle 'mako.vim'
+autocmd BufNewFile,BufRead *.mak set filetype=mako
+
 " Jinja2
 NeoBundle 'Jinja'
 NeoBundle 'https://github.com/estin/htmljinja.git'
