@@ -149,15 +149,19 @@ alias -g G='| grep'
 alias -g S='| sed'
 alias -g A='| awk'
 alias -g W='| wc'
-alias -s html=iceweasel
-# HTMLファイルに張り付け用の、タブ、空白、< > の変換コマンド
-alias htmlconv='sed -e "s/</\&lt;/g;s/>/\&gt;/g;s/\t/\&nbsp;\&nbsp;\&nbsp;\&nbsp;/g;s/\s/\&nbsp;/g" '
+
+if [[ "${OSTYPE}" = darwin* ]]; then
+    alias google-chrome='open -a Google\ Chrome'
+    alias eog='open -a Preview'
+fi
+alias -s {png,gif,jpg,bmp,PNG,GIF,JPG,BMP}=eog
+alias -s html=google-chrome
 
 
 ################################
 #          雑多な設定          #
 ################################
-setopt no_beep  # コマンド入力エラーでBeepを鳴らさない
+# setopt no_beep  # コマンド入力エラーでBeepを鳴らさない
 
 setopt brace_ccl  # ブレース展開機能を有効にする
 setopt numeric_glob_sort  # 数字を数値と解釈してソートする
