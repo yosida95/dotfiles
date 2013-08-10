@@ -5,7 +5,9 @@ zcompile ~/.zshrc  # .zshrcをコンパイルし、.zshrc.zwcを生成
 zcompile ~/.zshrc.mine  # .zshrc.mineをコンパイルし、.zshrc.mine.zwcを生成
 
 bindkey -v  # Vi ライクなキーバインドを使う
-export LANG=ja_JP.UTF-8  # LANG
+
+# Language
+export LANG=ja_JP.UTF-8
 
 if [ -f /etc/zshrc ]; then
     source /etc/zshrc
