@@ -66,12 +66,6 @@ NeoBundle 'Shougo/vimfiler.vim', {
 let g:vimfiler_as_default_explorer = 1
 nnoremap <leader>e :VimFilerExplorer<CR>
 
-" ZenCoding.vim
-NeoBundle 'ZenCoding.vim'
-let g:user_zen_leader_key = '<C-z>'
-let g:use_zen_complete_tag = 1
-let g:user_zen_settings = {'indentation': '    '}
-
 " Tagbar
 NeoBundle 'Tagbar'
 nmap <F8> :TagbarToggle<CR>
@@ -86,11 +80,6 @@ augroup END
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'runmode': "async:remote:vimproc", 'split': 'below'}
 let g:quickrun_config['python.unit'] = {'command': 'nosetests', 'cmdopt': '--verbose --with-doctest --with-coverage'}
-
-" vim-indent-guides
-NeoBundle "nathanaelkane/vim-indent-guides"
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
 
 " virtualenv.vim
 NeoBundle "jmcantrell/vim-virtualenv"
@@ -119,6 +108,9 @@ NeoBundle 'Jinja'
 NeoBundle 'https://github.com/estin/htmljinja.git'
 autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
 
+" html5.vim
+NeoBundle 'othree/html5.vim'
+
 " sudo.vim
 NeoBundle 'sudo.vim'
 
@@ -129,6 +121,7 @@ NeoBundle "gregsexton/gitv", {
     \ "depends": ["tpope/vim-fugitive"]
     \ }
 nnoremap <leader>g :Gitv<CR>
+" autocmd FileType git :setlocal foldlevel=99
 
 " wombat256.vim
 NeoBundle 'wombat256.vim'
@@ -192,7 +185,7 @@ hi PMenuSbar ctermbg=blue
 
 " Status line
 set laststatus=2
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{fugitive#statusline()}%=%l,%c%V%8P
 
 " Cursorline
 augroup vimrc-auto-cursorline
