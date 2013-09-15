@@ -118,6 +118,9 @@ setopt print_eight_bit
 setopt magic_equal_subst  # All unquoted arguments of the form identifier=expression appearing after the command name have file expansion (that is, where expression has a leading `~' or `=') performed on expression as if it were a parameter assignment. The argument is not otherwise treated specially: in other words, it is subsequently treated as a single word, not as an assignment.
 unsetopt menu_complete  # On an ambiguous completion, instead of listing possibilities or beeping, insert the first match immediately. Then when completion is requested again, remove the first match and insert the second match, etc. When there are no more matches, go back to the first one again. reverse-menu-complete may be used to loop through the list in the other direction. This option overrides AUTO_MENU.
 
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
 if [[ "${OSTYPE}" = linux* ]]; then
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}  # 補完候補を色付き表示
 fi
