@@ -10,6 +10,8 @@ vim:
 zsh:
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -s -f ${PWD}/.zshrc.mine ${HOME}/.zshrc.mine
+	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx
+	ln -s -f ${PWD}/.zshrc.linux ${HOME}/.zshrc.linux
 	ln -s -f ${PWD}/.zlogin ${HOME}/.zlogin
 
 hg:
