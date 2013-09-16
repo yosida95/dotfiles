@@ -42,6 +42,7 @@ BLUE="%{$fg[blue]%}"
 RED="%{$fg[red]%}"
 YELLOW="%{$fg[yellow]%}"
 GREEN="%{$fg_bold[green]%}"
+MAGENTA="%{$fg_bold[magenta]%}"
 
 # Show status and information of VCS at prompt
 autoload -Uz vcs_info
@@ -72,8 +73,8 @@ add-zsh-hook precmd _update_vcs_info_msg
 VCS_INFO="${GREEN}%1v${YELLOW}%2v${RED}%3v"
 PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
 RPROMPT=""
-PROMPT2="%F{magenta}%_ %%%f "
-SPROMPT='Correct: ${RED}%R${RESET} -> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, ${RED}n${RESET}, ${YELLOW}e${RESET}, ${RED}a${RESET}] '
+PROMPT2="${MAGENTA}%_ %%${RESET} "
+SPROMPT='${MAGENTA}／人◕ ‿‿ ◕人＼ ${RED}%R ${RESET}-> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, ${RED}n${RESET}, ${YELLOW}e${RESET}, ${RED}a${RESET}] '
 
 # Change color of prompt on vi normal mode
 # http://memo.officebrook.net/20090226.html
