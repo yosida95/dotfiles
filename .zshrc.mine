@@ -70,7 +70,7 @@ function _update_vcs_info_msg () {
 add-zsh-hook precmd _update_vcs_info_msg
 
 VCS_INFO="${GREEN}%1v${YELLOW}%2v${RED}%3v"
-PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}✔${RESET}.${RED}✘${RESET}) "
+PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
 RPROMPT=""
 PROMPT2="%F{magenta}%_ %%%f "
 SPROMPT='Correct: ${RED}%R${RESET} -> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, ${RED}n${RESET}, ${YELLOW}e${RESET}, ${RED}a${RESET}] '
@@ -80,10 +80,10 @@ SPROMPT='Correct: ${RED}%R${RESET} -> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, $
 function zle-line-init zle-keymap-select {
     case $KEYMAP in
         vicmd)
-            PROMPT="${BLUE}%c${VCS_INFO} %(?.${GREEN}✔${RESET}.${RED}✘${RESET}) "
+            PROMPT="${BLUE}%c${VCS_INFO} %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
             ;;
         main|viins)
-            PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}✔${RESET}.${RED}✘${RESET}) "
+            PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
             ;;
     esac
 
