@@ -11,3 +11,7 @@ Makefile 書いたからmake コマンド一発で設定されるね
 
 ##注意
 .hgrc と.gitconfigにぼくのusername が設定されているので、そのままにすると君のコミットはすべてぼくのものになってしまうよ
+
+## Screenshots
+### Zsh
+![zsh](./zsh.png)
