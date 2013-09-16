@@ -60,19 +60,28 @@ if is-at-least 4.3.10; then
 fi
 
 autoload -Uz add-zsh-hook
-function _update_vcs_info_msg () {
+function _update_psvar () {
     LANG=ja_JP.UTF-8 vcs_info
-    psvar=("" "" "")
+    psvar=("" "" "" "")
+    langenvs=()
 
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]=" ${vcs_info_msg_0_}"
     [[ -n "$vcs_info_msg_1_" ]] && psvar[2]=" ${vcs_info_msg_1_}"
     [[ -n "$vcs_info_msg_2_" ]] && psvar[3]=" ${vcs_info_msg_2_}"
+
+    langenvs+="py:$(basename $(dirname $(dirname $(which python))))"
+    if [[ -n "$GOPATH" ]]; then
+        langenvs+="go:$(basename $GOPATH)"
+    elif [[ -n "$GOROOT" ]]; then
+        langenvs+="go:$(basename $GOROOT)"
+    fi
+    psvar[4]="${langenvs[*]}"
 }
-add-zsh-hook precmd _update_vcs_info_msg
+add-zsh-hook precmd _update_psvar
 
 VCS_INFO="${GREEN}%1v${YELLOW}%2v${RED}%3v"
 PROMPT="${CYAN}%c${VCS_INFO} %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
-RPROMPT=""
+RPROMPT="${CYAN}[%4v]${RESET}"
 PROMPT2="${MAGENTA}%_ %%${RESET} "
 SPROMPT='${MAGENTA}／人◕ ‿‿ ◕人＼ ${RED}%R ${RESET}-> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, ${RED}n${RESET}, ${YELLOW}e${RESET}, ${RED}a${RESET}] '
 
@@ -200,7 +209,8 @@ export HGENCODING='utf-8'
 
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin
+export VIRTUALENVWRAPPER_LOG_DIR=$WORKON_HOME
+export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python
 
 ##############################
 #      Markdown を表示       #
