@@ -205,7 +205,7 @@ export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin
 ##############################
 #      Markdown を表示       #
 ##############################
-function md() {
+function markdown() {
     if [ $WORKON_HOME ]; then
         if [ -x $WORKON_HOME/sandbox/bin/markdown_py ]; then
             $WORKON_HOME/sandbox/bin/markdown_py $1| w3m -T text/html -dump | less
