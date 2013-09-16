@@ -123,10 +123,10 @@ NeoBundle "gregsexton/gitv", {
 nnoremap <leader>g :Gitv<CR>
 " autocmd FileType git :setlocal foldlevel=99
 
-" wombat256.vim
-NeoBundle 'wombat256.vim'
-set t_Co=256
-colorscheme wombat256mod
+" hybrid.vim
+NeoBundle 'hybrid.vim'
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
 
 NeoBundleCheck
 
