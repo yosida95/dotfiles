@@ -96,6 +96,9 @@ autocmd FileType python let b:did_ftplugin = 1
 " vim-coffee-script
 NeoBundle 'vim-coffee-script'
 
+" Protocol Buffers
+NeoBundle 'uarun/vim-protobuf'
+
 " Markdown
 NeoBundle 'Markdown'
 

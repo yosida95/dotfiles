@@ -28,6 +28,10 @@ PATH=$GHCROOT/bin:$PATH
 HSPFROOT=/opt/haskell/platform/2012.02.0.0
 PATH=$HSPFROOT/bin:$PATH
 
+PBROOT=/opt/protobuf/2.5
+PATH=$PBROOT/bin:$PATH
+
+PATH=$HOME/bin:$PATH
 export PATH
 
 ##############################
