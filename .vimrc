@@ -132,6 +132,9 @@ NeoBundleCheck
 
 " go
 set rtp+=$GOROOT/misc/vim
+set rtp+=$GOROOT/src/github.com/nsf/gocode/vim
+set completeopt=menu,preview
+autocmd FileType go setlocal omnifunc=gocomplete#Complete
 
 filetype plugin indent on
 syntax enable
@@ -198,7 +201,8 @@ augroup END
 set autoindent
 set smartindent
 set expandtab
-set softtabstop=4
+set softtabstop=0
+set tabstop=4
 set shiftwidth=4
 set shiftround
 
