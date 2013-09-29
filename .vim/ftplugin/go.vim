@@ -1,0 +1,3 @@
+"syntax check
+"
+set noexpandtab

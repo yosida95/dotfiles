@@ -1,63 +1,225 @@
+export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
+
+autoload -Uz colors
+
+##############################
+#            PATH            #
+##############################
+PY2ROOT=/opt/python/2.7
+PATH=$PY2ROOT/bin:$PATH
+
+PY3ROOT=/opt/python/3.2
+PATH=$PY3ROOT/bin:$PATH
+
+GOROOT=/opt/go/1.1
+PATH=$GOROOT/bin:$PATH
+export GOROOT
+
+NODEROOT=/opt/node/0.8
+PATH=$NODEROOT/bin:$PATH
+
+ERLROOT=/opt/erlang/r16b
+PATH=$ERLROOT/bin:$PATH
+
+GHCROOT=/opt/haskell/ghc/7.4
+PATH=$GHCROOT/bin:$PATH
+
+HSPFROOT=/opt/haskell/platform/2012.02.0.0
+PATH=$HSPFROOT/bin:$PATH
+
+PBROOT=/opt/protobuf/2.5
+PATH=$PBROOT/bin:$PATH
+
+PATH=$HOME/bin:$PATH
+export PATH
+
+##############################
+#           PROMPT           #
+##############################
+setopt prompt_subst
+setopt transient_rprompt
+
+RESET="%{$reset_color%}"
+CYAN="%{$fg[cyan]%}"
+BLUE="%{$fg[blue]%}"
+RED="%{$fg[red]%}"
+YELLOW="%{$fg[yellow]%}"
+GREEN="%{$fg_bold[green]%}"
+MAGENTA="%{$fg_bold[magenta]%}"
+
+# Show status and information of VCS at prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git hg
+zstyle ':vcs_info:*' formats '%s:%b'
+zstyle ':vcs_info:*' actionformats '%s:%b' '' '<!%a>'
+
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+    zstyle ':vcs_info:git:*' formats '%s:%b' '%c%u'
+    zstyle ':vcs_info:git:*' actionformats '%s:%b' '%c%u' '<!%a>'
+    zstyle ':vcs_info:git:*' check-for-changes true
+    zstyle ':vcs_info:git:*' stagedstr '+'
+    zstyle ':vcs_info:git:*' unstagedstr '-'
+fi
+
+autoload -Uz add-zsh-hook
+function _update_psvar () {
+    LANG=ja_JP.UTF-8 vcs_info
+    psvar=("" "" "" "")
+    langenvs=()
+
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="${vcs_info_msg_0_} "
+    [[ -n "$vcs_info_msg_1_" ]] && psvar[2]="${vcs_info_msg_1_} "
+    [[ -n "$vcs_info_msg_2_" ]] && psvar[3]="${vcs_info_msg_2_} "
+
+    langenvs+="py:$(basename $(dirname $(dirname $(which python))))"
+    if [[ -n "$GOPATH" ]]; then
+        langenvs+="go:$(basename $GOPATH)"
+    elif [[ -n "$GOROOT" ]]; then
+        langenvs+="go:$(basename $GOROOT)"
+    fi
+    psvar[4]="${langenvs[*]}"
+}
+add-zsh-hook precmd _update_psvar
+
+VCS_INFO="${GREEN}%1v${YELLOW}%2v${RED}%3v"
+PROMPT="${VCS_INFO}${CYAN}%c %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
+RPROMPT="${CYAN}[%4v]${RESET}"
+PROMPT2="${MAGENTA}%_ %%${RESET} "
+SPROMPT='${MAGENTA}／人◕ ‿‿ ◕人＼ ${RED}%R ${RESET}-> ${GREEN}%r${RESET} ? [${GREEN}y${RESET}, ${RED}n${RESET}, ${YELLOW}e${RESET}, ${RED}a${RESET}] '
+
+# Change color of prompt on vi normal mode
+# http://memo.officebrook.net/20090226.html
+function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+        vicmd)
+            PROMPT="${VCS_INFO}${BLUE}%c %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
+            ;;
+        main|viins)
+            PROMPT="${VCS_INFO}${CYAN}%c %(?.${GREEN}.${RED})✘╹◡╹✘${RESET} "
+            ;;
+    esac
+
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+if [ $UID -eq 0 ]; then
+    PROMPT="%B${PROMPT}%b"
+    PROMPT2="%B${PROMPT2}%b"
+    SPROMPT="%B${SPROMPT}%b"
+fi
+
+##############################
+#         Completion         #
+##############################
+autoload -U compinit
+compinit
+
+setopt correct  # Correcting spell miss
+setopt list_packed  # show candidacy compactly
+setopt nolistbeep  # show candidacy without beep
+setopt auto_menu  # Automatically use menu completion after the second consecutive request for completion, for example by pressing the TAB key repeatedly. This option is overridden by MENU_COMPLETE.
+setopt auto_param_keys  # If a parameter name was completed and the next character typed is one of those that have to come directly after the name (like }, :, etc.), they are placed there automatically.
+setopt auto_param_slash  # if a parameter is completed whose content is the name of a directory, then add a trailing slash.
+setopt auto_remove_slash  # When the last character resulting from a completion is a slash and the next character typed is a word delimiter, remove the slash.
+setopt mark_dirs  # Append a trailing / to all directory names resulting from filename generation.
+setopt list_types  # When listing files that are possible completions, show the type of each file with a trailing identifying mark.
+setopt complete_in_word  # If unset, the cursor is moved to the end of the word if completion is started. Otherwise it stays where it is and completion is done from both ends.
+setopt print_eight_bit
+setopt magic_equal_subst  # All unquoted arguments of the form identifier=expression appearing after the command name have file expansion (that is, where expression has a leading `~' or `=') performed on expression as if it were a parameter assignment. The argument is not otherwise treated specially: in other words, it is subsequently treated as a single word, not as an assignment.
+unsetopt menu_complete  # On an ambiguous completion, instead of listing possibilities or beeping, insert the first match immediately. Then when completion is requested again, remove the first match and insert the second match, etc. When there are no more matches, go back to the first one again. reverse-menu-complete may be used to loop through the list in the other direction. This option overrides AUTO_MENU.
+
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+if [[ "${OSTYPE}" = linux* ]]; then
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}  # 補完候補を色付き表示
+fi
+zstyle ':completion:*' use-cache true  # cache candidacy of completion
+zstyle ':completion:*:processes' command 'ps x'  # kill で 'ps x' のリストから選択可能
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'  # kill の候補を色付き表示
+
+##############################
+#          History           #
+##############################
+HISTFILE=$HOME/.zsh_history  # file for saving history
+SAVEHIST=10000  # count of history saved on HISTFILE
+HISTSIZE=10000  # count of history saved on memory
+setopt share_history  # share history among other terminal
+# setopt hist_expand
+# setopt append_history
+setopt inc_append_history # history will be saved on HISTFILE incrementally
+setopt hist_ignore_all_dups  # remove duplicate from history
+setopt hist_ignore_dups  # if command matches latest history, it is not append to history
+setopt hist_save_no_dups  # remove duplicate from HISTFILE
+setopt hist_ignore_space  # if command starts with space, it is not append to history
+setopt hist_reduce_blanks  # history will be stripped
+setopt hist_no_store  # "history" command will not be recorded on history
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end  # select previous history with Ctrl-P
+bindkey "^N" history-beginning-search-forward-end  # select next history with Ctrl-N
+
+##############################
+#      Moving directory      #
+##############################
+setopt auto_cd  # change directory with only directory name
+setopt auto_pushd  # pushd automatically
+setopt pushd_ignore_dups  # remove duplicate from directory stack
+setopt pushd_to_home  # pushd with no arguments == pushd $HOME
+setopt pushd_silent  # no lines or chars will be printed when will execute pushd or popd
+
+##############################
+#          Aliases           #
+##############################
+alias where="command -v"
+alias j="jobs -l"
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -l -h"
+alias du="du -h"
+alias df="df -h"
+alias su="su -l"
+alias mkvirtualenv='mkvirtualenv --distribute'
+
+alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g S='| sed'
+alias -g A='| awk'
+alias -g W='| wc'
+
+alias -s {png,gif,jpg,bmp,PNG,GIF,JPG,BMP}=eog
+alias -s html=google-chrome
+
 ##############################
 #          exports           #
 ##############################
-PATH=/opt/python/2.7/bin:$PATH                   # Python 2.7
-PATH=/opt/python/3.3/bin:$PATH                   # Payhon 3.3
-PATH=/opt/node/0.8/bin:$PATH                     # Node 0.8
-PATH=/opt/haskell/ghc/7.4/bin:$PATH              # GHC 7.4
-PATH=/opt/haskell/platform/2012.2.0.0/bin:$PATH  # Haskell Platform 2012.2.0.0
-PATH=/opt/go/1.0/bin:$PATH                       # Go 1.0
-if [[ "${OSTYPE}" = darwin* ]]; then
-    PATH=/usr/local/bin:/usr/local/sbin:$PATH    # For MacBrew
-fi
-export PATH
-
+# LESS
 export LESS='-R'
-export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'  # GNU Source Highlight
-export HGENCODING='utf-8'                               # Encode used by Mercurial
-export GOROOT=/opt/go/1.0                               # Directory of Go
+export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 
-##############################
-#         Vimの設定          #
-##############################
-if [[ "${OSTYPE}" = darwin* ]]; then
-    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-else;
-    export EDITOR='/usr/bin/vim'
-fi
+# EDITOR
+export EDITOR='vim'
 
-##############################
-#  VirtualenvWrapperの設定   #
-##############################
-if which virtualenvwrapper_lazy.sh > /dev/null 2>&1; then
-    VENVWRAPPER=`which virtualenvwrapper_lazy.sh`
-    PYTHONDIR=`dirname $VENVWRAPPER`
+# Mercurial
+export HGENCODING='utf-8'
 
-    export WORKON_HOME=$HOME/.virtualenvs
-    export VIRTUALENVWRAPPER_PYTHON=$PYTHONDIR/python
-    source $VENVWRAPPER
-    alias mkvirtualenv='mkvirtualenv --distribute'
-fi
-
-##############################
-#バージョン管理システムを表示#
-##############################
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=ja_JP.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%U%1(v|%F{green}%1v%f|)%u $RPROMPT"
+# Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_LOG_DIR=$WORKON_HOME
+export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python
 
 ##############################
 #      Markdown を表示       #
 ##############################
-function md() {
+function markdown() {
     if [ $WORKON_HOME ]; then
         if [ -x $WORKON_HOME/sandbox/bin/markdown_py ]; then
             $WORKON_HOME/sandbox/bin/markdown_py $1| w3m -T text/html -dump | less
@@ -72,4 +234,23 @@ function md() {
 ##############################
 #         雑多な設定         #
 ##############################
-alias gofmt="gofmt --tabs=false --tabwidth=4"
+# setopt no_beep  # コマンド入力エラーでBeepを鳴らさない
+
+setopt brace_ccl
+setopt numeric_glob_sort
+setopt path_dirs
+
+setopt ignore_eof
+
+setopt bsd_echo
+setopt notify
+setopt long_list_jobs
+
+setopt multios
+setopt short_loops
+setopt always_last_prompt
+setopt cdable_vars sh_word_split
+
+REPORTTIME=3
+
+setopt rm_star_wait
