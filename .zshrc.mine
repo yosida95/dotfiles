@@ -254,3 +254,7 @@ setopt cdable_vars sh_word_split
 REPORTTIME=3
 
 setopt rm_star_wait
+
+function whois() {
+    command /usr/bin/whois $@ |iconv -f ISO-2022-JP -t UTF-8
+}
