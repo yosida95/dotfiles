@@ -10,9 +10,7 @@ if which tmux > /dev/null 2>&1; then
     if [ -z "$TMUX" ]; then
         tmux list-session >/dev/null 2>&1| wc -l| awk '{print $0}'| read count
 
-        if [ $count -lt 1 ]; then
-            exec tmux new-session
-        else
+        if $(tmux has-session >/dev/null 2>&1); then
             echo "Which whould you like,"
             echo -e "1\tAttach current session"
             echo -e "2\tCreate new session"
@@ -30,6 +28,10 @@ if which tmux > /dev/null 2>&1; then
                     exec tmux attach-session -t $choose
                 fi
             fi
+        else
+            echo 'Press <ENTER> to continue.'
+            read
+            exec tmux new-session
         fi
     fi
 elif which screen > /dev/null 2>&1; then
