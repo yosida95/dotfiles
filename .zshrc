@@ -41,7 +41,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew celery coffee django docker git git-flow github go history history-substring-search mercurial node npm osx pip python rsync supervisor urltools virtualenv virtualenvwrapper vi-mode yum)
+plugins=(brew celery coffee django docker git git-flow github go go-prompt history history-substring-search mercurial node npm osx pip python python-prompt rsync supervisor urltools virtualenv virtualenvwrapper vi-mode yum)
 
 # PATH
 PY2ROOT=/opt/python/2.7

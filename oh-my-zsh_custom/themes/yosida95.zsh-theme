@@ -1,26 +1,6 @@
 setopt prompt_subst
 setopt transient_rprompt
 
-function python_prompt_info {
-    if which python > /dev/null 2>&1; then
-        if [[ -n $VIRTUAL_ENV ]]; then
-            _DISPLAY="${${VIRTUAL_ENV}:t}"
-        else;
-            _DISPLAY="$(basename $(dirname $(dirname $(which python))))"
-        fi
-        echo "$ZSH_THEME_PYTHON_PROMPT_PREFIX$_DISPLAY$ZSH_THEME_PYTHON_PROMPT_SUFFIX"
-        unset _DISPLAY
-    fi
-}
-
-function go_prompt_info {
-    if which go > /dev/null 2>&1; then
-        _DISPLAY=$(basename $(dirname $(dirname $(which go))))
-        echo "$ZSH_THEME_GO_PROMPT_PREFIX$_DISPLAY$ZSH_THEME_GO_PROMPT_SUFFIX"
-        unset _DISPLAY
-    fi
-}
-
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}git:"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}-%{$reset_color%} "
