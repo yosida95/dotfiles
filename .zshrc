@@ -1,11 +1,12 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/src/dotfiles/oh-my-zsh
+ZSH_CUSTOM=$HOME/src/dotfiles/oh-my-zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="yosida95"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -41,6 +42,17 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew celery coffee django docker git git-flow github go history history-substring-search mercurial node npm osx pip python rsync supervisor urltools virtualenv virtualenvwrapper vi-mode yum)
+
+# PATH
+PY2ROOT=/opt/python/2.7
+PY3ROOT=/opt/python/3.2
+export GOROOT=/opt/go/1.1
+NODEROOT=/opt/node/0.8
+ERLROOT=/opt/erlang/r16b
+GHCROOT=/opt/haskell/ghc/7.4
+HSPFROOT=/opt/haskell/platform/2012.02.0.0
+PBROOT=/opt/protobuf/2.5
+export PATH=$PY2ROOT/bin:$PY3ROOT/bin:$GOROOT/bin:$NODEROOT/bin:$ERLROOT/bin:$GHCROOT/bin:$HSPFROOT/bin:$PBROOT/bin:$HOME/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
