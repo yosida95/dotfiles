@@ -46,7 +46,7 @@ plugins=(brew celery coffee django docker git git-flow github go go-prompt histo
 # PATH
 PY2ROOT=/opt/python/2.7
 PY3ROOT=/opt/python/3.2
-export GOROOT=/opt/go/1.1
+export GOROOT=/opt/go/1.2
 NODEROOT=/opt/node/0.8
 ERLROOT=/opt/erlang/r16b
 GHCROOT=/opt/haskell/ghc/7.4
