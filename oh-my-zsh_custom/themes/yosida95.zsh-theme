@@ -1,14 +1,22 @@
-setopt prompt_subst
 setopt transient_rprompt
 
+function git_prompt_info() {
+  if [[ "$(git config --get oh-my-zsh.hide-status)" != "1" ]]; then
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
+}
+
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}git:"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}-%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}+%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[yellow]%}-%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" "
 
 ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}hg:"
-ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_DIRTY=" %{$fg[yellow]%}-%{$reset_color%} "
+ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_HG_PROMPT_DIRTY=" %{$fg[yellow]%}+%{$reset_color%}"
+ZSH_THEME_HG_PROMPT_UNTRACKED=" %{$fg[yellow]%}-%{$reset_color%}"
 ZSH_THEME_HG_PROMPT_CLEAN=" "
 
 ZSH_THEME_PYTHON_PROMPT_PREFIX="%{$fg[cyan]%}py:"
