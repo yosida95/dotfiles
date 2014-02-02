@@ -146,7 +146,4 @@ REPORTTIME=3
 
 setopt rm_star_wait
 
-function whois() {
-    command /usr/bin/whois $@ |iconv -f ISO-2022-JP -t UTF-8
-}
 export VIRTUAL_ENV_DISABLE_PROMPT=1
