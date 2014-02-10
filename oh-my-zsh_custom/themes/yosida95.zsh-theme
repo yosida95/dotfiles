@@ -13,13 +13,13 @@ ZSH_THEME_HG_PROMPT_UNTRACKED=" %{$fg[yellow]%}-%{$reset_color%}"
 ZSH_THEME_HG_PROMPT_CLEAN=" "
 
 ZSH_THEME_PYTHON_PROMPT_PREFIX="%{$fg[cyan]%}py:"
-ZSH_THEME_PYTHON_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_PYTHON_PROMPT_SUFFIX="%{$reset_color%} "
 
 ZSH_THEME_GO_PROMPT_PREFIX="%{$fg[cyan]%}go:"
 ZSH_THEME_GO_PROMPT_SUFFIX="%{$reset_color%}"
 
 PROMPT='$(git_prompt_info)$(hg_prompt_info)%{$fg[cyan]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
-RPROMPT='$(python_prompt_info) $(go_prompt_info)'
+RPROMPT='$(python_prompt_info)$(go_prompt_info)'
 PROMPT2='%{$fg_bold[magenta]%}%_ %%%{$reset_color%} '
 SPROMPT='%{$fg_bold[magenta]%}／人◕ ‿‿ ◕人＼ %{$fg_bold[red]%}%R%{$reset_color%}->%{$fg_bold[green]%}%r%{$reset_color%}? [%{$fg[green]%}y%{$reset_color%}, %{$fg[red]%}n%{$reset_color%}, %{$fg[yellow]%}e%{$reset_color%}, %{$fg[red]%}a%{$reset_color%}] '
 
