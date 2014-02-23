@@ -5,9 +5,11 @@ set nocompatible
 filetype plugin indent off
 
 if has('vim_starting')
+    set nocompatible
     set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle'))
 endif
+
+call neobundle#rc(expand('~/.vim/bundle'))
 
 " vimproc
 " NeoBundle 'Shougo/vimproc'
@@ -38,6 +40,10 @@ let g:neocomplcache_enable_caching_message = 0
 if has('unix')
     let g:neocomplcache_temporary_dir = '/tmp/.neocon-' . $USER
 endif
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.go = '.'
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
@@ -135,12 +141,12 @@ NeoBundleCheck
 
 " go
 set rtp+=$GOROOT/misc/vim
-set rtp+=$GOROOT/src/github.com/nsf/gocode/vim
 set completeopt=menu,preview
-autocmd FileType go setlocal omnifunc=gocomplete#Complete
 
 filetype plugin indent on
 syntax enable
+
+NeoBundleCheck
 
 " Encodings
 set enc=utf-8

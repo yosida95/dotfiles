@@ -1,13 +1,13 @@
 all: vim zsh hg git nose tmux
 
-vim:
+vim: submodule
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
 	if [ ! -d ${HOME}/.vim-backup ]; then \
 		mkdir ${HOME}/.vim-backup; \
 	fi
 
-zsh:
+zsh: submodule
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -s -f ${PWD}/.zshrc.mine ${HOME}/.zshrc.mine
 	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx
@@ -29,3 +29,7 @@ screen:
 
 nose:
 	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
+
+submodule:
+	git submodule init
+	git submodule update

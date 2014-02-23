@@ -1,3 +1,1 @@
-"syntax check
-"
 set noexpandtab
