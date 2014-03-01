@@ -45,7 +45,7 @@ plugins=(brew celery coffee django docker git go history-substring-search mercur
 
 # PATH
 PY2ROOT=/opt/python/2.7
-PY3ROOT=/opt/python/3.2
+PY3ROOT=/opt/python/3.3
 export GOROOT=/opt/go/1.2
 NODEROOT=/opt/node/0.8
 ERLROOT=/opt/erlang/r16b
