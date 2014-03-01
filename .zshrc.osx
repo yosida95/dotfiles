@@ -1,6 +1,3 @@
-# Homebrew
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
 # Vim
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'

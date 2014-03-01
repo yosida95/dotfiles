@@ -8,6 +8,7 @@ vim: submodule
 	fi
 
 zsh: submodule
+	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -s -f ${PWD}/.zshrc.mine ${HOME}/.zshrc.mine
 	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx

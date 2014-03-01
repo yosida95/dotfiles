@@ -1,7 +1,3 @@
-export LANG=en_US.UTF-8
-export LANGUAGE=$LANG
-export LC_ALL=$LANG
-
 autoload -Uz colors
 
 ##############################
@@ -91,9 +87,8 @@ alias -s {png,gif,jpg,bmp,PNG,GIF,JPG,BMP}=eog
 alias -s html=google-chrome
 
 ##############################
-#          exports           #
+#            LESS            #
 ##############################
-# LESS
 export LESS='-R'
 export LESSCHARSET=utf-8
 if which src-hilite-lesspipe.sh > /dev/null 2>&1; then
@@ -104,17 +99,6 @@ elif which lesspipe > /dev/null 2>&1; then
     export LESSOPEN="| $(which lesspipe) %s"
     export LESSCLOSE="$(which lesspipe) %s %s"
 fi
-
-# EDITOR
-export EDITOR='vim'
-
-# Mercurial
-export HGENCODING='utf-8'
-
-# Virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_LOG_DIR=$WORKON_HOME
-export VIRTUALENVWRAPPER_PYTHON=$PY2ROOT/bin/python
 
 ##############################
 #      Markdown を表示       #
@@ -154,5 +138,3 @@ setopt cdable_vars sh_word_split
 REPORTTIME=3
 
 setopt rm_star_wait
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1
