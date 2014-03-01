@@ -152,7 +152,12 @@ compdef __go_tool_complete go
 
 function go_prompt_info {
     if which go > /dev/null 2>&1; then
-        _DISPLAY=$(basename $(dirname $(dirname $(which go))))
+        if [[ -n $GOPATH ]]; then
+            _DISPLAY="${${GOPATH}:t}"
+        else
+            _DISPLAY=$(basename $(dirname $(dirname $(which go))))
+        fi
+
         echo "$ZSH_THEME_GO_PROMPT_PREFIX$_DISPLAY$ZSH_THEME_GO_PROMPT_SUFFIX"
         unset _DISPLAY
     fi
