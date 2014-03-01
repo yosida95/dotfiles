@@ -209,6 +209,7 @@ augroup END
 " Indent
 set autoindent
 set smartindent
+set smarttab
 set expandtab
 set softtabstop=0
 set tabstop=4
