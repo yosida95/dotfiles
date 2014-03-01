@@ -24,6 +24,7 @@ if which tmux > /dev/null 2>&1; then
                     exec tmux attach-session
                 else
                     tmux list-session
+                    echo -n "Choose one: "
                     read choose
                     exec tmux attach-session -t $choose
                 fi
