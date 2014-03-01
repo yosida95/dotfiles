@@ -1,1 +1,1 @@
-jsl -process $1
+gjslint $1
