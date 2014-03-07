@@ -25,6 +25,9 @@ git:
 tmux:
 	ln -s -f ${PWD}/.tmux.conf ${HOME}/.tmux.conf
 
+screen:
+	ln -s -f ${PWD}/.screenrc ${HOME}/.screenrc
+
 nose:
 	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
 
