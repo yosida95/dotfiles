@@ -1,5 +1,9 @@
 all: vim zsh hg git nose tmux
 
+submodule:
+	git submodule init
+	git submodule update
+
 vim: submodule
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
@@ -10,7 +14,6 @@ vim: submodule
 zsh: submodule
 	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
-	ln -s -f ${PWD}/.zshrc.mine ${HOME}/.zshrc.mine
 	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx
 	ln -s -f ${PWD}/.zshrc.linux ${HOME}/.zshrc.linux
 	ln -s -f ${PWD}/.zlogin ${HOME}/.zlogin
@@ -30,7 +33,3 @@ screen:
 
 nose:
 	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
-
-submodule:
-	git submodule init
-	git submodule update
