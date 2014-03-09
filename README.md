@@ -67,4 +67,4 @@ Mac OS X では tmux を介した時に pbcopy や pbpaste がうまく働かな
 
 ## Screenshots
 ### Zsh
-![zsh](./zsh.png)
+![screen shot](./screenshot.png)
