@@ -6,7 +6,7 @@ yosida95 が実際に使用している dotfiles です。
 Makefile を同梱しているので make コマンド一発で設定ができます。
 
 ## LICENSE
-See http://yosida95.mit-license.org/
+This repository is licensed under the [MIT LICENSE]( http://yosida95.mit-license.org/).
 
 ## Mac OS X にまつわる色々
 ### path_helper
@@ -50,13 +50,13 @@ PATH=/opt/python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin  # /opt/py
 PATH=/usr/local/bin:/opt/python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin  # /usr/local/bin が追加された
 ```
 
-このようにインタラクティブとして起動すると、 PATH に重複が生じる上 /opt/python/2.7/bin よりも /usr/local/bin の方が優先度が高くなってしまうため、意図したコマンドが起動されない場合が生じます。
+このようにインタラクティブとして起動すると、 PATH に重複が生じる上、 /opt/python/2.7/bin よりも /usr/local/bin の方が優先度が高くなってしまうため、意図したコマンドが起動されない場合が生じます。
 
-この解決策として私は /etc/zshenv に手を加えるという方法を取っています。具体的には、 /etc/zshenv が path_helper(8) を呼ぶ条件を PATH が /usr/bin:/bin:/usr/sbin:/sbin が時のみに限定しています。
+この解決策として私は /etc/zshenv に手を加えるという方法を取っています。具体的には、 /etc/zshenv が path_helper(8) を呼ぶ条件を PATH が /usr/bin:/bin:/usr/sbin:/sbin の時のみに限定しています。
 
 ### reattach-to-usernamespace
 Mac OS X では tmux を介した時に pbcopy や pbpaste がうまく働かなくなるという問題があります。
-詳しくは https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard をご覧ください。
+詳しくは [ChrisJohnsen/tmux-MacOSX-pasteboard](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard) をご覧ください。
 
 この解決策として、 tmux を Mac OS X で実行した時には、 reattach-to-user-namespace を介した上で ZSH を立ちあげ、 pbcopy や pbpaste も reattach-to-usernamespace を介して実行しています。
 
