@@ -12,7 +12,7 @@ case "${OSTYPE}" in
 esac
 
 PY2ROOT=/opt/python/2.7
-PY3ROOT=/opt/python/3.3
+PY3ROOT=/opt/python/3.4
 export GOROOT=/opt/go/1.2
 NODEROOT=/opt/node/0.8
 ERLROOT=/opt/erlang/r16b
