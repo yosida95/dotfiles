@@ -9,6 +9,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
+let g:neobundle#types#git#default_protocol = 'https'
 call neobundle#rc(expand('~/.vim/bundle'))
 
 " vimproc
