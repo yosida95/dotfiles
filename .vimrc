@@ -9,6 +9,7 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
+let g:neobundle#types#git#default_protocol = 'https'
 call neobundle#rc(expand('~/.vim/bundle'))
 
 " vimproc
@@ -37,85 +38,148 @@ let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_enable_caching_message = 0
+
 if has('unix')
     let g:neocomplcache_temporary_dir = '/tmp/.neocon-' . $USER
 endif
+
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.go = '.'
+
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " unite.vim
-NeoBundle 'Shougo/unite.vim'
-let g:unite_update_time = 100
-let g:unite_enable_start_insert = 1
-let g:unite_winheight = 15
+NeoBundleLazy 'Shougo/unite.vim', {
+    \   'autoload' : {
+    \     'commands' : [ "Unite" ]
+    \   }
+    \ }
 noremap <C-B> :Unite buffer<CR>
 noremap <C-F> :Unite file file/new<CR>
 nmap <buffer> <ESC> <Plug>(unite_exit)
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 autocmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 
+let s:bundle = neobundle#get("unite.vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:unite_update_time = 100
+    let g:unite_enable_start_insert = 1
+    let g:unite_winheight = 15
+    au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+    au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+endfunction
+unlet s:bundle
+
 " vimfiler.vim
-NeoBundle 'Shougo/vimfiler.vim', {
-    \ "depends": ["Shougo/unite.vim"]
+NeoBundleLazy 'Shougo/vimfiler.vim', {
+    \   "depends": ["Shougo/unite.vim"],
+    \   'autoload' : {
+    \     'commands' : ["VimFilerTab", "VimFiler", "VimFilerExplorer"]
+    \   }
     \ }
-let g:vimfiler_as_default_explorer = 1
 nnoremap <leader>e :VimFilerExplorer<CR>
+
+let s:bundle = neobundle#get("vimfiler.vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:vimfiler_as_default_explorer = 1
+endfunction
+unlet s:bundle
 
 " Tagbar
 NeoBundle 'Tagbar'
-nmap <F8> :TagbarToggle<CR>
+let s:bundle = neobundle#get("Tagbar")
+function! s:bundle.hooks.on_source(bundle)
+    nmap <F8> :TagbarToggle<CR>
+endfunction
+unlet s:bundle
 
 " quickrun.vim
 NeoBundle 'quickrun.vim'
+let s:bundle = neobundle#get("quickrun.vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:quickrun_config = {}
+    let g:quickrun_config['*'] = {'runmode': "async:remote:vimproc", 'split': 'below'}
+    let g:quickrun_config['python.unit'] = {'command': 'nosetests', 'cmdopt': '--verbose --with-doctest --with-coverage'}
+endfunction
+unlet s:bundle
 augroup QuickRunUnitTest
     autocmd!
     autocmd BufWinEnter,BufNewFile test_*.py set filetype=python.unit
 augroup END
 
-let g:quickrun_config = {}
-let g:quickrun_config['*'] = {'runmode': "async:remote:vimproc", 'split': 'below'}
-let g:quickrun_config['python.unit'] = {'command': 'nosetests', 'cmdopt': '--verbose --with-doctest --with-coverage'}
 
 " virtualenv.vim
-NeoBundle "jmcantrell/vim-virtualenv"
+NeoBundleLazy "jmcantrell/vim-virtualenv", {
+    \ "autoload": {
+    \   "filetypes": ["python", "python3"]
+    \ }}
 
 " jedi-vim
-NeoBundle "davidhalter/jedi-vim"
-" let g:jedi#auto_initialization = 1
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#rename_command = '<Leader>R'
-let g:jedi#popup_on_dot = 1
-let g:jedi#popup_select_first = 0
+NeoBundleLazy "davidhalter/jedi-vim", {
+    \ "autoload": {
+    \   "filetypes": ["python", "python3"],
+    \ }}
+let s:bundle = neobundle#get("jedi-vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:jedi#auto_initialization = 1
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#rename_command = '<Leader>R'
+endfunction
+unlet s:bundle
 autocmd FileType python let b:did_ftplugin = 1
 
 " vim-coffee-script
-NeoBundle 'vim-coffee-script'
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
+autocmd BufNewFile,BufRead *._coffee set filetype=coffee
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+    \ "autoload": {
+    \   "filetypes": ["coffee"],
+    \ }}
 
 " Protocol Buffers
-NeoBundle 'uarun/vim-protobuf'
+autocmd BufNewFile,BufRead *.proto setfiletype proto
+NeoBundleLazy 'uarun/vim-protobuf', {
+    \ "autoload": {
+    \   "filetypes": ["proto"]
+    \ }}
+
+" python.vim
+NeoBundleLazy 'python.vim', {
+    \ "autoload": {
+    \   "filetypes": ["python", "python3"]
+    \ }}
 
 " Markdown
-NeoBundle 'Markdown'
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+NeoBundleLazy 'Markdown', {
+    \ "autoload": {
+    \   "filetypes": ["markdown"]
+    \ }}
 
 " Mako
-NeoBundle 'mako.vim'
 autocmd BufNewFile,BufRead *.mak set filetype=mako
+NeoBundleLazy 'mako.vim', {
+    \ "autoload": {
+    \   "filetypes": ["mako"]
+    \ }}
 
 " Jinja2
-NeoBundle 'Jinja'
-NeoBundle 'https://github.com/estin/htmljinja.git'
 autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
+NeoBundleLazy 'https://github.com/estin/htmljinja.git', {
+    \ "autoload": {
+    \   "filetypes": ["htmljinja"]
+    \ }}
 
 " html5.vim
 NeoBundle 'othree/html5.vim'
@@ -126,16 +190,21 @@ NeoBundle 'sudo.vim'
 " vim-fugitive
 NeoBundle "tpope/vim-fugitive"
 
-NeoBundle "gregsexton/gitv", {
-    \ "depends": ["tpope/vim-fugitive"]
-    \ }
+NeoBundleLazy "gregsexton/gitv", {
+    \ "depends": ["tpope/vim-fugitive"],
+    \ 'autoload' : {
+    \   'commands' : ["Gitv"]
+    \ }}
 nnoremap <leader>g :Gitv<CR>
-" autocmd FileType git :setlocal foldlevel=99
 
 " hybrid.vim
 NeoBundle 'hybrid.vim'
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+let s:bundle = neobundle#get("hybrid.vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:hybrid_use_Xresources = 1
+    colorscheme hybrid
+endfunction
+unlet s:bundle
 
 NeoBundleCheck
 
@@ -145,8 +214,6 @@ set completeopt=menu,preview
 
 filetype plugin indent on
 syntax enable
-
-NeoBundleCheck
 
 " Encodings
 set enc=utf-8
