@@ -226,10 +226,11 @@ set autowrite
 set hidden
 
 " Backup
-set backup
-set backupdir=$HOME/.vim-backup
-let &directory = &backupdir
+set nobackup
 
+" Swap
+set swapfile
+set directory=$HOME/.vim-backup
 "============================"
 "           Search           "
 "============================"
