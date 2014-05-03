@@ -107,7 +107,7 @@ let s:bundle = neobundle#get("quickrun.vim")
 function! s:bundle.hooks.on_source(bundle)
     let g:quickrun_config = {}
     let g:quickrun_config['*'] = {'runmode': "async:remote:vimproc", 'split': 'below'}
-    let g:quickrun_config['python.unit'] = {'command': 'nosetests', 'cmdopt': '--verbose --with-doctest --with-coverage'}
+    let g:quickrun_config['python.unit'] = {'command': 'nosetests'}
 endfunction
 unlet s:bundle
 augroup QuickRunUnitTest
