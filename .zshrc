@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew celery django docker git gitignore go history-substring-search mercurial npm osx pip python supervisor urltools virtualenv virtualenvwrapper)
+plugins=(brew celery django docker git gitignore go history-substring-search mercurial npm osx pip python supervisor urltools virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,7 +127,6 @@ alias ll="ls -l -h"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
-alias mkvirtualenv='mkvirtualenv --distribute'
 
 alias -g L='| less'
 alias -g H='| head'
