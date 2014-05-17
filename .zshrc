@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/src/dotfiles/oh-my-zsh
-ZSH_CUSTOM=$HOME/src/dotfiles/oh-my-zsh_custom
+BASEDIR=$HOME/src/dotfiles
+ZSH=$BASEDIR/oh-my-zsh
+ZSH_CUSTOM=$BASEDIR/oh-my-zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
