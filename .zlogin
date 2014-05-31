@@ -51,7 +51,7 @@ elif which screen > /dev/null 2>&1; then
             echo "Which whould you like,"
             echo -e "1\tAttach current session"
             echo -e "2\tCreate new session"
-            echo -e "3\tWithout tmux"
+            echo -e "3\tWithout screen"
             echo -n "Choose one (default:1): "
             read choose
 
