@@ -157,14 +157,10 @@ fi
 #      Markdown を表示       #
 ##############################
 function markdown() {
-    if [ $WORKON_HOME ]; then
-        if [ -x $WORKON_HOME/sandbox/bin/markdown_py ]; then
-            $WORKON_HOME/sandbox/bin/markdown_py $1| w3m -T text/html -dump | less
-        else;
-            echo 'Not installed Markdown in virtualenv named sandbox'
-        fi
-    else;
-        echo 'not set $WORKON_HOME'
+    if whereis markdown_py > /dev/null 2>&1; then
+        markdown_py $1| w3m -T text/html -dump | less
+    else
+        echo 'Not installed Markdown'
     fi
 }
 
