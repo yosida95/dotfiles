@@ -13,6 +13,7 @@ vim: submodule
 
 zsh: submodule
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
+	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
 	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx
 	ln -s -f ${PWD}/.zshrc.linux ${HOME}/.zshrc.linux
