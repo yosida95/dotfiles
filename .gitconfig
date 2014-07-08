@@ -13,3 +13,5 @@
 	default = matching
 [color]
 	ui = true
+[alias]
+	pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
