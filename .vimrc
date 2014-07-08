@@ -166,6 +166,15 @@ NeoBundleLazy 'Markdown', {
     \ "autoload": {
     \   "filetypes": ["markdown"]
     \ }}
+let g:markdown_fenced_languages = [
+    \  'css',
+    \  'javascript',
+    \  'js=javascript',
+    \  'json=javascript',
+    \  'python',
+    \  'ruby',
+    \  'xml',
+    \]
 
 " Mako
 autocmd BufNewFile,BufRead *.mak set filetype=mako
