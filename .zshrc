@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew celery django docker git gitignore go history-substring-search mercurial npm osx pip python supervisor urltools virtualenv)
+plugins=(brew celery django docker git gitignore go history-substring-search mercurial npm osx pip python rbenv supervisor urltools virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -157,14 +157,10 @@ fi
 #      Markdown を表示       #
 ##############################
 function markdown() {
-    if [ $WORKON_HOME ]; then
-        if [ -x $WORKON_HOME/sandbox/bin/markdown_py ]; then
-            $WORKON_HOME/sandbox/bin/markdown_py $1| w3m -T text/html -dump | less
-        else;
-            echo 'Not installed Markdown in virtualenv named sandbox'
-        fi
-    else;
-        echo 'not set $WORKON_HOME'
+    if whereis markdown_py > /dev/null 2>&1; then
+        markdown_py $1| w3m -T text/html -dump | less
+    else
+        echo 'Not installed Markdown'
     fi
 }
 
