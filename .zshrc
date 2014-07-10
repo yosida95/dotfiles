@@ -117,6 +117,38 @@ setopt pushd_to_home  # pushd with no arguments == pushd $HOME
 setopt pushd_silent  # no lines or chars will be printed when will execute pushd or popd
 
 ##############################
+#            PATH            #
+##############################
+if [ -z "$PATH_IS_SET" ]; then
+    case "${OSTYPE}" in
+        darwin*)
+            PATH=/usr/local/bin:/usr/local/sbin:$PATH
+            ;;
+    esac
+
+    NEWPATH=$HOME/opt/bin
+    for lang in python go node erlang protobuf haskell/ghc haskell/platform; do
+        if [ ! -d /opt/$lang ]; then
+            continue
+        fi
+
+        find /opt/$lang -maxdepth 1 -mindepth 1 -print0| sort -r -z| while read -r -d $'\0' ver; do
+            NEWPATH=$NEWPATH:$ver/bin
+            case "$lang" in
+                "go" )
+                    if [ -z $GOROOT ] && echo $ver| grep --quiet "^/opt/$lang/[0-9]\.[0-9]$"; then
+                        export GOROOT=$ver
+                    fi
+                    ;;
+            esac
+        done
+    done
+
+    export PATH=$NEWPATH:$PATH
+    export PATH_IS_SET="true"
+fi
+
+##############################
 #          Aliases           #
 ##############################
 alias where="command -v"
