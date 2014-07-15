@@ -59,5 +59,5 @@ unset rbenvdir
 if [ $FOUND_RBENV -eq 0 ] ; then
   alias rubies='ruby -v'
   function gemsets() { echo 'not supported' }
-  function rbenv_prompt_info() { echo "system: $(ruby -v | cut -f-2 -d ' ')" }
+  function rbenv_prompt_info() { echo "${ZSH_THEME_RBENV_PROMPT_PREFIX}system:$(ruby -v | cut -f 2 -d ' ')${ZSH_THEME_RBENV_PROMPT_SUFFIX}" }
 fi
