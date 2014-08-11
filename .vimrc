@@ -43,10 +43,15 @@ if has('unix')
     let g:neocomplcache_temporary_dir = '/tmp/.neocon-' . $USER
 endif
 
+if !exists('g:neocomplcache_omni_functions')
+    let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
+
 if !exists('g:neocomplcache_omni_patterns')
     let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.go = '.'
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
