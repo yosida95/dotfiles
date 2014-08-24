@@ -197,3 +197,6 @@ case "${OSTYPE}" in
         source $HOME/.zshrc.linux
         ;;
 esac
+
+# added by travis gem
+[ -f /Users/yosida95/.travis/travis.sh ] && source /Users/yosida95/.travis/travis.sh
