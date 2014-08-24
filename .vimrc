@@ -149,14 +149,14 @@ autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
 autocmd BufNewFile,BufRead *._coffee set filetype=coffee
 NeoBundleLazy 'kchmck/vim-coffee-script', {
     \ "autoload": {
-    \   "filetypes": ["coffee"],
+    \   "filetypes": ["coffee", "markdown"],
     \ }}
 
 " Protocol Buffers
 autocmd BufNewFile,BufRead *.proto setfiletype proto
 NeoBundleLazy 'uarun/vim-protobuf', {
     \ "autoload": {
-    \   "filetypes": ["proto"]
+    \   "filetypes": ["proto", "markdown"]
     \ }}
 
 " python.vim
@@ -167,17 +167,20 @@ NeoBundleLazy 'python.vim', {
 
 " Markdown
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-NeoBundleLazy 'Markdown', {
-    \ "autoload": {
-    \   "filetypes": ["markdown"]
-    \ }}
 let g:markdown_fenced_languages = [
     \  'css',
+    \  'coffee',
+    \  'erb=eruby.html',
+    \  'go',
+    \  'html',
     \  'javascript',
     \  'js=javascript',
     \  'json=javascript',
+    \  'proto',
     \  'python',
     \  'ruby',
+    \  'sass',
+    \  'sh',
     \  'xml',
     \]
 
