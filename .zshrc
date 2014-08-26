@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/src/dotfiles/oh-my-zsh
-ZSH_CUSTOM=$HOME/src/dotfiles/oh-my-zsh_custom
+BASEDIR=$HOME/src/dotfiles
+ZSH=$BASEDIR/oh-my-zsh
+ZSH_CUSTOM=$BASEDIR/oh-my-zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -228,3 +229,6 @@ case "${OSTYPE}" in
         source $HOME/.zshrc.linux
         ;;
 esac
+
+# added by travis gem
+[ -f /Users/yosida95/.travis/travis.sh ] && source /Users/yosida95/.travis/travis.sh
