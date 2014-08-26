@@ -142,6 +142,13 @@ endfunction
 unlet s:bundle
 autocmd FileType python let b:did_ftplugin = 1
 
+" gocode
+NeoBundleLazy 'nsf/gocode', {
+    \ "rtp": "vim/",
+    \ "autoload": {
+    \   "filetypes": ["go"],
+    \ }}
+
 " vim-coffee-script
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
