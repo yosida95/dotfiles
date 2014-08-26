@@ -231,4 +231,6 @@ case "${OSTYPE}" in
 esac
 
 # added by travis gem
-[ -f /Users/yosida95/.travis/travis.sh ] && source /Users/yosida95/.travis/travis.sh
+if [ -f /Users/yosida95/.travis/travis.sh ]; then
+    source /Users/yosida95/.travis/travis.sh
+fi
