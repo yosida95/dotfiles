@@ -149,6 +149,14 @@ NeoBundleLazy 'nsf/gocode', {
     \   "filetypes": ["go"],
     \ }}
 
+" ABNF
+autocmd BufNewFile,BufRead *.abnf,*.bnf set filetype=abnf
+NeoBundleLazy 'abnf', {
+    \ 'autoload': {
+    \   'filetypes': ['abnf'],
+    \ }}
+
+
 " vim-coffee-script
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
