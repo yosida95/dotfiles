@@ -216,6 +216,26 @@ function markdown() {
 }
 
 ##############################
+#           GOPATH           #
+##############################
+function gopath() {
+    if [ -n "$_PATH_ORIG" ]; then
+        export PATH=$_PATH_ORIG
+    fi
+
+    if [ -z $1 ]; then
+        export GOPATH=`pwd`
+    elif [ -d $1 ]; then
+        export GOPATH=$1
+    else
+        return
+    fi
+
+    _PATH_ORIG=$PATH
+    export PATH=$GOPATH/bin:$PATH
+}
+
+##############################
 #         雑多な設定         #
 ##############################
 # setopt no_beep  # コマンド入力エラーでBeepを鳴らさない
