@@ -109,6 +109,24 @@ bindkey "^P" history-beginning-search-backward-end  # select previous history wi
 bindkey "^N" history-beginning-search-forward-end  # select next history with Ctrl-N
 
 ##############################
+#            PECO            #
+##############################
+function exists { which $1 &> /dev/null }
+
+if exists peco; then
+    function peco_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N peco_select_history
+    bindkey '^R' peco_select_history
+fi
+
+##############################
 #      Moving directory      #
 ##############################
 setopt auto_cd  # change directory with only directory name
