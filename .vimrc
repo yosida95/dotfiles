@@ -12,18 +12,17 @@ endif
 let g:neobundle#types#git#default_protocol = 'https'
 call neobundle#rc(expand('~/.vim/bundle'))
 
-" vimproc
-" NeoBundle 'Shougo/vimproc'
-
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle "Shougo/vimproc", {
-    \ "build": {
-    \   "windows"   : "make -f make_mingw32.mak",
-    \   "cygwin"    : "make -f make_cygwin.mak",
-    \   "mac"       : "make -f make_mac.mak",
-    \   "unix"      : "make -f make_unix.mak",
-    \ }}
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 " neocomplcache
 NeoBundle 'Shougo/neocomplcache'
@@ -107,19 +106,49 @@ endfunction
 unlet s:bundle
 
 " quickrun.vim
-NeoBundle 'quickrun.vim'
-let s:bundle = neobundle#get("quickrun.vim")
-function! s:bundle.hooks.on_source(bundle)
-    let g:quickrun_config = {}
-    let g:quickrun_config['*'] = {'runmode': "async:remote:vimproc", 'split': 'below'}
-    let g:quickrun_config['python.unit'] = {'command': 'nosetests'}
-endfunction
-unlet s:bundle
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = {
+    \ "_": {
+    \     "runner": "vimproc",
+    \     "runner/vimproc/updatetime": 50,
+    \ },
+    \ "*": {
+    \     'runmode': "async:remote:vimproc",
+    \     'split': 'below',
+    \ },
+    \ "python.unit": {
+    \     "command": "nosetests",
+    \     "cmdopt": "-s --with-coverage",
+    \ }}
+
 augroup QuickRunUnitTest
     autocmd!
     autocmd BufWinEnter,BufNewFile test_*.py set filetype=python.unit
 augroup END
 
+" shabadou.vim
+NeoBundle "osyo-manga/shabadou.vim"
+
+" vim-watchdogs
+NeoBundle "osyo-manga/vim-watchdogs"
+let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_CursorHold_enable = 1
+
+let g:quickrun_config["watchdogs_checker/_"] = {
+    \ "outputter/quickfix/open_cmd" : "",
+    \ }
+
+let g:quickrun_config["python/watchdogs_checker"] = {
+    \ "type": "watchdogs_checker/flake8",
+    \ }
+
+call watchdogs#setup(g:quickrun_config)
+
+" vim-hier
+NeoBundle "cohama/vim-hier"
+
+" quickfixstatus
+NeoBundle "dannyob/quickfixstatus"
 
 " virtualenv.vim
 NeoBundleLazy "jmcantrell/vim-virtualenv", {
