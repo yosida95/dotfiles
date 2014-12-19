@@ -188,9 +188,6 @@ NeoBundleLazy 'abnf', {
 
 " vim-coffee-script
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
-autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
-autocmd BufNewFile,BufRead *._coffee set filetype=coffee
 NeoBundleLazy 'kchmck/vim-coffee-script', {
     \ "autoload": {
     \   "filetypes": ["coffee", "markdown"],
@@ -236,7 +233,7 @@ NeoBundleLazy 'mako.vim', {
     \ }}
 
 " Jinja2
-autocmd BufNewFile,BufRead *.jinja2 set filetype=htmljinja
+autocmd BufNewFile,BufRead *.{jinja2,j2} set filetype=htmljinja
 NeoBundleLazy 'https://github.com/estin/htmljinja.git', {
     \ "autoload": {
     \   "filetypes": ["htmljinja"]
