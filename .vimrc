@@ -206,6 +206,14 @@ NeoBundleLazy 'python.vim', {
     \   "filetypes": ["python", "python3"]
     \ }}
 
+" Dart
+autocmd BufRead,BufNewFile *.dart set filetype=dart
+NeoBundleLazy 'dart-lang/dart-vim-plugin', {
+    \ "autoload": {
+    \   "filetypes": ["dart"]
+    \ }}
+
+
 " Markdown
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 let g:markdown_fenced_languages = [
