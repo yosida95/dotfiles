@@ -47,10 +47,10 @@ if !exists('g:neocomplcache_omni_functions')
 endif
 let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
 
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
