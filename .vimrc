@@ -178,6 +178,13 @@ NeoBundleLazy 'nsf/gocode', {
     \   "filetypes": ["go"],
     \ }}
 
+" Scala
+autocmd BufNewFile,BufRead *.{scala,sbt} set filetype=scala
+NeoBundleLazy 'derekwyatt/vim-scala', {
+    \ 'autoload': {
+    \   'filetypes': ['scala'],
+    \ }}
+
 " ABNF
 autocmd BufNewFile,BufRead *.abnf,*.bnf set filetype=abnf
 NeoBundleLazy 'abnf', {
