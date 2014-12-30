@@ -1,2 +1,5 @@
-.vim/bundle/*
 *.zwc
+.vim/bundle/*
+.vim/backup/*
+.vim/swap/*
+.vim/undo/*

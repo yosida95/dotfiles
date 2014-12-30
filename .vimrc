@@ -299,11 +299,16 @@ set autowrite
 set hidden
 
 " Backup
-set nobackup
+set backup
+set backupdir=$HOME/.vim/backup
 
 " Swap
 set swapfile
-set directory=$HOME/.vim-backup
+set directory=$HOME/.vim/swap
+
+" Undo
+set undofile
+set undodir=$HOME/.vim/undo
 "============================"
 "           Search           "
 "============================"

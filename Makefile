@@ -7,9 +7,6 @@ submodule:
 vim: submodule
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
-	if [ ! -d ${HOME}/.vim-backup ]; then \
-		mkdir ${HOME}/.vim-backup; \
-	fi
 
 zsh: submodule
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
