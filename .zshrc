@@ -146,7 +146,7 @@ if [ -z "$PATH_IS_SET" ]; then
     esac
 
     NEWPATH=$HOME/opt/bin
-    for lang in python go node dart erlang protobuf haskell/ghc haskell/platform; do
+    for lang in python go node scala dart erlang protobuf haskell/ghc haskell/platform; do
         if [ ! -d /opt/$lang ]; then
             continue
         fi
