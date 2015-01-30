@@ -6,7 +6,3 @@ alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias ls="ls -G"
 alias google-chrome='open -a Google\ Chrome'
 alias eog='open -a Preview'
-
-function whois() {
-    command whois $@ |iconv -f ISO-2022-JP -t UTF-8
-}
