@@ -102,11 +102,8 @@ setopt hist_ignore_space  # if command starts with space, it is not append to hi
 setopt hist_reduce_blanks  # history will be stripped
 setopt hist_no_store  # "history" command will not be recorded on history
 
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end  # select previous history with Ctrl-P
-bindkey "^N" history-beginning-search-forward-end  # select next history with Ctrl-N
+bindkey "^P" history-substring-search-up  # select previous history with Ctrl-P
+bindkey "^N" history-substring-search-down # select next history with Ctrl-N
 
 ##############################
 #            PECO            #
