@@ -178,6 +178,9 @@ NeoBundleLazy 'nsf/gocode', {
     \   "filetypes": ["go"],
     \ }}
 
+" vim-go-templates
+NeoBundle "cespare/vim-go-templates"
+
 " Scala
 autocmd BufNewFile,BufRead *.{scala,sbt} set filetype=scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
@@ -256,6 +259,9 @@ NeoBundleLazy 'https://github.com/estin/htmljinja.git', {
 
 " html5.vim
 NeoBundle 'othree/html5.vim'
+
+" blockdiag
+NeoBundle 'mhaig/vim-blockdiag-series'
 
 " sudo.vim
 NeoBundle 'sudo.vim'
