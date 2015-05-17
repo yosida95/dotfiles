@@ -47,7 +47,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew celery django docker git gitignore go history-substring-search mercurial npm osx pip python rebar sbt scala rbenv supervisor urltools virtualenv)
+plugins=(brew celery django docker git gitignore go mercurial npm osx pip python rebar sbt scala rbenv supervisor urltools virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
