@@ -171,16 +171,6 @@ endfunction
 unlet s:bundle
 autocmd FileType python let b:did_ftplugin = 1
 
-" gocode
-NeoBundleLazy 'nsf/gocode', {
-    \ "rtp": "vim/",
-    \ "autoload": {
-    \   "filetypes": ["go"],
-    \ }}
-
-" vim-go-templates
-NeoBundle "cespare/vim-go-templates"
-
 " Scala
 autocmd BufNewFile,BufRead *.{scala,sbt} set filetype=scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
@@ -285,10 +275,27 @@ function! s:bundle.hooks.on_source(bundle)
 endfunction
 unlet s:bundle
 
+" vim-ft-go
+NeoBundle 'google/vim-ft-go'
+
+" gocode
+NeoBundleLazy 'nsf/gocode', {
+    \ "rtp": "vim/",
+    \ "autoload": {
+    \   "filetypes": ["go"],
+    \ }}
+
+" vim-go
+NeoBundle "fatih/vim-go"
+
+" vim-go-extra
+NeoBundleLazy 'vim-jp/vim-go-extra', {
+    \ "autoload": {
+    \   "filetypes": ["mako"]
+    \ }}
+
 NeoBundleCheck
 
-" go
-set rtp+=$GOROOT/misc/vim
 set completeopt=menu,preview
 
 filetype plugin indent on
