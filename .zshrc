@@ -236,6 +236,12 @@ function gopath() {
 }
 
 ##############################
+#          dh_make           #
+##############################
+export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
+export DEBFULLNAME="Kohei YOSHIDA"
+
+##############################
 #         雑多な設定         #
 ##############################
 # setopt no_beep  # コマンド入力エラーでBeepを鳴らさない
