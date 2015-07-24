@@ -161,14 +161,6 @@ alias du="du -h"
 alias df="df -h"
 alias su="su -l"
 
-alias -g L='| less'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g S='| sed'
-alias -g A='| awk'
-alias -g W='| wc'
-
 alias -s {png,gif,jpg,bmp,PNG,GIF,JPG,BMP}=eog
 alias -s html=google-chrome
 
