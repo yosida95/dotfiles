@@ -22,8 +22,11 @@ function vcs_prompt_info () {
     fi
 
     echo -n "%{$fg[green]%}${vcs_info_msg_0_}%{$fg[yellow]%}:"
-    echo -n "%{$fg[green]%}${vcs_info_msg_1_} "
-    echo -n "%{$fg[yellow]%}${vcs_info_msg_2_}${vcs_info_msg_3_}%{$reset_color%} "
+    echo -n "%{$fg[green]%}${vcs_info_msg_1_}"
+    if [ -n "${vcs_info_msg_2_}${vcs_info_msg_3_}" ]; then
+        echo -n " %{$fg[yellow]%}${vcs_info_msg_2_}${vcs_info_msg_3_}"
+    fi
+    echo -n "%{$reset_color%} "
 }
 
 ZSH_THEME_PYTHON_PROMPT_PREFIX="%{$fg[cyan]%}py:"
