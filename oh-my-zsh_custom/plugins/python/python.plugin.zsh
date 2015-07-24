@@ -12,6 +12,8 @@ function pyclean() {
 # Grep among .py files
 alias pygrep='grep --include="*.py"'
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 function python_prompt_info {
     if which python > /dev/null 2>&1; then
         if [[ -n $VIRTUAL_ENV ]]; then
