@@ -219,16 +219,7 @@ function! s:bundle.hooks.on_source(bundle)
         \ '*': {
         \     'runmode': 'async:remote:vimproc',
         \     'split': 'below',
-        \ },
-        \ 'python.unit': {
-        \     'command': 'nosetests',
-        \     'cmdopt': '-s --with-coverage',
         \ }}
-
-    augroup QuickRunUnitTest
-        autocmd!
-        autocmd BufWinEnter,BufNewFile test_*.py set filetype=python.unit
-    augroup END
 endfunction
 unlet s:bundle
 
