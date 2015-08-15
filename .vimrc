@@ -304,10 +304,6 @@ NeoBundleLazy 'nsf/gocode', {
     \ 'autoload': {
     \     'filetypes': ['go'],
     \ }}
-NeoBundleLazy 'vim-jp/vim-go-extra', {
-    \ 'autoload': {
-    \     'filetypes': ['go']
-    \ }}
 
 """"""""""""""""""""
 " HTML5
