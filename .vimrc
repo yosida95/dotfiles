@@ -10,7 +10,7 @@ if has('vim_starting')
 endif
 
 let g:neobundle#types#git#default_protocol = 'https'
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -142,7 +142,11 @@ let g:quickrun_config["python/watchdogs_checker"] = {
     \ "type": "watchdogs_checker/flake8",
     \ }
 
-call watchdogs#setup(g:quickrun_config)
+let s:bundle = neobundle#get("vim-watchdogs")
+function! s:bundle.hooks.on_source(bundle)
+    call watchdogs#setup(g:quickrun_config)
+endfunction
+unlet s:bundle
 
 " vim-hier
 NeoBundle "cohama/vim-hier"
@@ -293,6 +297,8 @@ NeoBundleLazy 'vim-jp/vim-go-extra', {
     \ "autoload": {
     \   "filetypes": ["mako"]
     \ }}
+
+call neobundle#end()
 
 NeoBundleCheck
 
