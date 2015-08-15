@@ -1,7 +1,3 @@
-# Vim
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-
 # Other aliases
 alias ls="ls -G"
 alias google-chrome='open -a Google\ Chrome'
