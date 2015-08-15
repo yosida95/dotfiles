@@ -78,9 +78,6 @@ unsetopt menu_complete  # On an ambiguous completion, instead of listing possibi
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
-if [[ "${OSTYPE}" = linux* ]]; then
-    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}  # 補完候補を色付き表示
-fi
 zstyle ':completion:*' use-cache true  # cache candidacy of completion
 zstyle ':completion:*:processes' command 'ps x'  # kill で 'ps x' のリストから選択可能
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'  # kill の候補を色付き表示

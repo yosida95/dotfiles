@@ -1,1 +1,3 @@
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}  # 補完候補を色付き表示
+
 alias ls="ls --color"
