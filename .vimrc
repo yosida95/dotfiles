@@ -114,6 +114,7 @@ function! s:bundle.hooks.on_source(bundle)
 
     let g:neocomplcache_omni_functions = {
         \ 'css': 'csscomplete#CompleteCSS',
+        \ 'erlang': 'erlang_complete#Complete',
         \ 'go': 'gocomplete#Complete',
         \ 'html': 'htmlcomplete#CompleteTags',
         \ 'javascript': 'javascriptcomplete#CompleteJS',
