@@ -282,10 +282,7 @@ NeoBundle 'mhaig/vim-blockdiag-series'
 " Coffee Script
 """"""""""""""""""""
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-NeoBundleLazy 'kchmck/vim-coffee-script', {
-    \ 'autoload': {
-    \     'filetypes': ['coffee', 'markdown'],
-    \ }}
+NeoBundle 'kchmck/vim-coffee-script'
 
 """"""""""""""""""""
 " Dart
