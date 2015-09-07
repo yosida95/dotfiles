@@ -2,6 +2,7 @@
 " Generic
 """"""""""""""""""""
 syntax enable
+set backspace=indent,eol,start
 
 " Encodings
 set enc=utf-8
