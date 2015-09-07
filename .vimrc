@@ -156,6 +156,7 @@ function! s:bundle.hooks.on_source(bundle)
     let g:unite_update_time = 100
     let g:unite_enable_start_insert = 1
     let g:unite_winheight = 15
+    let g:unite_enable_auto_select = 0
     au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
     au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
