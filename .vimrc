@@ -249,6 +249,13 @@ function! s:bundle.hooks.on_source(bundle)
     let g:quickrun_config['python/watchdogs_checker'] = {
         \ 'type': 'watchdogs_checker/flake8',
         \ }
+    let g:quickrun_config['erlang/watchdogs_checker'] = {
+        \ 'type': 'watchdogs_checker/vim-erlang-compiler',
+        \ }
+    let g:quickrun_config['watchdogs_checker/vim-erlang-compiler'] = {
+        \ 'command': expand('~/.vim/bundle/vim-erlang-compiler/compiler/erlang_check.erl'),
+        \ 'exec' : '%c %o %s:p ',
+        \ }
     call watchdogs#setup(g:quickrun_config)
 endfunction
 unlet s:bundle
@@ -291,6 +298,24 @@ autocmd BufRead,BufNewFile *.dart set filetype=dart
 NeoBundleLazy 'dart-lang/dart-vim-plugin', {
     \ 'autoload': {
     \     'filetypes': ['dart']
+    \ }}
+
+""""""""""""""""""""
+" Erlang
+""""""""""""""""""""
+NeoBundleLazy 'vim-erlang/vim-erlang-compiler', {
+    \ 'autoload': {
+    \     'filetypes': ['erlang']
+    \ }}
+
+NeoBundleLazy 'vim-erlang/vim-erlang-omnicomplete', {
+    \ 'autoload': {
+    \     'filetypes': ['erlang']
+    \ }}
+
+NeoBundleLazy 'vim-erlang/vim-erlang-runtime', {
+    \ 'autoload': {
+    \     'filetypes': ['erlang']
     \ }}
 
 """"""""""""""""""""
