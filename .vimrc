@@ -77,6 +77,71 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 let g:neobundle#types#git#default_protocol = 'https'
 
 """"""""""""""""""""
+" lightline.vim
+""""""""""""""""""""
+set laststatus=2
+
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'itchyny/lightline.vim', {
+    \ 'depends': ['tpope/vim-fugitive'],
+    \ }
+
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \     'left': [['mode', 'paste'],
+    \              ['fugitive', 'readonly', 'filename', 'modified']],
+    \ },
+    \ 'component_function': {
+    \     'filename': 'LightLineFilename',
+    \     'fugitive': 'LightLineFugitive',
+    \     'mode': 'LightLineMode',
+    \     'modified': 'LightLineModified',
+    \     'readonly': 'LightLineReadonly',
+    \ },
+    \ 'separator': {
+    \     'left': '', 'right': ''
+    \ },
+    \ 'subseparator': {
+    \     'left': '', 'right': ''
+    \ }}
+
+
+function! LightLineFilename()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? g:lightline.fname :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+    if exists("*fugitive#head")
+        let _ = fugitive#head()
+        return strlen(_) ? ' '._ : ''
+    endif
+    return ''
+endfunction
+
+function! LightLineMode()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightLineModified()
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+    return &ft !~? 'help' && &readonly ? '' : ''
+endfunction
+
+""""""""""""""""""""
 " Hybrid.vim
 """"""""""""""""""""
 NeoBundle 'hybrid.vim'
@@ -157,6 +222,7 @@ function! s:bundle.hooks.on_source(bundle)
     let g:unite_enable_start_insert = 1
     let g:unite_winheight = 15
     let g:unite_enable_auto_select = 0
+    let g:unite_force_overwrite_statusline = 0
     au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
     au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
@@ -180,6 +246,7 @@ NeoBundleLazy 'Shougo/vimfiler.vim', {
 let s:bundle = neobundle#get('vimfiler.vim')
 function! s:bundle.hooks.on_source(bundle)
     let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_force_overwrite_statusline = 0
 endfunction
 unlet s:bundle
 
@@ -190,11 +257,12 @@ nnoremap <leader>e :VimFilerExplorer<CR>
 """"""""""""""""""""
 NeoBundle 'Tagbar'
 
-let s:bundle = neobundle#get('Tagbar')
-function! s:bundle.hooks.on_source(bundle)
-    nmap <F8> :TagbarToggle<CR>
+let g:tagbar_status_func = 'TagbarStatusFunc'
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+    return lightline#statusline(0)
 endfunction
-unlet s:bundle
+nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""
 " quickrun.vim
@@ -260,17 +328,6 @@ function! s:bundle.hooks.on_source(bundle)
     call watchdogs#setup(g:quickrun_config)
 endfunction
 unlet s:bundle
-
-""""""""""""""""""""
-" gitv
-""""""""""""""""""""
-NeoBundle 'tpope/vim-fugitive'
-NeoBundleLazy 'gregsexton/gitv', {
-    \ 'depends': ['tpope/vim-fugitive'],
-    \ 'autoload' : {
-    \     'commands' : ['Gitv']
-    \ }}
-nnoremap <leader>g :Gitv<CR>
 
 """"""""""""""""""""
 " ABNF
@@ -443,10 +500,6 @@ set colorcolumn=80
 hi Pmenu ctermbg=blue
 hi PmenuSel term=bold ctermfg=white ctermbg=darkred
 hi PMenuSbar ctermbg=blue
-
-" Status line
-set laststatus=2
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{fugitive#statusline()}%=%l,%c%V%8P
 
 " Cursorline
 augroup vimrc-auto-cursorline
