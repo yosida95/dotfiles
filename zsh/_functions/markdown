@@ -1,0 +1,9 @@
+# vim: set filetype=zsh :
+
+markdown() {
+    if whereis markdown_py &>/dev/null; then
+        markdown_py $1| w3m -T text/html -dump | less
+    else
+        echo 'markdown_py is not installed'
+    fi
+}
