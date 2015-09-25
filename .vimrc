@@ -89,15 +89,12 @@ NeoBundle 'itchyny/lightline.vim', {
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
-    \     'left': [['mode', 'paste'],
-    \              ['fugitive', 'readonly', 'filename', 'modified']],
+    \     'left': [['mode', 'paste'], ['fugitive', 'filename']],
     \ },
     \ 'component_function': {
     \     'filename': 'LightLineFilename',
     \     'fugitive': 'LightLineFugitive',
     \     'mode': 'LightLineMode',
-    \     'modified': 'LightLineModified',
-    \     'readonly': 'LightLineReadonly',
     \ },
     \ 'separator': {
     \     'left': '', 'right': ''
