@@ -73,7 +73,7 @@ function ruby_prompt_info() {
     fi
 }
 
-PROMPT='$(vcs_prompt_info)%{$fg[cyan]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
+PROMPT='$(vcs_prompt_info)%{$fg[green]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
 RPROMPT='$(python_prompt_info)$(go_prompt_info)$(ruby_prompt_info)'
 PROMPT2='%{$fg_bold[magenta]%}%_ %%%{$reset_color%} '
 SPROMPT='%{$fg_bold[magenta]%}／人◕ ‿‿ ◕人＼ %{$fg_bold[red]%}%R%{$reset_color%}->%{$fg_bold[green]%}%r%{$reset_color%}? [%{$fg[green]%}y%{$reset_color%}, %{$fg[red]%}n%{$reset_color%}, %{$fg[yellow]%}e%{$reset_color%}, %{$fg[red]%}a%{$reset_color%}] '
@@ -86,7 +86,7 @@ function zle-line-init zle-keymap-select {
             PROMPT='$(vcs_prompt_info)%{$fg[blue]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
             ;;
         main|viins)
-            PROMPT='$(vcs_prompt_info)%{$fg[cyan]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
+            PROMPT='$(vcs_prompt_info)%{$fg[green]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
             ;;
     esac
 
