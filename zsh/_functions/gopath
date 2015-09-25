@@ -1,0 +1,18 @@
+# vim: set filetype=zsh :
+
+gopath() {
+    if [ -n "$_PATH_ORIG" ]; then
+        export PATH=$_PATH_ORIG
+    fi
+
+    if [ -z $1 ]; then
+        export GOPATH=`pwd`
+    elif [ -d $1 ]; then
+        export GOPATH=$1
+    else
+        return
+    fi
+
+    _PATH_ORIG=$PATH
+    export PATH=$GOPATH/bin:$PATH
+}

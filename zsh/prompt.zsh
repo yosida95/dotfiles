@@ -1,10 +1,10 @@
-setopt transient_rprompt
+# vim: set filetype=zsh :
+
+setopt PROMPT_SUBST
+setopt TRANSIENT_RPROMPT
+autoload -U colors && colors
 
 bindkey -v  # use vi like keybind
-
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
@@ -15,6 +15,10 @@ zstyle ':vcs_info:*' formats '%s' '%b' '%c' '%u'
 zstyle ':vcs_info:*' max-exports 4
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:*' unstagedstr '-'
+
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+add-zsh-hook precmd vcs_info
 
 function vcs_prompt_info () {
     if [ -z $vcs_info_msg_0_ ]; then
@@ -29,17 +33,48 @@ function vcs_prompt_info () {
     echo -n "%{$reset_color%} "
 }
 
-ZSH_THEME_PYTHON_PROMPT_PREFIX="%{$fg[cyan]%}py:"
-ZSH_THEME_PYTHON_PROMPT_SUFFIX="%{$reset_color%} "
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+function python_prompt_info() {
+    if (($+commands[python])); then
+        if [ -n "$VIRTUAL_ENV" ]; then
+            local version="${VIRTUAL_ENV:t}"
+            case "$version" in
+                "venv" | ".venv")
+                    version=${VIRTUAL_ENV:h:t}
+                    ;;
+            esac
+        else
+            local version="$(python --version 2>&1| cut -d' ' -f2)"
+        fi
+        echo " %{$fg[cyan]%}py:${version}%{$reset_color%}"
+    else
+        echo ""
+    fi
+}
 
-ZSH_THEME_GO_PROMPT_PREFIX="%{$fg[cyan]%}go:"
-ZSH_THEME_GO_PROMPT_SUFFIX="%{$reset_color%}"
+function go_prompt_info() {
+    if (($+commands[go])); then
+        if [ -n "$GOPATH" ]; then
+            local version=${GOPATH:t}
+        else
+            local version="${$(go version| cut -d' ' -f 3):s/go//}"
+        fi
+        echo " %{$fg[cyan]%}go:${version}%{$reset_color%}"
+    else
+        echo ""
+    fi
+}
 
-ZSH_THEME_RBENV_PROMPT_PREFIX="%{$fg[cyan]%}rb:"
-ZSH_THEME_RBENV_PROMPT_SUFFIX="%{$reset_color%}"
+function ruby_prompt_info() {
+    if (($+commands[ruby])); then
+        echo " %{$fg[cyan]%}rb:$(ruby -v| cut -d ' ' -f 2)%{$reset_color%}"
+    else
+        echo ""
+    fi
+}
 
 PROMPT='$(vcs_prompt_info)%{$fg[cyan]%}%c %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})✘╹◡╹✘%{$reset_color%} '
-RPROMPT='$(python_prompt_info) $(go_prompt_info) $(rbenv_prompt_info)'
+RPROMPT='$(python_prompt_info)$(go_prompt_info)$(ruby_prompt_info)'
 PROMPT2='%{$fg_bold[magenta]%}%_ %%%{$reset_color%} '
 SPROMPT='%{$fg_bold[magenta]%}／人◕ ‿‿ ◕人＼ %{$fg_bold[red]%}%R%{$reset_color%}->%{$fg_bold[green]%}%r%{$reset_color%}? [%{$fg[green]%}y%{$reset_color%}, %{$fg[red]%}n%{$reset_color%}, %{$fg[yellow]%}e%{$reset_color%}, %{$fg[red]%}a%{$reset_color%}] '
 
@@ -59,5 +94,3 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-# vim: set filetype=zsh:
