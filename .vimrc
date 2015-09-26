@@ -77,6 +77,18 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 let g:neobundle#types#git#default_protocol = 'https'
 
 """"""""""""""""""""
+" Hybrid.vim
+""""""""""""""""""""
+NeoBundle 'hybrid.vim'
+
+let s:bundle = neobundle#get("hybrid.vim")
+function! s:bundle.hooks.on_source(bundle)
+    let g:hybrid_use_Xresources = 1
+    colorscheme hybrid
+endfunction
+unlet s:bundle
+
+""""""""""""""""""""
 " lightline.vim
 """"""""""""""""""""
 set laststatus=2
@@ -139,23 +151,6 @@ function! LightLineReadonly()
 endfunction
 
 """"""""""""""""""""
-" Hybrid.vim
-""""""""""""""""""""
-NeoBundle 'hybrid.vim'
-
-let s:bundle = neobundle#get("hybrid.vim")
-function! s:bundle.hooks.on_source(bundle)
-    let g:hybrid_use_Xresources = 1
-    colorscheme hybrid
-endfunction
-unlet s:bundle
-
-""""""""""""""""""""
-" sudo.vim
-""""""""""""""""""""
-NeoBundle 'sudo.vim'
-
-""""""""""""""""""""
 " neocomplcache.vim
 """"""""""""""""""""
 NeoBundle 'Shougo/neocomplcache'
@@ -205,6 +200,53 @@ function! s:bundle.hooks.on_source(bundle)
 endfunction
 unlet s:bundle
 
+"""""""""""""""""""
+" quickrun.vim
+"""""""""""""""""""
+NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build' : {
+    \     'windows': 'tools\\update-dll-mingw',
+    \     'cygwin' : 'make -f make_cygwin.mak',
+    \     'mac'    : 'make -f make_mac.mak',
+    \     'linux'  : 'make',
+    \     'unix'   : 'gmake',
+    \ }}
+
+NeoBundle 'thinca/vim-quickrun', {
+    \ 'depends': ['Shougo/vimproc.vim'],
+    \ }
+
+let s:bundle = neobundle#get('vim-quickrun')
+function! s:bundle.hooks.on_source(bundle)
+    let g:quickrun_config = {
+        \ '_': {
+        \     'runner': 'vimproc',
+        \     'runner/vimproc/updatetime': 50,
+        \ },
+        \ '*': {
+        \     'runmode': 'async:remote:vimproc',
+        \     'split': 'below',
+        \ }}
+endfunction
+unlet s:bundle
+
+""""""""""""""""""""
+" sudo.vim
+""""""""""""""""""""
+NeoBundle 'sudo.vim'
+
+""""""""""""""""""""
+" Tagbar
+""""""""""""""""""""
+NeoBundle 'Tagbar'
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+    return lightline#statusline(0)
+endfunction
+nmap <F8> :TagbarToggle<CR>
+
 """"""""""""""""""""
 " unite.vim
 """"""""""""""""""""
@@ -248,48 +290,6 @@ endfunction
 unlet s:bundle
 
 nnoremap <leader>e :VimFilerExplorer<CR>
-
-""""""""""""""""""""
-" Tagbar
-""""""""""""""""""""
-NeoBundle 'Tagbar'
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-endfunction
-nmap <F8> :TagbarToggle<CR>
-
-"""""""""""""""""""
-" quickrun.vim
-"""""""""""""""""""
-NeoBundle 'Shougo/vimproc.vim', {
-    \ 'build' : {
-    \     'windows': 'tools\\update-dll-mingw',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac'    : 'make -f make_mac.mak',
-    \     'linux'  : 'make',
-    \     'unix'   : 'gmake',
-    \ }}
-
-NeoBundle 'thinca/vim-quickrun', {
-    \ 'depends': ['Shougo/vimproc.vim'],
-    \ }
-
-let s:bundle = neobundle#get('vim-quickrun')
-function! s:bundle.hooks.on_source(bundle)
-    let g:quickrun_config = {
-        \ '_': {
-        \     'runner': 'vimproc',
-        \     'runner/vimproc/updatetime': 50,
-        \ },
-        \ '*': {
-        \     'runmode': 'async:remote:vimproc',
-        \     'split': 'below',
-        \ }}
-endfunction
-unlet s:bundle
 
 """"""""""""""""""""
 " watchdogs.vim
