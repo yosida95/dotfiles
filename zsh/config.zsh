@@ -15,7 +15,6 @@ setopt PUSHD_TO_HOME
 ##############################
 setopt ALWAYS_LAST_PROMPT
 setopt AUTO_MENU
-# unsetopt MENU_COMPLETE
 setopt AUTO_PARAM_KEYS
 setopt AUTO_PARAM_SLASH
 setopt AUTO_REMOVE_SLASH
@@ -43,11 +42,14 @@ SAVEHIST=10000  # count of history saved on HISTFILE
 HISTSIZE=10000  # count of history saved on memory
 
 unsetopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
@@ -61,7 +63,9 @@ bindkey "^N" history-beginning-search-forward-end  # select next history with Ct
 # Input/Output
 ##############################
 setopt CORRECT
+unsetopt FLOW_CONTROL
 setopt IGNORE_EOF
+setopt INTERACTIVE_COMMENTS
 setopt PRINT_EIGHT_BIT
 setopt RM_STAR_WAIT
 
