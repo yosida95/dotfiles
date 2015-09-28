@@ -292,11 +292,6 @@ unlet s:bundle
 nnoremap <leader>e :VimFilerExplorer<CR>
 
 """"""""""""""""""""
-" vim-rooter
-""""""""""""""""""""
-NeoBundle 'airblade/vim-rooter'
-
-""""""""""""""""""""
 " watchdogs.vim
 """"""""""""""""""""
 NeoBundle 'cohama/vim-hier'
