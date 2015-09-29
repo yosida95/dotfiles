@@ -35,18 +35,27 @@ function vcs_prompt_info () {
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 function python_prompt_info() {
-    if (($+commands[python])); then
-        if [ -n "$VIRTUAL_ENV" ]; then
-            local version="${VIRTUAL_ENV:t}"
-            case "$version" in
-                "venv" | ".venv")
-                    version=${VIRTUAL_ENV:h:t}
-                    ;;
-            esac
-        else
-            local version="$(python --version 2>&1| cut -d' ' -f2)"
-        fi
-        echo " %{$fg[cyan]%}py:${version}%{$reset_color%}"
+    local version
+    if [ -n "$VIRTUAL_ENV" ]; then
+        version="${VIRTUAL_ENV:t}"
+        case "$version" in
+            "venv" | ".venv")
+                version=${VIRTUAL_ENV:h:t}
+                ;;
+        esac
+    elif (($+commands[python])) && (($+commands[python3])); then
+        version="$(python --version 2>&1| cut -d' ' -f2)%{$fg[green]%},"
+        version+="%{$fg[cyan]%}$(python3 --version 2>&1| cut -d' ' -f2)"
+    elif (($+commands[python])); then
+        version="$(python --version 2>&1| cut -d' ' -f2)"
+    elif (($+commands[python3])); then
+        version="$(python3 --version 2>&1| cut -d' ' -f2)"
+    else
+        echo ""
+    fi
+
+    if [ -n "$version" ]; then
+        echo " %{$fg[green]%}py:%{$fg[cyan]%}${version}%{$reset_color%}"
     else
         echo ""
     fi
@@ -59,7 +68,7 @@ function go_prompt_info() {
         else
             local version="${$(go version| cut -d' ' -f 3):s/go//}"
         fi
-        echo " %{$fg[cyan]%}go:${version}%{$reset_color%}"
+        echo " %{$fg[green]%}go:%{$fg[cyan]%}${version}%{$reset_color%}"
     else
         echo ""
     fi
@@ -67,7 +76,7 @@ function go_prompt_info() {
 
 function ruby_prompt_info() {
     if (($+commands[ruby])); then
-        echo " %{$fg[cyan]%}rb:$(ruby -v| cut -d ' ' -f 2)%{$reset_color%}"
+        echo " %{$fg[green]%}rb:%{$fg[cyan]%}$(ruby -v| cut -d ' ' -f 2)%{$reset_color%}"
     else
         echo ""
     fi
