@@ -1,14 +1,10 @@
 all: vim zsh hg git nose tmux
 
-submodule:
-	git submodule init
-	git submodule update
-
-vim: submodule
+vim:
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
 
-zsh: submodule
+zsh:
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
 	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
