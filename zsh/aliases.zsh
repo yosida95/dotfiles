@@ -1,16 +1,10 @@
 # vim: set filetype=zsh :
 
-case "$OSTYPE" in
-    darwin*)
-        alias ls='ls -G'
-
-        alias google-chrome='open -a Google\ Chrome'
-        alias eog='open -a Preview'
-        ;;
-    linux*)
-        alias ls='ls --color=auto'
-        ;;
-esac
+if ! ( (($+commands[brew])) && [ -d "$(brew --prefix coreutils)" ] ); then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
 
 alias du="du -h"
 alias df="df -h"
