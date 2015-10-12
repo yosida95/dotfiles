@@ -1,6 +1,6 @@
 # vim: set filetype=zsh :
 
-if ! ( (($+commands[brew])) && [ -d "$(brew --prefix coreutils)" ] ); then
+if (($+commands[brew])) && [ ! -d "$(brew --prefix coreutils)" ]; then
     alias ls='ls -G'
 else
     alias ls='ls --color=auto'
