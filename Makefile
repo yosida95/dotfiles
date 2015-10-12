@@ -1,10 +1,13 @@
-all: vim zshconf hg git nose tmux
+all: dircolors vim zshconf hg git nose tmux
+
+dircolors:
+	ln -s -f ${PWD}/.dircolors ${HOME}/.dircolors
 
 vim:
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
 
-zshconf:
+zshconf: dircolors
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
 	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc

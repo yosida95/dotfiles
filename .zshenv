@@ -4,6 +4,14 @@ export LANG=en_US.UTF-8
 export LANGUAGE=$LANG
 export LC_ALL=$LANG
 
+if (($+commands[dircolors])); then
+    eval "$(dircolors $HOME/.dircolors)"
+elif (($+commands[gdircolors])); then
+    eval "$(gdircolors $HOME/.dircolors)"
+fi
+export ZLS_COLORS="$LS_COLORS"
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
 export LESS='-R'
 export LESSCHARSET=utf-8
 
