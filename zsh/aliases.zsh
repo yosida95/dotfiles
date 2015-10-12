@@ -1,5 +1,17 @@
 # vim: set filetype=zsh :
 
+case "$OSTYPE" in
+    darwin*)
+        alias ls='ls -G'
+
+        alias google-chrome='open -a Google\ Chrome'
+        alias eog='open -a Preview'
+        ;;
+    linux*)
+        alias ls='ls --color=auto'
+        ;;
+esac
+
 alias du="du -h"
 alias df="df -h"
 alias la='ls -Ah'

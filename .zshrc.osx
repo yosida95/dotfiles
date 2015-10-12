@@ -1,4 +1,0 @@
-# Other aliases
-alias ls="ls -G"
-alias google-chrome='open -a Google\ Chrome'
-alias eog='open -a Preview'

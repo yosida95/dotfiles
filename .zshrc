@@ -25,14 +25,4 @@ autoload -U $DOTFILES/zsh/_functions/*(:t)
 # Clean up
 unset files
 
-# Apply OS-depend configurations
-case "${OSTYPE}" in
-    darwin*)
-        source $HOME/.zshrc.osx
-        ;;
-    linux*)
-        source $HOME/.zshrc.linux
-        ;;
-esac
-
 autoload -U compinit && compinit

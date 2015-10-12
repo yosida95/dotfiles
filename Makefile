@@ -1,15 +1,13 @@
-all: vim zsh hg git nose tmux
+all: vim zshconf hg git nose tmux
 
 vim:
 	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
 
-zsh:
+zshconf:
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
 	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
 	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
-	ln -s -f ${PWD}/.zshrc.osx ${HOME}/.zshrc.osx
-	ln -s -f ${PWD}/.zshrc.linux ${HOME}/.zshrc.linux
 	ln -s -f ${PWD}/.zlogin ${HOME}/.zlogin
 
 hg:
