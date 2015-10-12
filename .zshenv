@@ -10,7 +10,7 @@ elif (($+commands[gdircolors])); then
     eval "$(gdircolors $HOME/.dircolors)"
 fi
 export ZLS_COLORS="$LS_COLORS"
-export LSCOLORS="gxfxcxdxbxegedabagacad"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 export LESS='-R'
 export LESSCHARSET=utf-8
