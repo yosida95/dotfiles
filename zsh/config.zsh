@@ -23,6 +23,8 @@ unsetopt LIST_BEEP
 setopt LIST_PACKED
 setopt LIST_TYPES
 
+zmodload zsh/complist
+
 zstyle ':completion:*' use-cache true  # cache candidacy of completion
 zstyle ':completion:*:processes' command 'ps x'  # kill で 'ps x' のリストから選択可能
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'  # kill の候補を色付き表示
