@@ -25,10 +25,19 @@ setopt LIST_TYPES
 
 zmodload zsh/complist
 
+# Colored completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' use-cache true  # cache candidacy of completion
-zstyle ':completion:*:processes' command 'ps x'  # kill で 'ps x' のリストから選択可能
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'  # kill の候補を色付き表示
+zstyle ':completion:*:*:*:*:*' menu select
+
+# Smart case matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Process completion
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,args'
+zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# Cache completion candidates
+zstyle ':completion::complete:*' use-cache on
 
 ##############################
 # Expansion and Globbing
