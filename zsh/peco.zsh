@@ -2,7 +2,15 @@
 
 if (($+commands[peco])); then
     function peco_select_history() {
-        BUFFER=$(fc -l -n 1| tail -r| peco --query "$LBUFFER")
+        local tac
+        if (($+commands[tac])); then
+            tac="tac"
+        else
+            # GNU coreutils not found
+            tac="tail -r"
+        fi
+
+        BUFFER=$(fc -l -n 1| eval $tac| peco --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
         zle -R -c               # refresh
     }
