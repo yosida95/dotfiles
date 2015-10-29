@@ -26,4 +26,4 @@ export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
 export DEBFULLNAME="Kohei YOSHIDA"
 
 # ghq
-export GHQ_ROOT=$HOME/proj
+export GHQ_ROOT=$HOME/proj/src
