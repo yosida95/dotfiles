@@ -1,6 +1,6 @@
 # vim: set filetype=zsh :
 
-if which peco &>/dev/null; then
+if (($+commands[peco])); then
     function peco_select_history() {
         BUFFER=$(fc -l -n 1| tail -r| peco --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
@@ -9,4 +9,17 @@ if which peco &>/dev/null; then
 
     zle -N peco_select_history
     bindkey '^R' peco_select_history
+
+    if (($+commands[ghq])); then
+        function peco-src () {
+        local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+        if [ -n "$selected_dir" ]; then
+            BUFFER="cd ${selected_dir}"
+            zle accept-line
+        fi
+        zle clear-screen
+        }
+        zle -N peco-src
+        bindkey '^]' peco-src
+    fi
 fi
