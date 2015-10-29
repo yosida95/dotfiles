@@ -1,5 +1,5 @@
 # Path to dotfiles
-DOTFILES=$HOME/src/dotfiles
+DOTFILES=$HOME/proj/src/github.com/yosida95/dotfiles
 
 # Configuration files
 files=($DOTFILES/zsh/**/*.zsh)
