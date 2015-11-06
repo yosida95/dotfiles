@@ -3,6 +3,7 @@
 """"""""""""""""""""
 syntax enable
 set backspace=indent,eol,start
+set modeline
 
 " Encodings
 set enc=utf-8
