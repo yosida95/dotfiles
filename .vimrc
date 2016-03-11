@@ -370,11 +370,6 @@ NeoBundleLazy 'vim-erlang/vim-erlang-runtime', {
 """"""""""""""""""""
 NeoBundle 'fatih/vim-go'
 NeoBundle 'google/vim-ft-go'
-NeoBundleLazy 'nsf/gocode', {
-    \ 'rtp': 'vim/',
-    \ 'autoload': {
-    \     'filetypes': ['go'],
-    \ }}
 
 """"""""""""""""""""
 " HTML5
