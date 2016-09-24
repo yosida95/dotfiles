@@ -4,8 +4,9 @@ dircolors:
 	ln -s -f ${PWD}/.dircolors ${HOME}/.dircolors
 
 vim:
-	ln -s -f ${PWD}/.vimrc ${HOME}/.vimrc
 	ln -s -f ${PWD}/.vim ${HOME}/
+	mkdir -p ${HOME}/.cache/dein/repos/github.com/Shougo
+	if [ ! -d ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim ]; then git clone git@github.com:Shougo/dein.vim ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim; fi
 
 zshconf: dircolors
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv

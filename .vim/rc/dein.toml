@@ -1,0 +1,117 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'sudo.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = 'vim-fugitive'
+
+hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+hook_post_update = 'call yosida95#init#quickrun#hook_post_update()'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = 'vimproc.vim'
+
+hook_add = '''
+    let g:quickrun_config = {
+        \ '_': {
+        \     'runner': 'vimproc',
+        \     'runner/vimproc/updatetime': 50,
+        \ },
+        \ '*': {
+        \     'runmode': 'async:remote:vimproc',
+        \     'split': 'below',
+        \ }}
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+hook_add = '''
+    let g:tagbar_status_func = 'TagbarStatusFunc'
+    function! TagbarStatusFunc(current, sort, fname, ...) abort
+        let g:lightline.fname = a:fname
+        return lightline#statusline(0)
+    endfunction
+    nmap <F8> :TagbarToggle<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'abnf'
+on_ft = 'abnf'
+
+[[plugins]]
+repo = 'mhaig/vim-blockdiag-series'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+on_ft = 'dart'
+
+[[plugins]]
+repo = 'vim-erlang/vim-erlang-compiler'
+on_ft = 'erlang'
+
+[[plugins]]
+repo = 'vim-erlang/vim-erlang-omnicomplete'
+on_ft = 'erlang'
+
+[[plugins]]
+repo = 'vim-erlang/vim-erlang-runtime'
+on_ft = 'erlang'
+
+[[plugins]]
+repo =  'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'othree/html5.vim'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+
+[[plugins]]
+repo = 'estin/htmljinja.git'
+
+[[plugins]]
+repo = 'mako.vim'
+on_ft = 'mako'
+
+[[plugins]]
+repo = 'uarun/vim-protobuf'
+on_ft = ['proto', 'markdown']
+
+[[plugins]]
+repo = 'python.vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = 'scala'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'

@@ -1,0 +1,140 @@
+""""""""""""""""""""
+" Initialize:
+""""""""""""""""""""
+if &compatible
+  set nocompatible
+endif
+
+function! s:source_rc(path, ...) abort
+    let abspath = resolve(expand('~/.vim/rc/' . a:path))
+    execute 'source' fnameescape(abspath)
+endfunction
+
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+" dein.vim
+if has('vim_starting') && &runtimepath !~ '/dein.vim'
+    let s:dein_dir =  expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+    execute 'set runtimepath^=' . s:dein_dir
+endif
+call s:source_rc('dein.vim')
+
+if !has('vim_starting')
+    call dein#call_hook('source')
+    call dein#call_hook('post_source')
+endif
+
+filetype plugin indent on
+syntax enable
+
+
+""""""""""""""""""""
+" Encodings:
+""""""""""""""""""""
+if has('vim_starting') && &encoding !=# 'utf-8'
+    set encoding=utf-8
+endif
+set fileencodings='ucs-bom,utf-8,euc-jp,iso-2022-jp-3,sjis,cp932'
+
+set fileformat=unix
+set fileformats=unix,mac,dos
+
+
+""""""""""""""""""""
+" Search:
+""""""""""""""""""""
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+nmap <Esc><Esc> :noh<CR>
+
+
+""""""""""""""""""""
+" Edit:
+""""""""""""""""""""
+set expandtab
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set shiftround
+
+set autoindent
+set smartindent
+" http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash
+inoremap # X<BS>#
+
+set showmatch
+" a showmatch will wait half a second or until a character is typed
+set cpoptions-=m
+set matchtime=3 " 0.3 secs
+" set matchpairs& matchpairs+=<:>
+
+set backspace=indent,eol,start
+set completeopt=menu,preview
+set virtualedit=block
+
+set autowrite
+set hidden
+set infercase
+set modeline
+
+autocmd MyAutoCmd InsertLeave * if &paste | setlocal nopaste | echo 'nopaste' | endif
+autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
+
+""""""""""""""""""""
+" Display:
+""""""""""""""""""""
+" colorscheme
+set background=dark
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+
+hi Pmenu ctermbg=blue
+hi PmenuSel term=bold ctermfg=white ctermbg=darkred
+hi PMenuSbar ctermbg=blue
+
+" list
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:$,nbsp:%
+
+" messages
+set shortmess=TI
+set noshowmode
+
+" cursorline
+autocmd MyAutoCmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+autocmd MyAutoCmd CursorHold,CursorMovedI * setlocal cursorline
+
+set cmdheight=2
+set colorcolumn=80
+set laststatus=2
+set nowrap
+set number
+
+
+""""""""""""""""""""
+" Generic
+""""""""""""""""""""
+" Backup
+set backup
+set backupdir=$HOME/.vim/backup
+" Swap
+set swapfile
+set directory=$HOME/.vim/swap
+" Undo
+set undofile
+set undodir=$HOME/.vim/undo
+
+set secure
