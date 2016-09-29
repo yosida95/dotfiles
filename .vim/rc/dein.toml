@@ -92,6 +92,11 @@ repo = 'othree/html5.vim'
 
 [[plugins]]
 repo = 'elzr/vim-json'
+on_ft = 'json'
+
+hook_add = '''
+    let g:vim_json_syntax_conceal = 0
+'''
 
 [[plugins]]
 repo = 'estin/htmljinja.git'
