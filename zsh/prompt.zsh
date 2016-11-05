@@ -67,10 +67,14 @@ function go_prompt_info() {
 }
 
 function ruby_prompt_info() {
-    if (($+commands[ruby])); then
-        echo " %{$fg[green]%}rb:%{$fg[cyan]%}$(ruby -v| cut -d ' ' -f 2)%{$reset_color%}"
-    else
-        echo ""
+    local version
+    if (($+commands[rbenv])); then
+        version=`rbenv version| cut -d' ' -f1`
+    elif (($+commands[ruby])); then
+        version=`ruby -v| cut -d' ' -f2`
+    fi
+    if [ -n "$version" ]; then
+        echo " %{$fg[green]%}rb:%{$fg[cyan]%}${version}%{$reset_color%}"
     fi
 }
 
