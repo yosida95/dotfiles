@@ -36,28 +36,23 @@ function vcs_prompt_info () {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 function python_prompt_info() {
     local version
-    if [ -n "$VIRTUAL_ENV" ]; then
+    if [[ "${VIRTUAL_ENV}" =~ "venv$" ]]; then
+        version=${VIRTUAL_ENV:h:t}
+    elif [ -n "$VIRTUAL_ENV" ]; then
         version="${VIRTUAL_ENV:t}"
-        case "$version" in
-            "venv" | ".venv")
-                version=${VIRTUAL_ENV:h:t}
-                ;;
-        esac
-    elif (($+commands[python])) && (($+commands[python3])); then
-        version="$(python --version 2>&1| cut -d' ' -f2)%{$fg[green]%},"
-        version+="%{$fg[cyan]%}$(python3 --version 2>&1| cut -d' ' -f2)"
-    elif (($+commands[python])); then
-        version="$(python --version 2>&1| cut -d' ' -f2)"
-    elif (($+commands[python3])); then
-        version="$(python3 --version 2>&1| cut -d' ' -f2)"
     else
-        echo ""
+        if (($+commands[python])); then
+            version=`python --version 2>&1|cut -d' ' -f2`
+        fi
+        if (($+commands[python3])); then
+            if [ -n "$version" ]; then
+                version+="%{$fg[green]%},%{$fg[cyan]%}"
+            fi
+            version+=`python3 --version 2>&1|cut -d' ' -f2`
+        fi
     fi
-
     if [ -n "$version" ]; then
         echo " %{$fg[green]%}py:%{$fg[cyan]%}${version}%{$reset_color%}"
-    else
-        echo ""
     fi
 }
 
