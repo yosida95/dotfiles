@@ -1,5 +1,5 @@
 # vim: set filetype=zsh :
 
-if (($+commands[brew])) && [ -d "$(brew --prefix coreutils)" ]; then
-    PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+if [[ `uname` == "Darwin" ]] && [ -d "/usr/local/opt/coreutils" ]; then
+    PATH="/usr/local/opt/coreutils/libexec/gnubin":$PATH
 fi
