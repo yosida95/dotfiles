@@ -57,15 +57,12 @@ function python_prompt_info() {
 }
 
 function go_prompt_info() {
-    if (($+commands[go])); then
-        if [ -n "$GOPATH" ]; then
-            local version=${GOPATH:t}
-        else
-            local version="${$(go version| cut -d' ' -f 3):s/go//}"
-        fi
+    local version
+    if [ -n "$GOROOT" ] && [ -x "$GOROOT/bin/go" ]; then
+        version="${$(${GOROOT}/bin/go version|cut -d' ' -f3):s/go//}"
+    fi
+    if [ -n "$version" ]; then
         echo " %{$fg[green]%}go:%{$fg[cyan]%}${version}%{$reset_color%}"
-    else
-        echo ""
     fi
 }
 
