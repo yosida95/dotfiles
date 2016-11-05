@@ -9,7 +9,7 @@ if [ -z "$PATH_WAS_SET" ]; then
     for config in ${(M)files:#**/_path.zsh}; do
         source $config
     done
-    export PATH=$HOME/opt/bin:/usr/local/bin:$PATH
+    export PATH=$HOME/.local/bin:$PATH
     PATH_WAS_SET=1
 fi
 
