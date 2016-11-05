@@ -24,6 +24,3 @@ export HGENCODING='utf-8'
 # debuild
 export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
 export DEBFULLNAME="Kohei YOSHIDA"
-
-# ghq
-export GHQ_ROOT=$HOME/proj/src
