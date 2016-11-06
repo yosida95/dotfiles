@@ -113,6 +113,10 @@ repo = 'python.vim'
 on_ft = 'python'
 
 [[plugins]]
+repo = 'tmux-plugins/vim-tmux'
+on_ft = 'tmux'
+
+[[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
