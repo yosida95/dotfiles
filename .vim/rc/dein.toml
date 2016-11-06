@@ -18,8 +18,7 @@ hook_add = 'source ~/.vim/rc/plugins/lightline.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-
-hook_post_update = 'call yosida95#init#quickrun#hook_post_update()'
+build = 'make'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
