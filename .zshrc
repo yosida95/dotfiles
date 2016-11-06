@@ -25,3 +25,7 @@ autoload -U $DOTFILES/zsh/_functions/*(:t)
 unset files
 
 autoload -U compinit && compinit
+
+if [ -z "$TMUX" ]; then
+    gopath $HOME/proj
+fi
