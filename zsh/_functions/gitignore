@@ -1,0 +1,6 @@
+# vim: set filetype=zsh :
+
+function gitignore() {
+    curl -L -s https://www.gitignore.io/api/$@
+}
+
