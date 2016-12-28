@@ -6,7 +6,7 @@ dircolors:
 vim:
 	ln -s -f ${PWD}/.vim ${HOME}/
 	mkdir -p ${HOME}/.cache/dein/repos/github.com/Shougo
-	if [ ! -d ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim ]; then git clone git@github.com:Shougo/dein.vim ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim; fi
+	if [ ! -d ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim ]; then git clone https://github.com/Shougo/dein.vim ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim; fi
 
 zshconf: dircolors
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
@@ -29,3 +29,5 @@ screen:
 
 nose:
 	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
+
+.PHONY: dircolors git hg nose screen tmux vim zshconf
