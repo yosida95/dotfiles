@@ -12,3 +12,4 @@ alias la='ls -Ah'
 alias ll='ls -hl'
 alias where="command -v"
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
+alias urlsafe_b64encode="base64| tr '+' '-'| tr '/' '_'"
