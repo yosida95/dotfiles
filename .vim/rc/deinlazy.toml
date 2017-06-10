@@ -1,8 +1,8 @@
 [[plugins]]
-repo = 'Shougo/neocomplcache'
+repo = 'Shougo/neocomplete.vim'
 on_i = 1
 
-hook_source = 'source ~/.vim/rc/plugins/neocomplcache.vim'
+hook_source = 'source ~/.vim/rc/plugins/neocomplete.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -75,6 +75,8 @@ hook_source = '''
     let g:jedi#auto_initialization = 1
     let g:jedi#auto_vim_configuration = 0
     let g:jedi#popup_on_dot = 0
+    let g:jedi#completions_enabled = 0
+
     let g:jedi#rename_command = '<Leader>R'
 '''
 
