@@ -8,6 +8,9 @@ repo = 'sudo.vim'
 repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
+repo = 'tpope/vim-abolish'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
