@@ -16,7 +16,7 @@ augroup END
 
 " dein.vim
 if has('vim_starting') && &runtimepath !~ '/dein.vim'
-    let s:dein_dir =  expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+    let s:dein_dir = expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
     execute 'set runtimepath^=' . s:dein_dir
 endif
 call s:source_rc('dein.vim')
