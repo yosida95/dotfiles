@@ -90,6 +90,9 @@ set hidden
 set infercase
 set modeline
 
+" bases Vim will consider for numbers when using Ctrl-A/Ctrl-X
+set nrformats=octal,hex
+
 autocmd MyAutoCmd InsertLeave * if &paste | setlocal nopaste | echo 'nopaste' | endif
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 

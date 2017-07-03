@@ -25,3 +25,6 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'triglav/vim-visual-increment'
