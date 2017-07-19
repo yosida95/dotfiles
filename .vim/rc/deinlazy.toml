@@ -8,7 +8,13 @@ hook_source = 'source ~/.vim/rc/plugins/neocomplete.vim'
 repo = 'Shougo/unite.vim'
 on_cmd = ['Unite']
 
-hook_add = 'call yosida95#init#unite#hook_add()'
+hook_add = '''
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+    autocmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
+
+    noremap <C-B> :Unite buffer<CR>
+    noremap <C-F> :Unite file file/new<CR>
+'''
 hook_source = '''
     let g:unite_update_time = 100
     let g:unite_enable_start_insert = 1
