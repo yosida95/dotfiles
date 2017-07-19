@@ -20,6 +20,7 @@ hg:
 
 git:
 	ln -s -f ${PWD}/.gitconfig ${HOME}/.gitconfig
+	ln -s -f ${PWD}/.gitignore_global ${HOME}/.gitignore_global
 
 tmux:
 	ln -s -f ${PWD}/.tmux.conf ${HOME}/.tmux.conf

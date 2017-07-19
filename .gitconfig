@@ -1,15 +1,16 @@
-[user]
-	name = yosida95
-	email = kohei@yosida95.com
-[push]
-	default = matching
-[color]
-	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
 [alias]
 	pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
+[color]
+	ui = true
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
 [grep]
 	lineNumber = true
+[push]
+	default = simple
+[user]
+	useConfigOnly = true
