@@ -1,4 +1,1 @@
 *.zwc
-.vim/backup/*
-.vim/swap/*
-.vim/undo/*
