@@ -196,6 +196,28 @@ repo = 'Rykka/riv.vim'
 on_ft = 'rst'
 
 [[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+hook_source = '''
+    let g:rustfmt_autosave = 1
+'''
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = 'rust'
+
+hook_add = '''
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+'''
+hook_source = '''
+    let g:racer_experimental_completer = 1
+'''
+
+[[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
