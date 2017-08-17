@@ -19,7 +19,7 @@ inoremap <expr><C-l> neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return neocomplete#smart_close_popup() . "\<CR>"
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
 endfunction
 " <Tab>: completion.
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<TAB>"

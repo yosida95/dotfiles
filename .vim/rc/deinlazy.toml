@@ -138,7 +138,6 @@ repo =  'fatih/vim-go'
 on_ft = ['go', 'markdown']
 
 hook_add = '''
-    autocmd CursorMovedI * if pumvisible() == 0| pclose| endif
     autocmd InsertLeave * if pumvisible() == 0| pclose| endif
 '''
 
