@@ -106,7 +106,7 @@ hook_source = '''
 hook_post_source = 'call watchdogs#setup(g:quickrun_config)'
 
 [[plugins]]
-repo = 'abnf'
+repo = 'vim-scripts/abnf'
 on_ft = 'abnf'
 
 [[plugins]]
@@ -163,7 +163,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'mako.vim'
+repo = 'vim-scripts/mako.vim'
 on_ft = 'mako'
 
 [[plugins]]
@@ -171,7 +171,7 @@ repo = 'uarun/vim-protobuf'
 on_ft = ['proto', 'markdown']
 
 [[plugins]]
-repo = 'python.vim'
+repo = 'vim-scripts/python.vim'
 on_ft = 'python'
 
 [[plugins]]
