@@ -1,2 +1,1 @@
-pyflakes $1
-pep8 $1
+flake8 $1
