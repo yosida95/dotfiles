@@ -9,5 +9,4 @@ if [[ `uname` == "Darwin" ]]; then
     fi
 fi
 
-
 # vim: set filetype=zsh :

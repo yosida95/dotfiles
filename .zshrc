@@ -24,8 +24,6 @@ autoload -U $DOTFILES/zsh/_functions/*(:t)
 # Clean up
 unset files
 
-autoload -U compinit && compinit
-
 if [ -z "$TMUX" ]; then
     gopath $HOME/proj
 fi
