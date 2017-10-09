@@ -28,3 +28,6 @@ depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'triglav/vim-visual-increment'
+
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
