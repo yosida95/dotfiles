@@ -1,8 +1,8 @@
-if [ -d /opt/erlang ]; then
-    find /opt/erlang -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
-        PATH=$prefix/bin:$PATH
-    done
-fi
+for prefix in /opt/erlang /opt/node /opt/protobuf /opt/python /opt/vim; do
+    if [ -d "$prefix" ]; then
+        PATH="$(find $prefix -maxdepth 2 -name bin -type d -print0| sort -rz| tr '\0' ':')${PATH}"
+    fi
+done
 
 if [ -d /opt/go ]; then
     find /opt/go -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
@@ -20,26 +20,13 @@ if [ -d /usr/lib/jvm ]; then
     export JAVA_HOME
 fi
 
-if [ -d /opt/node ]; then
-    find /opt/node -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
-        PATH=$prefix/bin:$PATH
-    done
-fi
-
-if [ -d /opt/protobuf ]; then
-    find /opt/protobuf -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
-        PATH=$prefix/bin:$PATH
-    done
-fi
-
-if [ -d /opt/python ]; then
-    find /opt/python -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
-        PATH=$prefix/bin:$PATH
-    done
-fi
-
 if [ -d  $HOME/.cargo/bin ]; then
     PATH=$HOME/.cargo/bin:$PATH
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
+    source "${HOME}/.local/google-cloud-sdk/path.zsh.inc";
 fi
 
 unset prefix
