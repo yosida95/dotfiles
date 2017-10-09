@@ -1,1 +1,5 @@
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if (($+commands[rbenv])); then
+    eval "$(rbenv init -)"
+fi
+
+# vim: set filetype=zsh:
