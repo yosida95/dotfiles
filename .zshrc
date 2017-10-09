@@ -5,12 +5,10 @@ DOTFILES=$HOME/proj/src/github.com/yosida95/dotfiles
 files=($DOTFILES/zsh/**/*.zsh)
 
 # Set $PATH
-if [ -z "$TMUX" ]; then
-    for config in ${(M)files:#**/_path.zsh}; do
-        source $config
-    done
-    export PATH=$HOME/.local/bin:$PATH
-fi
+for config in ${(M)files:#**/_path.zsh}; do
+    source $config
+done
+export PATH=$HOME/.local/bin:$PATH
 
 # Apply all configrations
 for config in ${files:#**/_path.zsh}; do
