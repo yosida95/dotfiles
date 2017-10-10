@@ -1,6 +1,6 @@
 for prefix in /opt/erlang /opt/node /opt/protobuf /opt/python /opt/vim; do
     if [ -d "$prefix" ]; then
-        PATH="$(find $prefix -maxdepth 2 -name bin -type d -print0| sort -rz| tr '\0' ':')${PATH}"
+        PATH="$(find -L $prefix -maxdepth 2 -name bin -type d -print0| sort -rz| tr '\0' ':')${PATH}"
     fi
 done
 
