@@ -170,6 +170,10 @@ repo = 'vim-scripts/mako.vim'
 on_ft = 'mako'
 
 [[plugins]]
+repo = 'chr4/nginx.vim'
+on_ft = 'nginx'
+
+[[plugins]]
 repo = 'uarun/vim-protobuf'
 on_ft = ['proto', 'markdown']
 
