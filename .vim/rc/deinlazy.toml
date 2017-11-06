@@ -229,6 +229,10 @@ repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
 [[plugins]]
+repo = 'Matt-Deacalion/vim-systemd-syntax'
+on_ft = 'systemd'
+
+[[plugins]]
 repo = 'tmux-plugins/vim-tmux'
 on_ft = 'tmux'
 
