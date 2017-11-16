@@ -158,6 +158,10 @@ repo = 'artur-shaik/vim-javacomplete2'
 on_ft = 'java'
 
 [[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
