@@ -96,6 +96,23 @@ set nrformats=octal,hex
 autocmd MyAutoCmd InsertLeave * if &paste | setlocal nopaste | echo 'nopaste' | endif
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
+let g:markdown_fenced_languages = [
+    \ 'css',
+    \ 'coffee',
+    \ 'erb=eruby.html',
+    \ 'go',
+    \ 'html',
+    \ 'javascript',
+    \ 'js=javascript',
+    \ 'json=javascript',
+    \ 'proto',
+    \ 'python',
+    \ 'ruby',
+    \ 'sass',
+    \ 'sh',
+    \ 'xml',
+    \ ]
+
 """"""""""""""""""""
 " Display:
 """"""""""""""""""""

@@ -3,6 +3,7 @@ if exists('did_load_filetypes')
 endif
 
 augroup filetypedetect
+    autocmd!
     " ABNF
     autocmd BufNewFile,BufRead *.abnf,*.bnf setfiletype abnf
     " Jinja2
@@ -12,20 +13,3 @@ augroup filetypedetect
     " Markdown
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype markdown
 augroup END
-
-let g:markdown_fenced_languages = [
-    \ 'css',
-    \ 'coffee',
-    \ 'erb=eruby.html',
-    \ 'go',
-    \ 'html',
-    \ 'javascript',
-    \ 'js=javascript',
-    \ 'json=javascript',
-    \ 'proto',
-    \ 'python',
-    \ 'ruby',
-    \ 'sass',
-    \ 'sh',
-    \ 'xml',
-    \ ]
