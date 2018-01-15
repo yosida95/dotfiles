@@ -15,4 +15,15 @@ if (($+commands[gcloud])); then
     unset file
 fi
 
+autoload -U bashcompinit && bashcompinit
+BASH_COMPLETION_DIR="/etc/bash_completion.d"
+for name in "hal"; do
+    name="${BASH_COMPLETION_DIR}/${name}"
+    if [[ -f $name && -r $name ]]; then
+        . $name
+    fi
+done
+unset name
+unset BASH_COMPLETION_DIR
+
 # vim: set filetype=zsh:
