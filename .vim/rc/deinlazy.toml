@@ -139,7 +139,7 @@ on_ft = 'erlang'
 
 [[plugins]]
 repo =  'fatih/vim-go'
-on_ft = ['go', 'markdown']
+on_ft = ['go', 'gohtmltmpl', 'gotexttmpl', 'markdown']
 
 hook_add = '''
     autocmd InsertLeave * if pumvisible() == 0| pclose| endif
