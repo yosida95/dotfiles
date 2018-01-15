@@ -1,5 +1,3 @@
-# vim: set filetype=zsh :
-
 if (($+commands[peco])); then
     function peco_select_history() {
         local tac
@@ -31,3 +29,5 @@ if (($+commands[peco])); then
         bindkey '^]' peco-src
     fi
 fi
+
+# vim: set filetype=zsh:

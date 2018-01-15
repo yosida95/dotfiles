@@ -1,5 +1,3 @@
-# vim: set filetype=zsh :
-
 gopath() {
     if [ -d "$1" ]; then
         export GOPATH=$1
@@ -15,3 +13,5 @@ gopath() {
         export PATH=$GOBIN:$PATH
     fi
 }
+
+# vim: set filetype=zsh:

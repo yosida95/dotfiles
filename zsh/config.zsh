@@ -1,5 +1,3 @@
-# vim: set filetype=zsh :
-
 ##############################
 # Changing Directories
 ##############################
@@ -91,3 +89,5 @@ REPORTTIME=3
 ##############################
 setopt LONG_LIST_JOBS
 setopt NOTIFY
+
+# vim: set filetype=zsh:

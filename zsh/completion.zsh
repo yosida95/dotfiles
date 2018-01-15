@@ -1,5 +1,3 @@
-# vim: set filetype=zsh:
-
 autoload -U compinit && compinit
 
 if (($+commands[kubectl])); then
@@ -13,3 +11,5 @@ if (($+commands[gcloud])); then
     fi
     unset file
 fi
+
+# vim: set filetype=zsh:

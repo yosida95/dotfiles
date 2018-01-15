@@ -1,5 +1,3 @@
-# vim: set filetype=zsh :
-
 setopt PROMPT_SUBST
 setopt TRANSIENT_RPROMPT
 autoload -U colors && colors
@@ -87,3 +85,5 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# vim: set filetype=zsh:
