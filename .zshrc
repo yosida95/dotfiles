@@ -6,7 +6,6 @@ configs=($DOTFILES/zsh/**/*.zsh)
 for config in ${(M)configs:#**/_path.zsh}; do # Only **/_path.zsh
     source $config
 done
-export PATH=$HOME/.local/bin:$PATH
 for config in ${configs:#**/_path.zsh}; do  # Expect **/_path.zsh
     source $config
 done

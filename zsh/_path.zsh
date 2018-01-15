@@ -31,4 +31,6 @@ fi
 
 unset prefix
 
+export PATH=$HOME/.local/bin:$PATH
+
 # vim: set filetype=zsh :
