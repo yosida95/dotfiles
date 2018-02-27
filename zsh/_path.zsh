@@ -1,11 +1,11 @@
 for prefix in /opt/erlang /opt/node /opt/protobuf /opt/python /opt/vim; do
     if [ -d "$prefix" ]; then
-        PATH="$(find -L $prefix -maxdepth 2 -name bin -type d -print0| sort -rz| tr '\0' ':')${PATH}"
+        PATH="$(find -L $prefix -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':')${PATH}"
     fi
 done
 
 if [ -d /opt/go ]; then
-    find /opt/go -maxdepth 1 -mindepth 1 -print0| sort -nz| while read -r -d $'\0' prefix; do
+    find /opt/go -maxdepth 1 -mindepth 1 -print0| sort -Vz| while read -r -d $'\0' prefix; do
         PATH=$prefix/bin:$PATH
         GOROOT=$prefix
     done
@@ -13,7 +13,7 @@ if [ -d /opt/go ]; then
 fi
 
 if [ -d /usr/lib/jvm ]; then
-    find /usr/lib/jvm -maxdepth 1 -mindepth 1 -type d -print0| sort -nz| while read -r -d $'\0' prefix; do
+    find /usr/lib/jvm -maxdepth 1 -mindepth 1 -type d -print0| sort -Vz| while read -r -d $'\0' prefix; do
         PATH=$prefix/bin:$PATH
         JAVA_HOME=$prefix
     done
