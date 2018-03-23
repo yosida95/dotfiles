@@ -1,3 +1,13 @@
+case "$(uname)" in
+    "Darwin")
+        coreutils="/usr/local/opt/coreutils/libexec/gnubin"
+        if [ -d "$coreutils" ]; then
+            PATH="${coreutils}:${PATH}"
+        fi
+        unset coreutils
+        ;;
+esac
+
 for prefix in /opt/erlang /opt/node /opt/protobuf /opt/python /opt/vim; do
     if [ -d "$prefix" ]; then
         PATH="$(find -L $prefix -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':')${PATH}"
