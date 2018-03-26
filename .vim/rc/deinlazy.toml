@@ -106,6 +106,20 @@ hook_source = '''
 hook_post_source = 'call watchdogs#setup(g:quickrun_config)'
 
 [[plugins]]
+repo = 'google/vim-maktaba'
+
+[[plugins]]
+repo = 'google/vim-codefmt'
+depends = [
+    'vim-maktaba',
+]
+on_cmd = ['AutoFormatBuffer', 'FormatCode']
+
+hook_add = '''
+    autocmd FileType java AutoFormatBuffer clang-format
+'''
+
+[[plugins]]
 repo = 'vim-scripts/abnf'
 on_ft = 'abnf'
 
