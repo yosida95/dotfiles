@@ -23,9 +23,9 @@ if [ -d /opt/go ]; then
 fi
 
 if [ -d /usr/lib/jvm ]; then
-    find /usr/lib/jvm -maxdepth 1 -mindepth 1 -type d -print0| sort -Vz| while read -r -d $'\0' prefix; do
-        PATH=$prefix/bin:$PATH
-        JAVA_HOME=$prefix
+    find /usr/lib/jvm -maxdepth 2 -mindepth 2 -name bin -type d -print0| sort -z| while read -r -d $'\0' prefix; do
+        PATH=$prefix:$PATH
+        JAVA_HOME=${prefix%/bin}
     done
     export JAVA_HOME
 fi
