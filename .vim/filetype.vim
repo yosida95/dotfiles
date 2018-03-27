@@ -12,4 +12,6 @@ augroup filetypedetect
     autocmd BufNewFile,BufRead *.mak setfiletype mako
     " Markdown
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype markdown
+    " Gradle
+    autocmd BufNewFile,BufRead *.gradle setfiletype groovy
 augroup END
