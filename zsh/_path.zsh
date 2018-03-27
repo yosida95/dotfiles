@@ -8,7 +8,7 @@ case "$(uname)" in
         ;;
 esac
 
-for prefix in /opt/erlang /opt/node /opt/protobuf /opt/python /opt/vim; do
+for prefix in /opt/erlang /opt/gradle /opt/node /opt/protobuf /opt/python /opt/vim; do
     if [ -d "$prefix" ]; then
         PATH="$(find -L $prefix -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':')${PATH}"
     fi
