@@ -109,9 +109,19 @@ hook_post_source = 'call watchdogs#setup(g:quickrun_config)'
 repo = 'google/vim-maktaba'
 
 [[plugins]]
-repo = 'google/vim-codefmt'
+repo = 'google/vim-glaive'
 depends = [
     'vim-maktaba',
+]
+
+hook_source = '''
+    call glaive#Install()
+'''
+
+[[plugins]]
+repo = 'google/vim-codefmt'
+depends = [
+    'vim-glaive',
 ]
 on_cmd = ['AutoFormatBuffer', 'FormatCode']
 
