@@ -32,6 +32,10 @@ if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
     source "${HOME}/.local/google-cloud-sdk/path.zsh.inc";
 fi
 
-export PATH=$HOME/.local/bin:$PATH
+if [ -d "$HOME/.local/bin" ]; then
+    PATH=$HOME/.local/bin:$PATH
+fi
+
+export PATH
 
 # vim: set filetype=zsh :
