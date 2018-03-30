@@ -178,6 +178,10 @@ repo = 'estin/htmljinja.git'
 on_ft = 'htmljinja'
 
 [[plugins]]
+repo = 'vim-scripts/iptables'
+on_ft = 'iptables'
+
+[[plugins]]
 repo = 'artur-shaik/vim-javacomplete2'
 on_ft = 'java'
 
