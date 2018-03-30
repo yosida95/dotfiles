@@ -1,3 +1,9 @@
+if [ -z "$_ZSHRC_ORIG_PATH" ]; then
+    export _ZSHRC_ORIG_PATH=$PATH
+else
+    PATH=$_ZSHRC_ORIG_PATH
+fi
+
 case "$(uname)" in
     "Darwin")
         coreutils="/usr/local/opt/coreutils/libexec/gnubin"
