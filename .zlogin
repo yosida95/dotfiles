@@ -1,8 +1,7 @@
 if [ -z "$TMUX" ] && (($+commands[tmux])); then
     cat << EOF
-Which whould you like,
-1	Create a new session
-2	Attach to existing sessions
+1	Create a new tmux session
+2	Attach to an existing tmux session
 3	Without tmux
 EOF
     if sessions=$(tmux list-session 2>/dev/null); then
