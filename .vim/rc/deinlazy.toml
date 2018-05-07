@@ -126,7 +126,11 @@ depends = [
 on_cmd = ['AutoFormatBuffer', 'FormatCode']
 
 hook_add = '''
-    autocmd FileType java AutoFormatBuffer clang-format
+    autocmd FileType java AutoFormatBuffer google-java-format
+'''
+hook_source = '''
+    Glaive codefmt plugin[mappings]
+    Glaive codefmt google_java_executable="java -jar /home/yosida95/.local/lib/google-java-format-1.5-all-deps.jar"
 '''
 
 [[plugins]]
