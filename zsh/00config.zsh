@@ -37,6 +37,10 @@ zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)
 # Cache completion candidates
 zstyle ':completion::complete:*' use-cache on
 
+
+# Automatically do rehash
+zstyle ':completion:*' rehash true
+
 ##############################
 # Expansion and Globbing
 ##############################
