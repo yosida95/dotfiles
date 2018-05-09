@@ -43,5 +43,3 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 export PATH
-
-# vim: set filetype=zsh :

@@ -9,6 +9,4 @@ unset config
 # Load custom shell functions
 autoload -U $DOTFILES/zsh/_functions/*(:t)
 
-if [ -z "$TMUX" ]; then
-    gopath $HOME/proj
-fi
+gopath $HOME/proj
