@@ -1,0 +1,17 @@
+function git () {
+  if [ $# -lt 1 ]; then
+    command git
+    return
+  fi
+  local subc=$1
+  shift
+
+  case $subc in
+    log)
+      command git "$subc" --stat "$@"
+      ;;
+    *)
+      command git "$subc" "$@"
+  esac
+}
+# vim: set filetype=zsh:
