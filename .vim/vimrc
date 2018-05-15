@@ -66,8 +66,8 @@ nmap <Esc><Esc> :noh<CR>
 """"""""""""""""""""
 set expandtab
 set smarttab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set shiftround
 
 set autoindent
