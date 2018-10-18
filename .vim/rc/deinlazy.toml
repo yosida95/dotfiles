@@ -297,6 +297,10 @@ repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
 [[plugins]]
+repo = 'duganchen/vim-soy'
+on_ft = 'soy'
+
+[[plugins]]
 repo = 'Matt-Deacalion/vim-systemd-syntax'
 on_ft = 'systemd'
 
