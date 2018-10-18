@@ -10,6 +10,10 @@ vim:
 	mkdir -p ${HOME}/.cache/vimundo
 	mkdir -p ${HOME}/.cache/dein/repos/github.com/Shougo
 	if [ ! -d ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim ]; then git clone https://github.com/Shougo/dein.vim ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim; fi
+	if [ ! -f ${HOME}/.local/lib/google-java-format-1.6-all-deps.jar ]; then \
+		mkdir -p ${HOME}/.local/lib && \
+		curl -L -o ${HOME}/.local/lib/google-java-format-1.6-all-deps.jar https://github.com/google/google-java-format/releases/download/google-java-format-1.6/google-java-format-1.6-all-deps.jar; \
+	fi
 
 zshconf: dircolors
 	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv

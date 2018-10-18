@@ -154,7 +154,7 @@ hook_add = '''
 
 hook_source = '''
     Glaive codefmt plugin[mappings]
-    Glaive codefmt google_java_executable="java -jar /home/yosida95/.local/lib/google-java-format-1.5-all-deps.jar"
+    Glaive codefmt google_java_executable="java -jar /home/yosida95/.local/lib/google-java-format-1.6-all-deps.jar"
 '''
 
 [[plugins]]
