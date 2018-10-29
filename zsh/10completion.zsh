@@ -9,14 +9,17 @@ if (($+commands[kubectl])); then
 fi
 
 if (($+commands[gcloud])); then
-  for file in "${"$(which gcloud)":h:h}/completion.zsh.inc" "/usr/share/google-cloud-sdk/completion.zsh.inc"; do
+  for gcloudcompdef in "${"$(which gcloud)":h:h}/completion.zsh.inc" "/usr/share/google-cloud-sdk/completion.zsh.inc"; do
     file="${"$(which gcloud)":h:h}/completion.zsh.inc"
     if [[ -f "$file" && -r "$file" ]]; then
-        . "$file"
-        break
+      gcloud() {
+        unset -f "$0"
+        . "$gcloudcompdef"
+        $0 "$@"
+      }
+      break
     fi
   done
-  unset file
 fi
 
 autoload -U bashcompinit && bashcompinit
