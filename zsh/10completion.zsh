@@ -1,7 +1,11 @@
 autoload -U compinit && compinit
 
 if (($+commands[kubectl])); then
-    source <(kubectl completion zsh)
+  kubectl() {
+    unset -f "$0"
+    . <(kubectl completion zsh)
+    $0 "$@"
+  }
 fi
 
 if (($+commands[gcloud])); then
