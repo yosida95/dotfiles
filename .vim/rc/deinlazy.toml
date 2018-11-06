@@ -191,12 +191,15 @@ on_ft = 'erlang'
 
 [[plugins]]
 repo =  'fatih/vim-go'
-rev = 'v1.18'
+rev = 'v1.19'
 
 on_ft = ['go', 'gohtmltmpl', 'gotexttmpl', 'markdown']
 
 hook_add = '''
     autocmd InsertLeave * if pumvisible() == 0| pclose| endif
+'''
+hook_source = '''
+  let g:go_highlight_extra_types = 1
 '''
 
 [[plugins]]
