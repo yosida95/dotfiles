@@ -1,4 +1,4 @@
-GOOGLE_JAVA_FORMAT := google-java-format-1.6
+GOOGLE_JAVA_FORMAT := google-java-format-1.7
 
 .PHONY: all
 
