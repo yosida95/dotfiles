@@ -1,42 +1,68 @@
-all: dircolors vim zshconf hg git nose tmux
+GOOGLE_JAVA_FORMAT := google-java-format-1.6
 
-dircolors:
-	ln -s -f ${PWD}/.dircolors ${HOME}/.dircolors
+.PHONY: all
 
-vim:
-	ln -s -f ${PWD}/.vim ${HOME}/
+all: | ${HOME}/.dircolors \
+		${HOME}/.gitconfig \
+		${HOME}/.hgrc \
+		${HOME}/.tmux.conf \
+		${HOME}/.vim \
+		${HOME}/.zshenv \
+		${HOME}/.zprofile \
+		${HOME}/.zshrc \
+		${HOME}/.zlogin
+
+${HOME}/.dircolors:
+	ln -sf ${PWD}/.dircolors ${HOME}/
+
+${HOME}/.gitconfig: | ${PWD}/.gitignore_global
+	ln -sf ${PWD}/.gitconfig ${HOME}/
+
+${HOME}/.gitignore_global:
+	ln -sf ${PWD}/.gitignore_global ${HOME}/
+
+${HOME}/.hgrc: | ${HOME}/.hgignore
+	ln -sf ${PWD}/.hgrc ${HOME}/
+
+${HOME}/.hgignore:
+	ln -sf ${PWD}/.hgignore ${HOME}/
+
+${HOME}/.tmux.conf:
+	ln -sf ${PWD}/.tmux.conf ${HOME}/
+
+${HOME}/.vim: | \
+		${HOME}/.cache/vimbackup \
+		${HOME}/.cache/vimswap \
+		${HOME}/.cache/vimundo \
+		${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim \
+		${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar
+	ln -sf ${PWD}/.vim ${HOME}/
+
+${HOME}/.cache/vimbackup:
 	mkdir -p ${HOME}/.cache/vimbackup
+
+${HOME}/.cache/vimswap:
 	mkdir -p ${HOME}/.cache/vimswap
+
+${HOME}/.cache/vimundo:
 	mkdir -p ${HOME}/.cache/vimundo
+
+${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim:
 	mkdir -p ${HOME}/.cache/dein/repos/github.com/Shougo
-	if [ ! -d ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim ]; then git clone https://github.com/Shougo/dein.vim ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim; fi
-	if [ ! -f ${HOME}/.local/lib/google-java-format-1.6-all-deps.jar ]; then \
-		mkdir -p ${HOME}/.local/lib && \
-		curl -L -o ${HOME}/.local/lib/google-java-format-1.6-all-deps.jar https://github.com/google/google-java-format/releases/download/google-java-format-1.6/google-java-format-1.6-all-deps.jar; \
-	fi
+	git clone https://github.com/Shougo/dein.vim.git $@
 
-zshconf: dircolors
-	ln -s -f ${PWD}/.zshenv ${HOME}/.zshenv
-	ln -s -f ${PWD}/.zprofile ${HOME}/.zprofile
-	ln -s -f ${PWD}/.zshrc ${HOME}/.zshrc
-	ln -s -f ${PWD}/.zlogin ${HOME}/.zlogin
+${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar:
+	mkdir -p ${HOME}/.local/lib
+	curl -o $@ https://github.com/google/google-java-format/releases/download/${GOOGLE_JAVA_FORMAT}/${GOOGLE_JAVA_FORMAT}-all-deps.jar
 
-hg:
-	ln -s -f ${PWD}/.hgrc ${HOME}/.hgrc
-	ln -s -f ${PWD}/.hgignore ${HOME}/.hgignore
+${HOME}/.zshenv:
+	ln -sf ${PWD}/.zshenv ${HOME}/
 
-git:
-	ln -s -f ${PWD}/.gitconfig ${HOME}/.gitconfig
-	ln -s -f ${PWD}/.gitignore_global ${HOME}/.gitignore_global
+${HOME}/.zprofile:
+	ln -sf ${PWD}/.zprofile ${HOME}/
 
-tmux:
-	ln -s -f ${PWD}/.tmux.conf ${HOME}/.tmux.conf
+${HOME}/.zshrc:
+	ln -sf ${PWD}/.zshrc ${HOME}/
 
-screen:
-	ln -s -f ${PWD}/.screenrc ${HOME}/.screenrc
-
-nose:
-	ln -s -f ${PWD}/.noserc ${HOME}/.noserc
-
-
-.PHONY: dircolors git hg nose screen tmux vim zshconf
+${HOME}/.zlogin:
+	ln -sf ${PWD}/.zlogin ${HOME}/
