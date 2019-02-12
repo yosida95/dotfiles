@@ -220,6 +220,7 @@ on_ft = 'iptables'
 
 [[plugins]]
 repo = 'artur-shaik/vim-javacomplete2'
+rev = 'v2.4.0'
 on_ft = 'java'
 
 hook_source = '''
