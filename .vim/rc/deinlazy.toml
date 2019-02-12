@@ -33,7 +33,7 @@ on_map = [['n', '<Plug>']]
 on_if = "isdirectory(bufname('%'))"
 
 hook_add = '''
-    nnoremap <leader>e :VimFilerExplorer<CR>
+    nnoremap <leader>e :VimFilerExplorer -winwidth=40<CR>
 '''
 
 hook_source = '''
