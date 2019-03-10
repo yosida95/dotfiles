@@ -40,9 +40,9 @@ hook_source = '''
     let g:vimfiler_as_default_explorer = 1
     let g:vimfiler_force_overwrite_statusline = 0
     let g:vimfiler_ignore_pattern = [
-        \ '^\.(.*_)?cache$',
+        \ '^\.\(.*_\)\?cache$',
         \ '^\.git', '^\.hg',
-        \ '^__pycache__$', '\.pyc$']
+        \ '^__pycache__$', '\.pyc$', '^\.tox$', '^\.venv$']
 '''
 
 [[plugins]]
