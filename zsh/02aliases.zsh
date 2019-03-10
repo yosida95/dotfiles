@@ -10,4 +10,5 @@ alias du="du -h"
 alias df="df -h"
 alias where="command -v"
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
+alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
 alias urlsafe_b64encode="base64| tr '+' '-'| tr '/' '_'"
