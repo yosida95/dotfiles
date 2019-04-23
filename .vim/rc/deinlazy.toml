@@ -208,7 +208,6 @@ hook_add = '''
 '''
 hook_source = '''
   let g:go_highlight_extra_types = 1
-  let g:go_gocode_propose_source = 0
 '''
 
 [[plugins]]
