@@ -1,5 +1,5 @@
 DOTFILES="${$(print -P %N):A:h}"
-FPATH="${DOTFILES}/zsh/_functions:/usr/share/zsh/site-functions:${FPATH}"
+FPATH="${DOTFILES}/zsh/completion:${DOTFILES}/zsh/_functions:/usr/share/zsh/site-functions:${FPATH}"
 
 for config in $DOTFILES/zsh/**/*.zsh; do
     source $config
