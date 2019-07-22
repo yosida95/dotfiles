@@ -10,8 +10,13 @@ fi
 export ZLS_COLORS="$LS_COLORS"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-export LESS='-R'
+export LESS='-giMR'
 export LESSCHARSET=utf-8
+if (($+commands[lesspipe])); then
+  export LESSOPEN="| lesspipe %s"
+elif (($+commands[lesspipe.sh])); then
+  export LESSOPEN="| lesspipe.sh %s"
+fi
 
 # EDITOR
 export EDITOR='vim'

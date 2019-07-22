@@ -5,6 +5,7 @@ GOOGLE_JAVA_FORMAT := google-java-format-1.7
 all: | ${HOME}/.dircolors \
 		${HOME}/.gitconfig \
 		${HOME}/.hgrc \
+		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
 		${HOME}/.zshenv \
@@ -23,6 +24,9 @@ ${HOME}/.gitignore_global:
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
 	ln -sf ${PWD}/.hgrc ${HOME}/
+
+${HOME}/.lessfilter:
+	ln -sf ${PWD}/.lessfilter ${HOME}/
 
 ${HOME}/.hgignore:
 	ln -sf ${PWD}/.hgignore ${HOME}/
