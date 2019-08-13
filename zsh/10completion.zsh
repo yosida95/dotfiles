@@ -22,4 +22,12 @@ if (($+commands[gcloud])); then
   done
 fi
 
+if (($+commands[helm])); then
+  helm() {
+    unset -f "$0"
+    . <(helm completion zsh)
+    $0 "$@"
+  }
+fi
+
 # vim: set filetype=zsh:
