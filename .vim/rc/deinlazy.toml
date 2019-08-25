@@ -166,6 +166,10 @@ repo = 'vim-scripts/abnf'
 on_ft = 'abnf'
 
 [[plugins]]
+repo = 'inside/actionscript.vim'
+on_ft = 'actionscript'
+
+[[plugins]]
 repo = 'vim-scripts/applescript.vim'
 on_ft = 'applescript'
 
