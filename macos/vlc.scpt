@@ -4,6 +4,7 @@ on run argv
   if count of argv is equal to 0 then
     set msg to "Use the following commands:\n"
     set msg to msg & "  info               - Print track info\n"
+    set msg to msg & "  playpause          - Play / Pause\n"
     set msg to msg & "  next               - Next track\n"
     set msg to msg & "  previous, prev     - Previous track\n"
     set msg to msg & "  forward N          - Jump N seconds forwards\n"
@@ -14,13 +15,7 @@ on run argv
   using terms from application "VLC"
     set info to "Error."
 
-    if command is equal to "next" then
-      tell application "VLC" to next
-
-    else if command is equal to "previous" or command is equal to "prev" then
-      tell application "VLC" to previous
-
-    else if command is equal to "info" then
+    if command is equal to "info" then
       tell application "VLC"
         set tM to round (duration of current item / 60) rounding down
         set tS to duration of current item mod 60
@@ -34,6 +29,15 @@ on run argv
         set info to info & "\n Now at:   " & nowAt
       end tell
       return info
+
+    else if command is equal to "playpause" or command is equal "play" or command is equal "pause" then
+      tell application "VLC" to play
+
+    else if command is equal to "next" then
+      tell application "VLC" to next
+
+    else if command is equal to "previous" or command is equal to "prev" then
+      tell application "VLC" to previous
 
     else if command is equal to "forward"
       set jump to item 2 of argv as real
