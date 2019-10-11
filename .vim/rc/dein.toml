@@ -31,3 +31,6 @@ repo = 'triglav/vim-visual-increment'
 
 [[plugins]]
 repo = 'Shougo/echodoc.vim'
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
