@@ -29,6 +29,11 @@ for prefix in /usr/lib/jvm /opt/erlang /opt/go /opt/gradle /opt/node /opt/protob
 done
 unset prefix
 
+if [ -d "$HOME/.rbenv" ]; then
+    PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+fi
+
 if [ -d "$HOME/.cargo/bin" ]; then
     PATH=$HOME/.cargo/bin:$PATH
 fi
