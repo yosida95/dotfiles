@@ -115,7 +115,6 @@ Plug 'artur-shaik/vim-javacomplete2', { 'tag': 'v2.4.0' }
 Plug 'othree/yajs.vim'
 
 " Python
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'vim-scripts/mako.vim'
 
 " reStructuredText
