@@ -79,11 +79,13 @@ Plug 'osyo-manga/vim-watchdogs'
   Plug 'cohama/vim-hier'
   Plug 'dannyob/quickfixstatus'
 
+Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-file.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'yami-beta/asyncomplete-omni.vim'
+
 Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/async.vim'
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
   Plug 'mattn/vim-lsp-settings'
 
 Plug 'google/vim-codefmt'
@@ -327,6 +329,20 @@ call watchdogs#setup(g:quickrun_config)
 """"""""""""""""""""
 " asyncomplete.vim:
 """"""""""""""""""""
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'whitelist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['c', 'cpp', 'html'],
+    \ 'completor': function('asyncomplete#sources#omni#completor')
+    \  }))
+
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
