@@ -110,9 +110,6 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 " iptables
 Plug 'vim-scripts/iptables'
 
-" Java
-Plug 'artur-shaik/vim-javacomplete2', { 'tag': 'v2.4.0' }
-
 " JavaScript
 Plug 'othree/yajs.vim'
 
@@ -346,15 +343,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-
-
-""""""""""""""""""""
-" vim-javacomplete2:
-""""""""""""""""""""
-let g:JavaComplete_ImportDefault = -1
-let g:JavaComplete_ImportSortType = 'packageName'
-let g:JavaComplete_StaticImportsAtTop = 1
-let g:JavaComplete_ImportOrder = ['*']
 
 
 """"""""""""""""""""
