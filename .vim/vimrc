@@ -64,9 +64,6 @@ let g:echodoc_enable_at_startup = 1
 
 Plug 'mattn/sonictemplate-vim'
 
-Plug 'Shougo/neocomplete.vim'
-call s:source_rc('plugins/neocomplete.vim')
-
 Plug 'Shougo/unite.vim'
 
 Plug 'Shougo/vimfiler.vim'
@@ -326,6 +323,14 @@ let g:quickrun_config['zsh/watchdogs_checker'] = {
     \ }
 
 call watchdogs#setup(g:quickrun_config)
+
+
+""""""""""""""""""""
+" asyncomplete.vim:
+""""""""""""""""""""
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 
 """"""""""""""""""""
