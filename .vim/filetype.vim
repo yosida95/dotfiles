@@ -8,8 +8,6 @@ augroup filetypedetect
     autocmd BufNewFile,BufRead *.abnf,*.bnf setfiletype abnf
     " ActionScript
     autocmd BufNewFile,BufRead *.as setfiletype actionscript
-    " Jinja2
-    autocmd BufNewFile,BufRead *.{jinja2,j2} setfiletype htmljinja
     " Mako
     autocmd BufNewFile,BufRead *.mak setfiletype mako
     " Markdown

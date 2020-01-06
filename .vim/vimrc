@@ -14,20 +14,17 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 
-" dein.vim
-if has('vim_starting') && &runtimepath !~ '/dein.vim'
-    let s:dein_dir = expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-    execute 'set runtimepath^=' . s:dein_dir
-endif
-call s:source_rc('dein.vim')
+" Backup
+set backup
+set backupdir=$HOME/.cache/vimbackup/
+" Swap
+set swapfile
+set directory=$HOME/.cache/vimswap//
+" Undo
+set undofile
+set undodir=$HOME/.cache/vimundo/
 
-if !has('vim_starting')
-    call dein#call_hook('source')
-    call dein#call_hook('post_source')
-endif
-
-filetype plugin indent on
-syntax enable
+set secure
 
 
 """"""""""""""""""""
@@ -40,6 +37,100 @@ set fileencodings='ucs-bom,utf-8,euc-jp,iso-2022-jp-3,sjis,cp932'
 
 set fileformat=unix
 set fileformats=unix,mac,dos
+
+
+""""""""""""""""""""
+" vim-plug:
+""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-scripts/sudo.vim'
+
+Plug 'w0ng/vim-hybrid'
+
+Plug 'tpope/vim-abolish'
+
+Plug 'itchyny/lightline.vim'
+  Plug 'tpope/vim-fugitive'
+call s:source_rc('plugins/lightline.vim')
+
+Plug 'osyo-manga/vim-precious'
+  Plug 'Shougo/context_filetype.vim'
+
+Plug 'triglav/vim-visual-increment'
+
+Plug 'Shougo/echodoc.vim'
+let g:echodoc_enable_at_startup = 1
+
+Plug 'mattn/sonictemplate-vim'
+
+Plug 'Shougo/neocomplete.vim'
+call s:source_rc('plugins/neocomplete.vim')
+
+Plug 'Shougo/unite.vim'
+
+Plug 'Shougo/vimfiler.vim'
+
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+Plug 'thinca/vim-quickrun'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'osyo-manga/vim-watchdogs'
+  Plug 'osyo-manga/shabadou.vim'
+  Plug 'cohama/vim-hier'
+  Plug 'dannyob/quickfixstatus'
+
+Plug 'prabirshrestha/vim-lsp'
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+  Plug 'mattn/vim-lsp-settings'
+
+Plug 'google/vim-codefmt'
+  Plug 'google/vim-glaive'
+    Plug 'google/vim-maktaba'
+
+Plug 'sheerun/vim-polyglot'
+
+" ABNF
+Plug 'vim-scripts/abnf'
+
+" ActionScript
+Plug 'inside/actionscript.vim'
+
+" blockdiag
+Plug 'mhaig/vim-blockdiag-series'
+
+" Erlang
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+
+" iptables
+Plug 'vim-scripts/iptables'
+
+" Java
+Plug 'artur-shaik/vim-javacomplete2', { 'tag': 'v2.4.0' }
+
+" JavaScript
+Plug 'othree/yajs.vim'
+
+" Python
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'vim-scripts/mako.vim'
+
+" reStructuredText
+Plug 'Rykka/riv.vim'
+
+" Rust
+Plug 'racer-rust/vim-racer'
+
+" Closure Templates
+Plug 'duganchen/vim-soy'
+
+call plug#end()
 
 
 """"""""""""""""""""
@@ -96,22 +187,6 @@ set nrformats=octal,hex
 autocmd MyAutoCmd InsertLeave * if &paste | setlocal nopaste | echo 'nopaste' | endif
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
-let g:markdown_fenced_languages = [
-    \ 'css',
-    \ 'coffee',
-    \ 'erb=eruby.html',
-    \ 'go',
-    \ 'html',
-    \ 'javascript',
-    \ 'js=javascript',
-    \ 'json=javascript',
-    \ 'proto',
-    \ 'python',
-    \ 'ruby',
-    \ 'sass',
-    \ 'sh',
-    \ 'xml',
-    \ ]
 
 """"""""""""""""""""
 " Display:
@@ -145,17 +220,162 @@ set number
 
 
 """"""""""""""""""""
-" Generic
+" unite.vim:
 """"""""""""""""""""
-" Backup
-set backup
-set backupdir=$HOME/.cache/vimbackup/
-" Swap
-set swapfile
-set directory=$HOME/.cache/vimswap//
-" Undo
-set undofile
-set undodir=$HOME/.cache/vimundo/
+let g:unite_update_time = 100
+let g:unite_enable_start_insert = 1
+let g:unite_winheight = 15
+let g:unite_enable_auto_select = 0
+let g:unite_force_overwrite_statusline = 0
+
+nmap <buffer> <ESC> <Plug>(unite_exit)
+noremap <C-B> :Unite buffer<CR>
+noremap <C-F> :Unite file file/new<CR>
+
+autocmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
+autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 
-set secure
+""""""""""""""""""""
+" vimfiler.vim:
+""""""""""""""""""""
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimfiler_ignore_pattern = [
+    \ '^\.\(.*[\-_]\)\?cache$',
+    \ '^\.git$', '^\.hg$',
+    \ '^vendor$',
+    \ '^__pycache__$', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$',
+    \ '^wheelhouse$',
+    \ '^.DS_Store$']
+
+nnoremap <leader>e :VimFilerExplorer -winwidth=40<CR>
+
+
+""""""""""""""""""""
+" vim-quickrun:
+""""""""""""""""""""
+let g:quickrun_config = {
+    \ '_': {
+    \     'runner': 'vimproc',
+    \     'runner/vimproc/updatetime': 50,
+    \ },
+    \ '*': {
+    \     'runmode': 'async:remote:vimproc',
+    \     'split': 'below',
+    \ }}
+
+
+""""""""""""""""""""
+" tagbar:
+""""""""""""""""""""
+let g:tagbar_status_func = 'TagbarStatusFunc'
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+    return lightline#statusline(0)
+endfunction
+
+nmap <F8> :TagbarToggle<CR>
+
+
+""""""""""""""""""""
+" vim-glaive:
+""""""""""""""""""""
+call glaive#Install()
+
+
+""""""""""""""""""""
+" vim-codefmt:
+""""""""""""""""""""
+autocmd FileType java AutoFormatBuffer google-java-format
+
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /home/yosida95/.local/lib/google-java-format-1.7-all-deps.jar"
+
+
+""""""""""""""""""""
+" vim-watchdogs:
+""""""""""""""""""""
+let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_CursorHold_enable = 1
+
+let g:quickrun_config['watchdogs_checker/_'] = {
+    \ 'outputter/quickfix/open_cmd' : '',
+    \ }
+let g:quickrun_config['go/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/go_vet',
+    \ }
+let g:quickrun_config['java/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/javac',
+    \ }
+let g:quickrun_config['python/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/flake8',
+    \ }
+let g:quickrun_config['rust/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/rustc',
+    \ }
+let g:quickrun_config['scala/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/scalac',
+    \ }
+let g:quickrun_config['sh/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/sh',
+    \ }
+let g:quickrun_config['zsh/watchdogs_checker'] = {
+    \ 'type': 'watchdogs_checker/zsh',
+    \ }
+
+call watchdogs#setup(g:quickrun_config)
+
+
+""""""""""""""""""""
+" vim-javacomplete2:
+""""""""""""""""""""
+let g:JavaComplete_ImportDefault = -1
+let g:JavaComplete_ImportSortType = 'packageName'
+let g:JavaComplete_StaticImportsAtTop = 1
+let g:JavaComplete_ImportOrder = ['*']
+
+
+""""""""""""""""""""
+" vim-json:
+""""""""""""""""""""
+let g:vim_json_syntax_conceal = 0
+
+
+""""""""""""""""""""
+" vim-markdown
+""""""""""""""""""""
+let g:markdown_fenced_languages = [
+    \ 'css',
+    \ 'coffee',
+    \ 'erb=eruby.html',
+    \ 'go',
+    \ 'html',
+    \ 'javascript',
+    \ 'js=javascript',
+    \ 'json=javascript',
+    \ 'proto',
+    \ 'python',
+    \ 'ruby',
+    \ 'sass',
+    \ 'sh',
+    \ 'xml',
+    \ ]
+
+
+""""""""""""""""""""
+" rust.vim:
+""""""""""""""""""""
+let g:rustfmt_autosave = 1
+
+
+""""""""""""""""""""
+" vim-racer:
+""""""""""""""""""""
+let g:racer_experimental_completer = 1
+
+autocmd FileType rust nmap gd <Plug>(rust-def)
+autocmd FileType rust nmap gs <Plug>(rust-def-split)
+autocmd FileType rust nmap gx <Plug>(rust-def-vertical)
+autocmd FileType rust nmap <leader>gd <Plug>(rust-doc)
