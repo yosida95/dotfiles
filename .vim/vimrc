@@ -113,6 +113,9 @@ Plug 'mhaig/vim-blockdiag-series'
 Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
 
+" Go
+Plug 'mattn/vim-goimports'
+
 " HTML
 Plug 'mattn/emmet-vim'
 
