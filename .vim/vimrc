@@ -405,6 +405,15 @@ let g:markdown_fenced_languages = [
 
 
 """"""""""""""""""""
+" riv.vim:
+""""""""""""""""""""
+let g:riv_file_link_style = 2 " Sphinx
+
+let g:riv_fold_level = 3  " Sections,Lists and Blocks.
+let g:riv_fold_blank = 1  " fold all blank lines, show one if more than one.
+
+
+""""""""""""""""""""
 " rust.vim:
 """"""""""""""""""""
 let g:rustfmt_autosave = 1
