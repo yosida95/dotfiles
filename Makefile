@@ -57,7 +57,7 @@ ${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim:
 
 ${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar:
 	mkdir -p ${HOME}/.local/lib
-	curl -o $@ https://github.com/google/google-java-format/releases/download/${GOOGLE_JAVA_FORMAT}/${GOOGLE_JAVA_FORMAT}-all-deps.jar
+	curl -Lf -o $@ https://github.com/google/google-java-format/releases/download/${GOOGLE_JAVA_FORMAT}/${GOOGLE_JAVA_FORMAT}-all-deps.jar
 
 ${HOME}/.zshenv:
 	ln -sf ${PWD}/.zshenv ${HOME}/
