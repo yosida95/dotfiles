@@ -33,15 +33,6 @@ for prefix in /usr/lib/jvm /opt/gradle \
               /opt/scala /opt/sbt; do
   if [ -d "$prefix" ]; then
     PATH="$(versions $prefix| tr '\0' ':')${PATH}"
-
-    case "$prefix" in
-      "/usr/lib/jvm")
-        export JAVA_HOME="${PATH%%/bin:*}"
-        ;;
-      "/opt/go")
-        export GOROOT="${PATH%%/bin:*}"
-        ;;
-    esac
   fi
 done
 
@@ -49,21 +40,26 @@ done
 for prefix in $HOME/.cargo $HOME/.local $HOME/.rbenv; do
   if [ -d "$prefix/bin" ]; then
     PATH=$prefix/bin:$PATH
-
-    case "$prefix" in
-      "$HOME/.rbenv")
-        eval "$(rbenv init -)"
-        ;;
-    esac
   fi
 done
+
+unset prefix
+unfunction versions
+export PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
   source "${HOME}/.local/google-cloud-sdk/path.zsh.inc";
 fi
 
+if (($+commands[go])); then
+  export GOROOT="${${commands[go]}:h:h}"
+fi
 
-unset prefix
-unfunction versions
-export PATH
+if (($+commands[java])); then
+  export JAVA_HOME="${${commands[java]}:h:h}"
+fi
+
+if (($+commands[rbenv])); then
+  eval "$(rbenv init -)"
+fi

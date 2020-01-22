@@ -9,7 +9,7 @@ if (($+commands[kubectl])); then
 fi
 
 if (($+commands[gcloud])); then
-  for gcloudcompdef in "${$(which gcloud):h:h}/completion.zsh.inc" \
+  for gcloudcompdef in "${${commands[gcloud]}:h:h}/completion.zsh.inc" \
                        "/usr/share/google-cloud-sdk/completion.zsh.inc"; do
     if [[ -f "$gcloudcompdef" && -r "$gcloudcompdef" ]]; then
       gcloud() {
