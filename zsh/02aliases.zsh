@@ -1,7 +1,7 @@
 if ls -f --color >/dev/null 2>&1; then
-    alias ls='ls --color=auto'  # GNU ls
+  alias ls='ls --color=auto'  # GNU ls
 else
-    alias ls='ls -G'  # BSD ls
+  alias ls='ls -G'  # BSD ls
 fi
 alias la='ls -Ah'
 alias ll='ls -hl'

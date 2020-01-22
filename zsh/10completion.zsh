@@ -9,9 +9,9 @@ if (($+commands[kubectl])); then
 fi
 
 if (($+commands[gcloud])); then
-  for gcloudcompdef in "${"$(which gcloud)":h:h}/completion.zsh.inc" "/usr/share/google-cloud-sdk/completion.zsh.inc"; do
-    file="${"$(which gcloud)":h:h}/completion.zsh.inc"
-    if [[ -f "$file" && -r "$file" ]]; then
+  for gcloudcompdef in "${$(which gcloud):h:h}/completion.zsh.inc" \
+                       "/usr/share/google-cloud-sdk/completion.zsh.inc"; do
+    if [[ -f "$gcloudcompdef" && -r "$gcloudcompdef" ]]; then
       gcloud() {
         unset -f "$0"
         . "$gcloudcompdef"
@@ -29,5 +29,3 @@ if (($+commands[helm])); then
     $0 "$@"
   }
 fi
-
-# vim: set filetype=zsh:
