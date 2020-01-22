@@ -9,7 +9,6 @@ all: | ${HOME}/.dircolors \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
 		${HOME}/.zshenv \
-		${HOME}/.zprofile \
 		${HOME}/.zshrc \
 		${HOME}/.zlogin
 
@@ -61,9 +60,6 @@ ${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar:
 
 ${HOME}/.zshenv:
 	ln -sf ${PWD}/.zshenv ${HOME}/
-
-${HOME}/.zprofile:
-	ln -sf ${PWD}/.zprofile ${HOME}/
 
 ${HOME}/.zshrc:
 	ln -sf ${PWD}/.zshrc ${HOME}/
