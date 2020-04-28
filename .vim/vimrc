@@ -257,7 +257,7 @@ let g:vimfiler_ignore_pattern = [
     \ '^\.\(.*[\-_]\)\?cache$',
     \ '^\.git$', '^\.hg$',
     \ '^vendor$',
-    \ '^__pycache__$', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$',
+    \ '^__pycache__$', '\.coverage', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$',
     \ '^wheelhouse$',
     \ '^.DS_Store$']
 
