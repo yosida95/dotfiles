@@ -37,7 +37,7 @@ for prefix in /usr/lib/jvm /opt/gradle \
 done
 
 # Emit "$prefix/bin"
-for prefix in $HOME/.cargo $HOME/.local $HOME/.rbenv; do
+for prefix in /opt/circleci $HOME/.cargo $HOME/.local $HOME/.rbenv; do
   if [ -d "$prefix/bin" ]; then
     PATH=$prefix/bin:$PATH
   fi
