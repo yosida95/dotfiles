@@ -4,6 +4,7 @@ on run argv
   if count of argv is equal to 0 then
     set msg to "Use the following commands:\n"
     set msg to msg & "  info               - Print track info\n"
+    set msg to msg & "  duration           - Print track duration\n"
     set msg to msg & "  playpause          - Play / Pause\n"
     set msg to msg & "  next               - Next track\n"
     set msg to msg & "  previous, prev     - Previous track\n"
@@ -27,6 +28,13 @@ on run argv
         set info to info & "\n Item:   " & name of current item
         set info to info & "\n Duration: " & mytime & " ("& duration of current item & " seconds)"
         set info to info & "\n Now at:   " & nowAt
+      end tell
+      return info
+
+    else if command is equal to "duration" then
+      set info to "Error."
+      tell application "VLC"
+        set info to duration of current item
       end tell
       return info
 
