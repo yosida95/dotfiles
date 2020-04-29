@@ -68,8 +68,6 @@ Plug 'triglav/vim-visual-increment'
 
 Plug 'tpope/vim-surround'
 
-Plug 'jiangmiao/auto-pairs'
-
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
