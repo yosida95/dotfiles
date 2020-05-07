@@ -98,41 +98,104 @@ Plug 'google/vim-codefmt'
   Plug 'google/vim-glaive'
     Plug 'google/vim-maktaba'
 
-Plug 'sheerun/vim-polyglot'
-
 " ABNF
 Plug 'vim-scripts/abnf'
 
 " ActionScript
 Plug 'inside/actionscript.vim'
 
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
+" AppleScript
+Plug 'mityu/vim-applescript'
+
 " blockdiag
 Plug 'mhaig/vim-blockdiag-series'
+
+" Coffee
+Plug 'kchmck/vim-coffee-script'
+
+" CSV
+Plug 'chrisbra/csv.vim'
+
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+
+" Docker
+Plug 'ekalinin/Dockerfile.vim'
 
 " Erlang
 Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-runtime'
+
+" Git
+Plug 'tpope/vim-git'
 
 " Go
 Plug 'mattn/vim-goimports'
 
 " HTML
+Plug 'othree/html5.vim'
 Plug 'mattn/emmet-vim'
 
 " iptables
 Plug 'vim-scripts/iptables'
 
+" Java/Scala
+Plug 'derekwyatt/vim-scala'
+Plug 'tfnico/vim-gradle'
+Plug 'derekwyatt/vim-sbt'
+
 " JavaScript
 Plug 'othree/yajs.vim'
 
+" JSON
+Plug 'elzr/vim-json'
+
+" Lua
+Plug 'tbastos/vim-lua'
+
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
+" NGINX
+Plug 'chr4/nginx.vim'
+
+" PHP
+Plug 'StanAngeloff/php.vim'
+
+" PostgreSQL
+Plug 'lifepillar/pgsql.vim'
+
+" Protobuf
+Plug 'uarun/vim-protobuf'
+
 " Python
+Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/mako.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " reStructuredText
 Plug 'Rykka/riv.vim'
 
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'keith/rspec.vim'
+
 " Rust
+Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
+" systemd
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+
+" tmux
+Plug 'tmux-plugins/vim-tmux'
+
+" TOML
+Plug 'cespare/vim-toml'
 
 " Closure Templates
 Plug 'duganchen/vim-soy'
