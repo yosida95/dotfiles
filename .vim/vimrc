@@ -113,17 +113,17 @@ Plug 'mhaig/vim-blockdiag-series'
 Plug 'kchmck/vim-coffee-script'
 
 " CSV
-Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 
 " Dart
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'dart-lang/dart-vim-plugin', { 'for': ['dart'] }
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
 
 " Erlang
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-compiler', { 'for': ['erlang'] }
+Plug 'vim-erlang/vim-erlang-omnicomplete', { 'for': ['erlang'] }
 Plug 'vim-erlang/vim-erlang-runtime'
 
 " Git
@@ -140,7 +140,7 @@ Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/iptables'
 
 " Java/Scala
-Plug 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 Plug 'tfnico/vim-gradle'
 Plug 'derekwyatt/vim-sbt'
 
@@ -174,14 +174,14 @@ Plug 'vim-scripts/mako.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 
 " reStructuredText
-Plug 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim', { 'for': ['rst'] }
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'keith/rspec.vim'
 
 " Rust
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'racer-rust/vim-racer'
 
 " systemd
