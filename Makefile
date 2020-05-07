@@ -1,7 +1,6 @@
-GOOGLE_JAVA_FORMAT := google-java-format-1.7
+LOCAL_BIN := ${HOME}/.local/bin
 
 .PHONY: all
-
 all: | ${HOME}/.dircolors \
 		${HOME}/.gitconfig \
 		${HOME}/.hgrc \
@@ -37,8 +36,8 @@ ${HOME}/.vim: | \
 		${HOME}/.cache/vimbackup \
 		${HOME}/.cache/vimswap \
 		${HOME}/.cache/vimundo \
-		${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim \
-		${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar
+		${LOCAL_BIN}/checkstyle \
+		${LOCAL_BIN}/google-java-format
 	ln -sf ${PWD}/.vim ${HOME}/
 
 ${HOME}/.cache/vimbackup:
@@ -49,10 +48,6 @@ ${HOME}/.cache/vimswap:
 
 ${HOME}/.cache/vimundo:
 	mkdir -p ${HOME}/.cache/vimundo
-
-${HOME}/.cache/dein/repos/github.com/Shougo/dein.vim:
-	mkdir -p ${HOME}/.cache/dein/repos/github.com/Shougo
-	git clone https://github.com/Shougo/dein.vim.git $@
 
 ${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar:
 	mkdir -p ${HOME}/.local/lib
@@ -66,3 +61,9 @@ ${HOME}/.zshrc:
 
 ${HOME}/.zlogin:
 	ln -sf ${PWD}/.zlogin ${HOME}/
+
+${LOCAL_BIN}/checkstyle:
+	ln -sf ${PWD}/contrib/checkstyle ${LOCAL_BIN}/checkstyle
+
+${LOCAL_BIN}/google-java-format:
+	ln -sf ${PWD}/contrib/google-java-format ${LOCAL_BIN}/google-java-format

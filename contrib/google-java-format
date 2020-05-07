@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu
+
+DIRECTORY="$(dirname $(dirname $0))"
+RELEASE="google-java-format-1.7"
+JARNAME="${RELEASE}-all-deps.jar"
+JARPATH="${DIRECTORY}/lib/${JARNAME}"
+
+if [ ! -f "${JARPATH}" ]; then
+  curl -Lf  -o "${JARPATH}" \
+    "https://github.com/google/google-java-format/releases/download/${RELEASE}/${JARNAME}"
+fi
+
+exec java -jar ${JARPATH} "$@"

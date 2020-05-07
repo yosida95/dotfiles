@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu
+
+DIRECTORY="$(dirname $(dirname $0))"
+RELEASE="checkstyle-8.32"
+JARNAME="${RELEASE}-all.jar"
+JARPATH="${DIRECTORY}/lib/${JARNAME}"
+
+if [ ! -f "${JARPATH}" ]; then
+  curl -Lf  -o "${JARPATH}" \
+    "https://github.com/checkstyle/checkstyle/releases/download/${RELEASE}/${JARNAME}"
+fi
+
+exec java -jar "${JARPATH}" "$@"
