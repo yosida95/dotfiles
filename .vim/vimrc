@@ -94,10 +94,6 @@ Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/async.vim'
   Plug 'mattn/vim-lsp-settings'
 
-Plug 'google/vim-codefmt'
-  Plug 'google/vim-glaive'
-    Plug 'google/vim-maktaba'
-
 " ABNF
 Plug 'vim-scripts/abnf'
 
@@ -370,21 +366,6 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 
 """"""""""""""""""""
-" vim-glaive:
-""""""""""""""""""""
-call glaive#Install()
-
-
-""""""""""""""""""""
-" vim-codefmt:
-""""""""""""""""""""
-autocmd FileType java AutoFormatBuffer google-java-format
-
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /home/yosida95/.local/lib/google-java-format-1.7-all-deps.jar"
-
-
-""""""""""""""""""""
 " ale:
 """"""""""""""""""""
 let g:ale_completion_enabled = 0
@@ -393,6 +374,8 @@ let g:ale_disable_lsp = 1
 let g:ale_echo_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_cursor_detail = 0
+
+let g:ale_fix_on_save = 1
 
 " Not run lint on opening files.
 let g:ale_lint_on_enter = 0
