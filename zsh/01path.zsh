@@ -24,9 +24,9 @@ for prefix in /opt/tmux /opt/vim; do
 done
 
 # Emit all installed versions
-for prefix in /usr/lib/jvm /opt/gradle \
-              /opt/erlang \
+for prefix in /opt/erlang \
               /opt/go \
+              /opt/gradle \
               /opt/node \
               /opt/protobuf \
               /opt/python \
