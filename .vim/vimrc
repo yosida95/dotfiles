@@ -170,7 +170,7 @@ Plug 'uarun/vim-protobuf'
 
 " Python
 Plug 'vim-python/python-syntax'
-Plug 'vim-scripts/mako.vim'
+Plug 'sophacles/vim-bundle-mako'
 Plug 'Glench/Vim-Jinja2-Syntax'
 
 " reStructuredText
