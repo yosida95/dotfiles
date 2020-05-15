@@ -17,20 +17,20 @@ esac
 runtime_versions() { find -L $1 -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':' }
 
 # Emit only the latest version
-for prefix in /opt/tmux /opt/vim; do
+for prefix in /opt/erlang \
+              /opt/go \
+              /opt/gradle \
+              /opt/node \
+              /opt/protobuf \
+              /opt/scala /opt/sbt \
+              /opt/tmux /opt/vim; do
   if [ -d "$prefix" ]; then
     PATH="$(runtime_versions $prefix| cut -d ':' -f 1):${PATH}"
   fi
 done
 
 # Emit all installed versions
-for prefix in /opt/erlang \
-              /opt/go \
-              /opt/gradle \
-              /opt/node \
-              /opt/protobuf \
-              /opt/python \
-              /opt/scala /opt/sbt; do
+for prefix in /opt/python; do
   if [ -d "$prefix" ]; then
     PATH="$(runtime_versions $prefix)${PATH}"
   fi
