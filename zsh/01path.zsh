@@ -14,12 +14,12 @@ case "$(uname)" in
     ;;
 esac
 
-versions() { find -L $1 -maxdepth 2 -name bin -type d -print0| sort -Vrz }
+runtime_versions() { find -L $1 -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':' }
 
 # Emit only the latest version
 for prefix in /opt/tmux /opt/vim; do
   if [ -d "$prefix" ]; then
-    PATH="$(versions $prefix| cut -d '' -f 1):${PATH}"
+    PATH="$(runtime_versions $prefix| cut -d ':' -f 1):${PATH}"
   fi
 done
 
@@ -32,7 +32,7 @@ for prefix in /opt/erlang \
               /opt/python \
               /opt/scala /opt/sbt; do
   if [ -d "$prefix" ]; then
-    PATH="$(versions $prefix| tr '\0' ':')${PATH}"
+    PATH="$(runtime_versions $prefix)${PATH}"
   fi
 done
 
@@ -44,7 +44,6 @@ for prefix in /opt/circleci $HOME/.cargo $HOME/.local $HOME/.rbenv; do
 done
 
 unset prefix
-unfunction versions
 export PATH
 
 # The next line updates PATH for the Google Cloud SDK.
