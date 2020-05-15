@@ -57,7 +57,16 @@ if (($+commands[go])); then
 fi
 
 if (($+commands[java])); then
-  export JAVA_HOME="${${commands[java]}:h:h}"
+  case "$(uname)" in
+    "Darwin")
+      if [ -x /usr/libexec/java_home ]; then
+        export JAVA_HOME="$(/usr/libexec/java_home)"
+      fi
+      ;;
+    *)
+      export JAVA_HOME="${$(readlink -f ${commands[java]}):h:h}"
+      ;;
+  esac
 fi
 
 if (($+commands[rbenv])); then
