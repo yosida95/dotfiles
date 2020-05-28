@@ -9,4 +9,8 @@ unset config
 # Load custom shell functions
 autoload -U $DOTFILES/zsh/_functions/*(:t)
 
+if [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 gopath $HOME/proj
