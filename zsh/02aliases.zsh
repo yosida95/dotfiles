@@ -14,5 +14,5 @@ alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
 alias urlsafe_b64encode="base64| tr '+' '-'| tr '/' '_'"
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  alias vlc="osascript $(dirname $(dirname $0))/macos/vlc.scpt"
+  alias vlc="osascript ${DOTFILES}/macos/vlc.scpt"
 fi
