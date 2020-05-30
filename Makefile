@@ -8,8 +8,7 @@ all: | ${HOME}/.dircolors \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
 		${HOME}/.zshenv \
-		${HOME}/.zshrc \
-		${HOME}/.zlogin
+		${HOME}/.zshrc
 
 ${HOME}/.dircolors:
 	ln -sf ${PWD}/.dircolors ${HOME}/
@@ -58,9 +57,6 @@ ${HOME}/.zshenv:
 
 ${HOME}/.zshrc:
 	ln -sf ${PWD}/.zshrc ${HOME}/
-
-${HOME}/.zlogin:
-	ln -sf ${PWD}/.zlogin ${HOME}/
 
 ${LOCAL_BIN}/checkstyle:
 	ln -sf ${PWD}/contrib/checkstyle ${LOCAL_BIN}/checkstyle
