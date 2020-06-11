@@ -12,6 +12,7 @@
 	lineNumber = true
 [push]
 	default = simple
+	followTags = true
 [user]
 	useConfigOnly = true
 	name = Kohei YOSHIDA
