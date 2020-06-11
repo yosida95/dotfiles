@@ -59,7 +59,9 @@ ${HOME}/.zshrc:
 	ln -sf ${PWD}/.zshrc ${HOME}/
 
 ${LOCAL_BIN}/checkstyle:
+	mkdir -p ${LOCAL_BIN}
 	ln -sf ${PWD}/contrib/checkstyle ${LOCAL_BIN}/checkstyle
 
 ${LOCAL_BIN}/google-java-format:
+	mkdir -p ${LOCAL_BIN}
 	ln -sf ${PWD}/contrib/google-java-format ${LOCAL_BIN}/google-java-format
