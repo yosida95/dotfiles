@@ -366,6 +366,17 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 
 """"""""""""""""""""
+" mattn/vim-lsp-settings:
+""""""""""""""""""""
+
+let g:lsp_settings = {
+\   'clangd': {'cmd': ['clangd-8']},
+\}
+
+let g:lsp_settings_filetype_python = 'pyls-ms'
+
+
+""""""""""""""""""""
 " ale:
 """"""""""""""""""""
 let g:ale_completion_enabled = 0
