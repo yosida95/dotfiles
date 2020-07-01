@@ -6,7 +6,9 @@ fi
 
 case "$(uname)" in
   "Darwin")
-    for prefix in /usr/local/opt/coreutils/libexec/gnubin; do
+    for prefix in /usr/local/opt/coreutils/libexec/gnubin \
+                  /usr/local/opt/gnu-sed/libexec/gnubin \
+                  /usr/local/opt/grep/libexec/gnubin; do
       if [ -d "$prefix" ]; then
         PATH="${prefix}:${PATH}"
       fi
