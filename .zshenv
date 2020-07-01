@@ -30,3 +30,5 @@ export DEBFULLNAME="Kohei YOSHIDA"
 
 # https://github.com/motemen/ghq
 export GHQ_ROOT=$HOME/proj/src
+
+export GOPRIVATE=github.com/yosida95,github.com/GehirnInc
