@@ -1,8 +1,10 @@
 LOCAL_BIN := ${HOME}/.local/bin
+XDG_CONFIG_HOME ?= ${HOME}/.config
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
-		${HOME}/.gitconfig \
+		${XDG_CONFIG_HOME}/git/config \
+		${XDG_CONFIG_HOME}/git/ignore \
 		${HOME}/.hgrc \
 		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
@@ -13,11 +15,14 @@ all: | ${HOME}/.dircolors \
 ${HOME}/.dircolors:
 	ln -sf ${PWD}/.dircolors ${HOME}/
 
-${HOME}/.gitconfig: | ${PWD}/.gitignore_global
-	ln -sf ${PWD}/.gitconfig ${HOME}/
+${XDG_CONFIG_HOME}/git:
+	mkdir -p ${XDG_CONFIG_HOME}/git
 
-${HOME}/.gitignore_global:
-	ln -sf ${PWD}/.gitignore_global ${HOME}/
+${XDG_CONFIG_HOME}/git/config: | ${XDG_CONFIG_HOME}/git
+	ln -s ${PWD}/git/config ${XDG_CONFIG_HOME}/git/config
+
+${XDG_CONFIG_HOME}/git/ignore: | ${XDG_CONFIG_HOME}/git
+	ln -s ${PWD}/git/ignore ${XDG_CONFIG_HOME}/git/ignore
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
 	ln -sf ${PWD}/.hgrc ${HOME}/
