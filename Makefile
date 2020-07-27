@@ -6,7 +6,6 @@ all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
 		${XDG_CONFIG_HOME}/git/ignore \
 		${HOME}/.hgrc \
-		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
 		${HOME}/.zshenv \
@@ -26,9 +25,6 @@ ${XDG_CONFIG_HOME}/git/ignore: | ${XDG_CONFIG_HOME}/git
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
 	ln -sf ${PWD}/.hgrc ${HOME}/
-
-${HOME}/.lessfilter:
-	ln -sf ${PWD}/.lessfilter ${HOME}/
 
 ${HOME}/.hgignore:
 	ln -sf ${PWD}/.hgignore ${HOME}/

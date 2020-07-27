@@ -1,3 +1,5 @@
+DOTFILES="${$(print -P %N):A:h}"
+
 export LANG=en_US.UTF-8
 export LANGUAGE=$LANG
 export LC_ALL=$LANG
@@ -12,11 +14,7 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 export LESS='-giMR'
 export LESSCHARSET=utf-8
-if (($+commands[lesspipe])); then
-  export LESSOPEN="| lesspipe %s"
-elif (($+commands[lesspipe.sh])); then
-  export LESSOPEN="| lesspipe.sh %s"
-fi
+export LESSOPEN="| ${DOTFILES}/lesspipe.sh %s"
 
 # EDITOR
 export EDITOR='vim'
