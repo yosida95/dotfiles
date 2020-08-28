@@ -1,4 +1,10 @@
-autoload -U compinit && compinit
+autoload -Uz +X compinit && compinit
+
+bashcompdef=/usr/share/bash-completion/completions
+if [ -d "$bashcompdef" ] &&  [ -f "$bashcompdef/git" ]; then
+  autoload -Uz +X bashcompinit && bashcompinit
+  . "$bashcompdef/git" >/dev/null 2>&1
+fi
 
 if (($+commands[kubectl])); then
   kubectl() {
