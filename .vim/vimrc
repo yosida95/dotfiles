@@ -83,7 +83,7 @@ Plug 'thinca/vim-quickrun'
 
 Plug 'dense-analysis/ale'
 
-Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete.vim', { 'tag': 'v2.1.0' }
   Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'yami-beta/asyncomplete-omni.vim'
@@ -387,16 +387,16 @@ let g:ale_yaml_yamllint_options='-d "{extends: default, rules: {line-length: dis
 """"""""""""""""""""
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
     \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['unite'],
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['unite'],
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
 
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
     \ 'name': 'omni',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['c', 'cpp', 'html'],
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['c', 'cpp', 'html'],
     \ 'completor': function('asyncomplete#sources#omni#completor')
     \  }))
 
