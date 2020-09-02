@@ -332,18 +332,6 @@ let g:quickrun_config = {
 
 
 """"""""""""""""""""
-" tagbar:
-""""""""""""""""""""
-let g:tagbar_status_func = 'TagbarStatusFunc'
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-endfunction
-
-nmap <F8> :TagbarToggle<CR>
-
-
-""""""""""""""""""""
 " prabirshrestha/vim-lsp:
 """"""""""""""""""""
 let g:lsp_diagnostics_enabled = 0
