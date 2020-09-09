@@ -413,6 +413,9 @@ let g:go_gopls_options = [ '-remote=auto' ]
 let g:go_code_completion_enabled = 0
 let g:go_def_mapping_enabled = 0
 
+let g:go_doc_popup_window = 1
+" let g:go_doc_max_height = 50
+
 let g:go_template_autocreate = 1
 let g:go_template_use_pkg = 1
 
