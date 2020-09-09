@@ -269,7 +269,7 @@ set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:$,nbsp:%
 
 " messages
-set shortmess=TI
+set shortmess=tcI
 set noshowmode
 
 " cursorline
