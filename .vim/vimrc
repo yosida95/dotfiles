@@ -237,7 +237,7 @@ set matchtime=3 " 0.3 secs
 " set matchpairs& matchpairs+=<:>
 
 set backspace=indent,eol,start
-set completeopt=menu,preview
+set completeopt=menuone,preview,noinsert,noselect
 set virtualedit=block
 
 set autowrite
