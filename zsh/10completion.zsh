@@ -35,3 +35,11 @@ if (($+commands[helm])); then
     $0 "$@"
   }
 fi
+
+if (($+commands[helm3])); then
+  helm3() {
+    unset -f "$0"
+    . <(helm3 completion zsh)
+    $0 "$@"
+  }
+fi
