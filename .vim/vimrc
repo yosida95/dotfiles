@@ -149,6 +149,7 @@ Plug 'othree/yajs.vim'
 
 " JSON
 Plug 'elzr/vim-json'
+Plug 'GutenYe/json5.vim'
 
 " Lua
 Plug 'tbastos/vim-lua'
