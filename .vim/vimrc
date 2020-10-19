@@ -145,7 +145,7 @@ Plug 'tfnico/vim-gradle'
 Plug 'derekwyatt/vim-sbt'
 
 " JavaScript
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 
 " JSON
 Plug 'elzr/vim-json'
