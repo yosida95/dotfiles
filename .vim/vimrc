@@ -68,6 +68,9 @@ Plug 'triglav/vim-visual-increment'
 
 Plug 'tpope/vim-surround'
 
+Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'mattn/ctrlp-matchfuzzy'
+
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
@@ -299,6 +302,29 @@ noremap <C-F> :Unite file file/new<CR>
 autocmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+
+""""""""""""""""""""
+" ctrlpvim/ctrlp.vim
+""""""""""""""""""""
+if has('patch-8.2-1665')
+  let g:ctrlp_match_func = {'match': 'ctrlp_matchfuzzy#matcher'}
+endif
+
+let g:ctrlp_match_window = 'top,order:btt,min:15,max:15'
+
+" determine the starting directory in order of the project root of the current
+" directory, the directory of the current file.
+let g:ctrlp_working_path_mode = 'ra'
+" include the current file in the search result.
+let g:ctrlp_match_current_file = '1'
+" Exit on <BS>.
+let g:ctrlp_brief_prompt = '1'
+" Open the created file in the current window.
+let g:ctrlp_open_new_file = 'r'
+
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = '\v(/((\.(git|hg|(.+[\-_])?cache|eggs|tox|venv|DS_Store)|wheelhouse|__pycache__|node_modules|vendor)$|\.coverage))|\.(pyc|egg-info)$'
 
 
 """"""""""""""""""""
