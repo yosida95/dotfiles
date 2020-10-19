@@ -8,7 +8,7 @@ function git () {
 
   case $subc in
     log)
-      command git "$subc" --stat "$@"
+      command git "$subc" --pretty=fuller --stat "$@"
       ;;
     *)
       command git "$subc" "$@"
