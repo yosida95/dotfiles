@@ -336,8 +336,8 @@ let g:vimfiler_ignore_pattern = [
     \ '^\.\(.*[\-_]\)\?cache$',
     \ '^\.git$', '^\.hg$',
     \ '^vendor$',
-    \ '^__pycache__$', '\.coverage', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$',
-    \ '^wheelhouse$',
+    \ '^node_modules$',
+    \ '^__pycache__$', '\.coverage', '^\.eggs$', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$', '^wheelhouse$',
     \ '^.DS_Store$']
 
 nnoremap <leader>e :VimFilerExplorer -winwidth=40<CR>
