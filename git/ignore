@@ -1,3 +1,7 @@
+# .vimrc.local
+.vimrc.local
+
+
 # https://raw.githubusercontent.com/github/gitignore/29bd7031a7e33fcb87a20fde393fcb3323a17232/Global/VirtualEnv.gitignore
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
