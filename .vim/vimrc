@@ -77,8 +77,7 @@ let g:echodoc_enable_at_startup = 1
 Plug 'mattn/sonictemplate-vim'
 
 Plug 'Shougo/unite.vim'
-
-Plug 'Shougo/vimfiler.vim'
+  Plug 'Shougo/vimfiler.vim'
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
@@ -295,7 +294,6 @@ let g:unite_winheight = 15
 let g:unite_enable_auto_select = 0
 let g:unite_force_overwrite_statusline = 0
 
-nmap <buffer> <ESC> <Plug>(unite_exit)
 noremap <C-B> :Unite buffer<CR>
 noremap <C-F> :Unite file file/new<CR>
 
@@ -339,6 +337,10 @@ let g:vimfiler_ignore_pattern = [
     \ '^node_modules$',
     \ '^__pycache__$', '\.coverage', '^\.eggs$', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$', '^wheelhouse$',
     \ '^.DS_Store$']
+
+call vimfiler#custom#profile('default', 'context', {
+    \   'safe': 0,
+    \ })
 
 nnoremap <leader>e :VimFilerExplorer -winwidth=40<CR>
 
