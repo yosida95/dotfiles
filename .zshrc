@@ -30,3 +30,5 @@ if [ -z "$TMUX" ] && (($+commands[tmux])); then
   fi
   unset choice
 fi
+
+autoload -U +X bashcompinit && bashcompinit
