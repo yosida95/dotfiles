@@ -335,8 +335,11 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_current_file = '1'
 " Exit on <BS>.
 let g:ctrlp_brief_prompt = '1'
-" Open the created file in the current window.
+" Open the newly created file in the current window.
 let g:ctrlp_open_new_file = 'r'
+" When opening a file, move to the window in another tab with <C-t> if the file
+" is already opening in that window instead of newly opening it.
+let g:ctrlp_switch_buffer = 't'
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = '\v(/((\.(git|hg|(.+[\-_])?cache|eggs|tox|venv|DS_Store)|wheelhouse|__pycache__|node_modules|vendor)$|\.coverage))|\.(pyc|egg-info)$'
