@@ -389,6 +389,9 @@ highlight lspReference ctermfg=lightgreen
 
 function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gd <plug>(lsp-definition)
+    " https://github.com/prabirshrestha/vim-lsp/pull/776#issue-396286634
+    nmap <buffer> gs :rightbelow LspDefinition<CR>
+    nmap <buffer> gv :rightbelow vertical LspDefinition<CR>
     nmap <buffer> <f2> <plug>(lsp-rename)
 endfunction
 
@@ -534,5 +537,5 @@ let g:racer_experimental_completer = 1
 
 autocmd FileType rust nmap gd <Plug>(rust-def)
 autocmd FileType rust nmap gs <Plug>(rust-def-split)
-autocmd FileType rust nmap gx <Plug>(rust-def-vertical)
+autocmd FileType rust nmap gv <Plug>(rust-def-vertical)
 autocmd FileType rust nmap <leader>gd <Plug>(rust-doc)
