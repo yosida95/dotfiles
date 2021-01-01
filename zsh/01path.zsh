@@ -4,54 +4,64 @@ else
   PATH=$_ZSHRC_ORIG_PATH
 fi
 
+# deduplicate $PATH (keep the first occurrence)
+typeset -U PATH path
+export PATH
+
 case "$(uname)" in
   "Darwin")
-    for prefix in /usr/local/opt/coreutils/libexec/gnubin \
-                  /usr/local/opt/gnu-sed/libexec/gnubin \
-                  /usr/local/opt/grep/libexec/gnubin; do
-      if [ -d "$prefix" ]; then
-        PATH="${prefix}:${PATH}"
-      fi
-    done
+    path=(
+      /usr/local/opt/coreutils/libexec/gnubin(N-/)
+      /usr/local/opt/gnu-sed/libexec/gnubin(N-/)
+      /usr/local/opt/grep/libexec/gnubin(N-/)
+      $path
+    )
     ;;
 esac
 
-runtime_versions() { find -L $1 -maxdepth 2 -name bin -type d -print0| sort -Vrz| tr '\0' ':' }
+runtime_versions() {
+  find -L $1 -maxdepth 2 -name bin -type d -print0\
+    | sort -Vrz\
+    | tr '\0' ':'
+}
 
-# Emit only the latest version
-for prefix in /opt/erlang \
-              /opt/go \
-              /opt/gradle \
-              /opt/node \
-              /opt/protobuf \
-              /opt/scala /opt/sbt \
-              /opt/tmux /opt/vim; do
-  if [ -d "$prefix" ]; then
-    PATH="$(runtime_versions $prefix| cut -d ':' -f 1):${PATH}"
-  fi
-done
+() {
+  local prefix
 
-# Emit all installed versions
-for prefix in /opt/python; do
-  if [ -d "$prefix" ]; then
-    PATH="$(runtime_versions $prefix)${PATH}"
-  fi
-done
+  # Emit only the latest version
+  for prefix in /opt/erlang \
+                /opt/go \
+                /opt/gradle \
+                /opt/node \
+                /opt/protobuf \
+                /opt/scala /opt/sbt \
+                /opt/tmux \
+                /opt/vim; do
+    if [ -d "$prefix" ]; then
+      PATH="$(runtime_versions $prefix| cut -d ':' -f 1):${PATH}"
+    fi
+  done
 
-# Emit "$prefix/bin"
-for prefix in /opt/circleci $HOME/.cargo $HOME/.local $HOME/.rbenv; do
-  if [ -d "$prefix/bin" ]; then
-    PATH=$prefix/bin:$PATH
-  fi
-done
-
-unset prefix
-export PATH
+  # Emit all installed versions
+  for prefix in /opt/python; do
+    if [ -d "$prefix" ]; then
+      PATH="$(runtime_versions $prefix)${PATH}"
+    fi
+  done
+}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
   source "${HOME}/.local/google-cloud-sdk/path.zsh.inc";
 fi
+
+path=(
+  /opt/circleci(N-/)
+  $HOME/.cargo(N-/)
+  $HOME/.local(N-/)
+  $HOME/.rbenv(N-/)
+  $path
+)
 
 if (($+commands[go])); then
   export GOROOT="${${commands[go]}:h:h}"
