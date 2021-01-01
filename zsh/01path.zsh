@@ -56,10 +56,11 @@ if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
 fi
 
 path=(
-  /opt/circleci(N-/)
-  $HOME/.cargo(N-/)
-  $HOME/.local(N-/)
-  $HOME/.rbenv(N-/)
+  $HOME/.local/bin(N-/)
+
+  /opt/circleci/bin(N-/)
+  $HOME/.cargo/bin(N-/)
+  $HOME/.rbenv/bin(N-/)
   $path
 )
 
