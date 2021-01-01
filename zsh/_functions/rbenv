@@ -1,0 +1,9 @@
+rbenv() {
+  unset -f "$0"
+  if (($+commands[rbenv])); then
+    eval "$(rbenv init -)"
+  fi
+  $0 "$@"
+}
+
+# vim: set filetype=zsh:

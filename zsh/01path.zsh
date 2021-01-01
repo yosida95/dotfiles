@@ -79,7 +79,3 @@ if (($+commands[java])); then
       ;;
   esac
 fi
-
-if (($+commands[rbenv])); then
-  eval "$(rbenv init -)"
-fi
