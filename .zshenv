@@ -22,6 +22,10 @@ export EDITOR='vim'
 # Mercurial
 export HGENCODING='utf-8'
 
+# Go
+GOPATH=$HOME/proj
+GOBIN=$HOME/proj/bin
+
 # debuild
 export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
 export DEBFULLNAME="Kohei YOSHIDA"
