@@ -1,0 +1,9 @@
+helm() {
+  unset -f "$0"
+  if (($+commands[helm3])); then
+    . <(helm completion zsh)
+  fi
+  $0 "$@"
+}
+
+# vim: set filetype=zsh:
