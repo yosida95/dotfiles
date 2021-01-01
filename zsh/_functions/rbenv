@@ -1,7 +1,7 @@
 rbenv() {
   unset -f "$0"
   if (($+commands[rbenv])); then
-    eval "$(rbenv init -)"
+    . <(rbenv init -)
   fi
   $0 "$@"
 }

@@ -5,9 +5,9 @@ export LANGUAGE=$LANG
 export LC_ALL=$LANG
 
 if (($+commands[dircolors])); then
-    eval "$(dircolors $HOME/.dircolors)"
+  . <(dircolors $HOME/.dircolors)
 elif (($+commands[gdircolors])); then
-    eval "$(gdircolors $HOME/.dircolors)"
+  . <(gdircolors $HOME/.dircolors)
 fi
 export ZLS_COLORS="$LS_COLORS"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
