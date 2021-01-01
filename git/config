@@ -16,3 +16,5 @@
 	name = Kohei YOSHIDA
 [pull]
 	ff = only
+[format]
+	pretty = fuller
