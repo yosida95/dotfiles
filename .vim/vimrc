@@ -314,7 +314,6 @@ let g:unite_force_overwrite_statusline = 0
 " noremap <C-B> :Unite buffer<CR>
 " noremap <C-F> :Unite file file/new<CR>
 
-autocmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
