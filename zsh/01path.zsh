@@ -56,6 +56,7 @@ if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
 fi
 
 path=(
+  $HOME/proj/bin(N-/)
   $HOME/.local/bin(N-/)
 
   /opt/circleci/bin(N-/)
