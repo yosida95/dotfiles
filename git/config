@@ -18,3 +18,5 @@
 	ff = only
 [format]
 	pretty = fuller
+[fetch]
+	prune = true
