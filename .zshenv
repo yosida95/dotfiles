@@ -23,8 +23,8 @@ export EDITOR='vim'
 export HGENCODING='utf-8'
 
 # Go
-GOPATH=$HOME/proj
-GOBIN=$HOME/proj/bin
+export GOPATH=$HOME/proj
+export GOBIN=$GOPATH/bin
 
 # debuild
 export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
