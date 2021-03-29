@@ -1,11 +1,5 @@
 autoload -Uz +X compinit && compinit
 
-bashcompdef=/usr/share/bash-completion/completions
-if [ -r "$bashcompdef/git" ]; then
-  autoload -Uz +X bashcompinit && bashcompinit
-  . "$bashcompdef/git" >/dev/null 2>&1
-fi
-
 if (($+commands[gcloud])); then
   () {
     local gcloudcompdef

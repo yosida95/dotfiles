@@ -1,2 +1,7 @@
 /.vim/autoload/plug.vim*
+
 *.zwc
+/zsh/completion/_git
+/zsh/completion/git
+/zsh/completion/_ghq
+/zsh/completion/ghq
