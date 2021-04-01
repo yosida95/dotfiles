@@ -55,10 +55,6 @@ ${HOME}/.cache/vimswap:
 ${HOME}/.cache/vimundo:
 	mkdir -p ${HOME}/.cache/vimundo
 
-${HOME}/.local/lib/${GOOGLE_JAVA_FORMAT}-all-deps.jar:
-	mkdir -p ${HOME}/.local/lib
-	curl -Lf -o $@ https://github.com/google/google-java-format/releases/download/${GOOGLE_JAVA_FORMAT}/${GOOGLE_JAVA_FORMAT}-all-deps.jar
-
 ${HOME}/.zshenv:
 	ln -sf ${PWD}/.zshenv ${HOME}/
 
