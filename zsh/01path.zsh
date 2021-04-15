@@ -11,9 +11,9 @@ export PATH
 case "$(uname)" in
   "Darwin")
     path=(
-      /usr/local/opt/coreutils/libexec/gnubin(N-/)
-      /usr/local/opt/gnu-sed/libexec/gnubin(N-/)
-      /usr/local/opt/grep/libexec/gnubin(N-/)
+      /usr/local/opt/coreutils/libexec/gnubin(N-/:a)
+      /usr/local/opt/gnu-sed/libexec/gnubin(N-/:a)
+      /usr/local/opt/grep/libexec/gnubin(N-/:a)
       $path
     )
     ;;
@@ -56,12 +56,12 @@ if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
 fi
 
 path=(
-  $HOME/proj/bin(N-/)
-  $HOME/.local/bin(N-/)
+  $HOME/proj/bin(N-/:a)
+  $HOME/.local/bin(N-/:a)
 
-  /opt/circleci/bin(N-/)
-  $HOME/.cargo/bin(N-/)
-  $HOME/.rbenv/bin(N-/)
+  /opt/circleci/bin(N-/:a)
+  $HOME/.cargo/bin(N-/:a)
+  $HOME/.rbenv/bin(N-/:a)
   $path
 )
 

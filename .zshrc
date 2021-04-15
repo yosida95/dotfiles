@@ -3,7 +3,7 @@ typeset -U FPATH fpath
 fpath=(
   ${DOTFILES}/zsh/completion
   ${DOTFILES}/zsh/_functions
-  /usr/local/share/zsh/site-functions(N-/)
+  /usr/local/share/zsh/site-functions(N-/:a)
   $fpath
 )
 
