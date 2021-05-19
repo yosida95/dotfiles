@@ -7,6 +7,9 @@ GIT_COMP_DIR := zsh/completion/git/${GIT_VERSION}
 GHQ_VERSION := v$(shell ghq --version| cut -d ' ' -f 3)
 GHQ_COMP_DIR := zsh/completion/ghq/${GHQ_VERSION}
 
+KUBECTL_VERSION := $(shell kubectl version --client --output json| jq -r .clientVersion.gitVersion)
+KUBECTL_COMP_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
+
 .PHONY: all
 all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
@@ -58,7 +61,7 @@ ${HOME}/.cache/vimundo:
 ${HOME}/.zshenv:
 	ln -sf ${PWD}/.zshenv ${HOME}/
 
-${HOME}/.zshrc: | ${GIT_COMP_DIR}/git-completion.zsh ${GHQ_COMP_DIR}/_ghq
+${HOME}/.zshrc: | ${GIT_COMP_DIR}/git-completion.zsh ${GHQ_COMP_DIR}/_ghq ${KUBECTL_COMP_DIR}/_kubectl
 	ln -sf ${PWD}/.zshrc ${HOME}/
 
 ${GIT_COMP_DIR}:
@@ -83,6 +86,13 @@ ${GHQ_COMP_DIR}/_ghq: | ${GHQ_COMP_DIR}
 		-o ${GHQ_COMP_DIR}/_ghq \
 		https://raw.githubusercontent.com/x-motemen/ghq/${GHQ_VERSION}/misc/zsh/_ghq
 	ln -sf ghq/${GHQ_VERSION}/_ghq zsh/completion/_ghq
+
+${KUBECTL_COMP_DIR}:
+	mkdir -p ${KUBECTL_COMP_DIR}
+
+${KUBECTL_COMP_DIR}/_kubectl: | ${KUBECTL_COMP_DIR}
+	kubectl completion zsh > ${KUBECTL_COMP_DIR}/_kubectl
+	ln -sf kubectl/${KUBECTL_VERSION}/_kubectl zsh/completion/_kubectl
 
 ${LOCAL_BIN}/checkstyle:
 	mkdir -p ${LOCAL_BIN}

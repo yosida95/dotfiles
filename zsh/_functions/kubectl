@@ -1,9 +1,0 @@
-kubectl() {
-  unset -f "$0"
-    if (($+commands[kubectl])); then
-      . <(kubectl completion zsh)
-    fi
-    $0 "$@"
-}
-
-# vim: set filetype=zsh:
