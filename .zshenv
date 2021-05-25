@@ -25,12 +25,8 @@ export HGENCODING='utf-8'
 # Go
 export GOPATH=$HOME/proj
 export GOBIN=$GOPATH/bin
+export GOPRIVATE=github.com/yosida95,github.com/GehirnInc
 
 # debuild
 export DEBEMAIL="kohei.yoshida@gehirn.co.jp"
 export DEBFULLNAME="Kohei YOSHIDA"
-
-# https://github.com/motemen/ghq
-export GHQ_ROOT=$HOME/proj/src
-
-export GOPRIVATE=github.com/yosida95,github.com/GehirnInc

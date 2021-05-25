@@ -21,3 +21,5 @@
 	pretty = fuller
 [fetch]
 	prune = true
+[ghq]
+	root = ~/proj/src
