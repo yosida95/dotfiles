@@ -21,25 +21,24 @@ all: | ${HOME}/.dircolors \
 		${HOME}/.zshrc
 
 ${HOME}/.dircolors:
-	ln -sf ${PWD}/.dircolors ${HOME}/
+	ln -sr .dircolors $@
 
-${XDG_CONFIG_HOME}/git:
-	mkdir -p ${XDG_CONFIG_HOME}/git
+${XDG_CONFIG_HOME}/git/config:
+	mkdir -p $(@D)
+	ln -sr git/config $@
 
-${XDG_CONFIG_HOME}/git/config: | ${XDG_CONFIG_HOME}/git
-	ln -s ${PWD}/git/config ${XDG_CONFIG_HOME}/git/config
-
-${XDG_CONFIG_HOME}/git/ignore: | ${XDG_CONFIG_HOME}/git
-	ln -s ${PWD}/git/ignore ${XDG_CONFIG_HOME}/git/ignore
+${XDG_CONFIG_HOME}/git/ignore:
+	mkdir -p $(@D)
+	ln -sr git/ignore $@
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
-	ln -sf ${PWD}/.hgrc ${HOME}/
+	ln -sr .hgrc $@
 
 ${HOME}/.hgignore:
-	ln -sf ${PWD}/.hgignore ${HOME}/
+	ln -sr .hgignore $@
 
 ${HOME}/.tmux.conf:
-	ln -sf ${PWD}/.tmux.conf ${HOME}/
+	ln -sr .tmux.conf $@
 
 ${HOME}/.vim: | \
 		${HOME}/.cache/vimbackup \
@@ -47,58 +46,53 @@ ${HOME}/.vim: | \
 		${HOME}/.cache/vimundo \
 		${LOCAL_BIN}/checkstyle \
 		${LOCAL_BIN}/google-java-format
-	ln -sf ${PWD}/.vim ${HOME}/
+	ln -sr .vim $@
 
 ${HOME}/.cache/vimbackup:
-	mkdir -p ${HOME}/.cache/vimbackup
+	mkdir -p $@
 
 ${HOME}/.cache/vimswap:
-	mkdir -p ${HOME}/.cache/vimswap
+	mkdir -p $@
 
 ${HOME}/.cache/vimundo:
-	mkdir -p ${HOME}/.cache/vimundo
+	mkdir -p $@
 
 ${HOME}/.zshenv:
-	ln -sf ${PWD}/.zshenv ${HOME}/
+	ln -sr ./.zshenv $@
 
 ${HOME}/.zshrc: | ${GIT_COMP_DIR}/git-completion.zsh ${GHQ_COMP_DIR}/_ghq ${KUBECTL_COMP_DIR}/_kubectl
-	ln -sf ${PWD}/.zshrc ${HOME}/
+	ln -sr ./.zshrc $@
 
-${GIT_COMP_DIR}:
-	mkdir -p ${GIT_COMP_DIR}
-
-${GIT_COMP_DIR}/git-completion.zsh: | ${GIT_COMP_DIR} ${GIT_COMP_DIR}/git-completion.bash
+${GIT_COMP_DIR}/git-completion.zsh: ${GIT_COMP_DIR}/git-completion.bash
+	mkdir -p $(@D)
 	curl -L \
-		-o ${GIT_COMP_DIR}/git-completion.zsh \
+		-o $@ \
 		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/git-completion.zsh
-	ln -sf git/${GIT_VERSION}/git-completion.zsh zsh/completion/_git
+	ln -srf $@ zsh/completion/_git
 
-${GIT_COMP_DIR}/git-completion.bash: | ${GIT_COMP_DIR}
+${GIT_COMP_DIR}/git-completion.bash:
+	mkdir -p $(@D)
 	curl -L \
-		-o ${GIT_COMP_DIR}/git-completion.bash \
+		-o $@ \
 		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/git-completion.bash
-	ln -sf git/${GIT_VERSION}/git-completion.bash zsh/completion/git-completion.bash
+	ln -srf $@ zsh/completion/git-completion.bash
 
-${GHQ_COMP_DIR}:
-	mkdir -p ${GHQ_COMP_DIR}
-
-${GHQ_COMP_DIR}/_ghq: | ${GHQ_COMP_DIR}
+${GHQ_COMP_DIR}/_ghq:
+	mkdir -p $(@D)
 	curl -L \
-		-o ${GHQ_COMP_DIR}/_ghq \
+		-o $@ \
 		https://raw.githubusercontent.com/x-motemen/ghq/${GHQ_VERSION}/misc/zsh/_ghq
-	ln -sf ghq/${GHQ_VERSION}/_ghq zsh/completion/_ghq
+	ln -srf $@ zsh/completion/_ghq
 
-${KUBECTL_COMP_DIR}:
-	mkdir -p ${KUBECTL_COMP_DIR}
-
-${KUBECTL_COMP_DIR}/_kubectl: | ${KUBECTL_COMP_DIR}
-	kubectl completion zsh > ${KUBECTL_COMP_DIR}/_kubectl
-	ln -sf kubectl/${KUBECTL_VERSION}/_kubectl zsh/completion/_kubectl
+${KUBECTL_COMP_DIR}/_kubectl:
+	mkdir -p $(@D)
+	kubectl completion zsh > $@
+	ln -srf $@ zsh/completion/_kubectl
 
 ${LOCAL_BIN}/checkstyle:
-	mkdir -p ${LOCAL_BIN}
-	ln -sf ${PWD}/contrib/checkstyle ${LOCAL_BIN}/checkstyle
+	mkdir -p $(@D)
+	ln -sr contrib/checkstyle $@
 
 ${LOCAL_BIN}/google-java-format:
-	mkdir -p ${LOCAL_BIN}
-	ln -sf ${PWD}/contrib/google-java-format ${LOCAL_BIN}/google-java-format
+	mkdir -p $(@D)
+	ln -sr contrib/google-java-format $@
