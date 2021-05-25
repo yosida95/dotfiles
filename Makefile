@@ -1,14 +1,25 @@
 LOCAL_BIN := ${HOME}/.local/bin
 XDG_CONFIG_HOME ?= ${HOME}/.config
 
-GIT_VERSION := v$(shell git --version| cut -d ' ' -f 3)
+ZSH_COMP_SCRIPT :=
+
+GIT_VERSION := v$(shell git --version 2> /dev/null| cut -d ' ' -f 3)
 GIT_COMP_DIR := zsh/completion/git/${GIT_VERSION}
+ifneq (${GIT_VERSION},v)
+ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${GIT_COMP_DIR}/git-completion.zsh
+endif
 
-GHQ_VERSION := v$(shell ghq --version| cut -d ' ' -f 3)
+GHQ_VERSION := v$(shell ghq --version 2> /dev/null| cut -d ' ' -f 3)
 GHQ_COMP_DIR := zsh/completion/ghq/${GHQ_VERSION}
+ifneq (${GHQ_VERSION},v)
+ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${GHQ_COMP_DIR}/_ghq
+endif
 
-KUBECTL_VERSION := $(shell kubectl version --client --output json| jq -r .clientVersion.gitVersion)
+KUBECTL_VERSION := $(shell kubectl version --client --output json 2> /dev/null| jq -r .clientVersion.gitVersion)
 KUBECTL_COMP_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
+ifneq (${KUBECTL_VERSION},v)
+ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${KUBECTL_COMP_DIR}/_kubectl
+endif
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
@@ -60,7 +71,7 @@ ${HOME}/.cache/vimundo:
 ${HOME}/.zshenv:
 	ln -sr ./.zshenv $@
 
-${HOME}/.zshrc: | ${GIT_COMP_DIR}/git-completion.zsh ${GHQ_COMP_DIR}/_ghq ${KUBECTL_COMP_DIR}/_kubectl
+${HOME}/.zshrc: | ${ZSH_COMP_SCRIPT}
 	ln -sr ./.zshrc $@
 
 ${GIT_COMP_DIR}/git-completion.zsh: ${GIT_COMP_DIR}/git-completion.bash
