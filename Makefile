@@ -77,6 +77,7 @@ ${GIT_COMP_DIR}/git-completion.bash: | ${GIT_COMP_DIR}
 	curl -L \
 		-o ${GIT_COMP_DIR}/git-completion.bash \
 		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/git-completion.bash
+	ln -sf git/${GIT_VERSION}/git-completion.bash zsh/completion/git-completion.bash
 
 ${GHQ_COMP_DIR}:
 	mkdir -p ${GHQ_COMP_DIR}
