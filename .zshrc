@@ -31,7 +31,7 @@ if [ -z "$TMUX" ] && (($+commands[tmux])); then
 
     read 'choice?> '
     if [ -n "$choice" ]; then
-      if [ -S "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" = /tmp/ssh-*/agent.* ]; then
+      if [ -S "$SSH_AUTH_SOCK" ] && [[ $SSH_AUTH_SOCK = /tmp/ssh-*/agent.* ]]; then
         ln -sfn "$SSH_AUTH_SOCK" "$XDG_RUNTIME_DIR/ssh-agent.socket"
         export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
       fi
