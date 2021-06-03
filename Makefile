@@ -17,7 +17,7 @@ endif
 
 KUBECTL_VERSION := $(shell kubectl version --client --output json 2> /dev/null| jq -r .clientVersion.gitVersion)
 KUBECTL_COMP_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
-ifneq (${KUBECTL_VERSION},v)
+ifneq (${KUBECTL_VERSION},)
 ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${KUBECTL_COMP_DIR}/_kubectl
 endif
 
