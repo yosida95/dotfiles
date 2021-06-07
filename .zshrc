@@ -15,7 +15,14 @@ unset config
 # Load custom shell functions
 autoload -Uz $DOTFILES/zsh/_functions/*(:t)
 
-if [ -z "$SSH_AUTH_SOCK" ] && [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
+if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ] && [ -S "$SSH_AUTH_SOCK" ]; then
+  local name="$(tmux display -p '#{session_name}')"
+  if [ ! -S "$XDG_RUNTIME_DIR/ssh-agent.$name.socket" ]; then
+    ln -sfT "$SSH_AUTH_SOCK" "$XDG_RUNTIME_DIR/ssh-agent.$name.socket"
+  fi
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.$name.socket"
+  unset name
+elif [ -z "$SSH_AUTH_SOCK" ] && [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
@@ -31,10 +38,6 @@ if [ -z "$TMUX" ] && (($+commands[tmux])); then
 
     read 'choice?> '
     if [ -n "$choice" ]; then
-      if [ -S "$SSH_AUTH_SOCK" ] && [[ $SSH_AUTH_SOCK = /tmp/ssh-*/agent.* ]]; then
-        ln -sfn "$SSH_AUTH_SOCK" "$XDG_RUNTIME_DIR/ssh-agent.socket"
-        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-      fi
       if tmux has-session -t $choice 2>/dev/null; then
         exec tmux attach-session -t $choice
       else
