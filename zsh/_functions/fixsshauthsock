@@ -1,0 +1,21 @@
+function fixsshauthsock() {
+  if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
+    local socket="${XDG_RUNTIME_DIR:-~/.cache/ssh}/ssh-agent.$(tmux display -p '#{session_name}')"
+    if [ -z "$SSH_AUTH_SOCK" ] || [ "$SSH_AUTH_SOCK" = "$socket" ]; then
+      unset SSH_AUTH_SOCK
+      source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
+    fi
+    if [ -S "$SSH_AUTH_SOCK" ]; then
+      [ "$SSH_AUTH_SOCK" = "${socket:A}" ] || ln -sfT "$SSH_AUTH_SOCK" "$socket"
+      export SSH_AUTH_SOCK="$socket"
+    fi
+  fi
+
+  local socket="$XDG_RUNTIME_DIR/ssh-agent.socket"
+  if [ -z "$SSH_AUTH_SOCK" ] && [ -S "$socket" ]; then
+    export SSH_AUTH_SOCK="$socket"
+    return 0
+  fi
+}
+
+# vim: set filetype=zsh:
