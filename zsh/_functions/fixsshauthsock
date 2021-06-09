@@ -1,7 +1,8 @@
 function fixsshauthsock() {
   if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
-    local socket="${XDG_RUNTIME_DIR:-~/.cache/ssh}/ssh-agent.$(tmux display -p '#{session_name}')"
-    if [ -z "$SSH_AUTH_SOCK" ] || [ "$SSH_AUTH_SOCK" = "$socket" ]; then
+    local prefix="${XDG_RUNTIME_DIR:-~/.cache/ssh}/ssh-agent"
+    local socket="$prefix.$(tmux display -p '#{session_name}')"
+    if [ -z "$SSH_AUTH_SOCK" ] || [[ $SSH_AUTH_SOCK = ${prefix}.* ]]; then
       unset SSH_AUTH_SOCK
       source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
     fi
