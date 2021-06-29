@@ -14,7 +14,6 @@ unset config
 
 # Load custom shell functions
 autoload -Uz $DOTFILES/zsh/_functions/*(:t)
-
 fixsshauthsock
 
 if [ -z "$TMUX" ] && (($+commands[tmux])); then
