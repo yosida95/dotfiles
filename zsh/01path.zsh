@@ -66,7 +66,12 @@ path=(
 )
 
 if (($+commands[go])); then
-  export GOROOT="${${commands[go]}:h:h}"
+  GOROOT="${${commands[go]}:h:h}"
+  if [[ $GOROOT == /opt/go/* ]]; then
+    export GOROOT
+  else
+    unset GOROOT
+  fi
 fi
 
 if (($+commands[java])); then

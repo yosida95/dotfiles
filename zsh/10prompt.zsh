@@ -56,8 +56,8 @@ function python_prompt_info() {
 
 function go_prompt_info() {
   local version
-  if [ -n "$GOROOT" ] && [ -x "$GOROOT/bin/go" ]; then
-    version="${$(${GOROOT}/bin/go version|cut -d' ' -f3):s/go//}"
+  if (($+commands[go])); then
+    version="${$(go version|cut -d' ' -f3):s/go//}"
   fi
   if [ -n "$version" ]; then
     echo " %{$fg[green]%}go:%{$fg[cyan]%}${version}%{$reset_color%}"
