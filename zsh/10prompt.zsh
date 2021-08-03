@@ -2,8 +2,6 @@ setopt PROMPT_SUBST
 setopt TRANSIENT_RPROMPT
 autoload -U colors && colors
 
-bindkey -v  # use vi like keybind
-
 zstyle ':vcs_info:*' enable git hg
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:hg:*' get-revision true
