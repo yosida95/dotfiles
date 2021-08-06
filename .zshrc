@@ -18,21 +18,12 @@ fixsshauthsock
 
 if [ -z "$TMUX" ] && (($+commands[tmux])); then
   () {
-    local sessions
+    (tmux list-session 2>/dev/null || :)| sed -e $'s/^/\t/g'
+
     local choice
-
-    sessions=$(tmux list-session 2>/dev/null)
-    if [ -n $sessions ]; then
-      echo $sessions| sed -e $'s/^/\t/g'
-    fi
-
     read 'choice?> '
     if [ -n "$choice" ]; then
-      if tmux has-session -t $choice 2>/dev/null; then
-        exec tmux attach-session -t $choice
-      else
-        exec tmux new-session -s $choice
-      fi
+      exec tmux new-session -A -s "$choice"
     fi
   }
 fi
