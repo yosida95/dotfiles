@@ -1,9 +1,0 @@
-helm3() {
-  unset -f "$0"
-  if (($+commands[helm3])); then
-    . <(helm3 completion zsh)
-  fi
-  $0 "$@"
-}
-
-# vim: set filetype=zsh:

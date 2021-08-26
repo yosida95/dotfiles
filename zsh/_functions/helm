@@ -1,6 +1,6 @@
 helm() {
   unset -f "$0"
-  if (($+commands[helm3])); then
+  if (($+commands[helm])); then
     . <(helm completion zsh)
   fi
   $0 "$@"
