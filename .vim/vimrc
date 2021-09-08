@@ -200,7 +200,7 @@ Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'tmux-plugins/vim-tmux'
 
 " TOML
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
 
 " Closure Templates
 Plug 'duganchen/vim-soy'
