@@ -95,6 +95,7 @@ Plug 'prabirshrestha/asyncomplete.vim', { 'tag': 'v2.1.0' }
 Plug 'prabirshrestha/vim-lsp', { 'tag': 'v0.1.4' }
   Plug 'prabirshrestha/async.vim'
   Plug 'mattn/vim-lsp-settings'
+  Plug 'rhysd/vim-lsp-ale'
 
 " ABNF
 Plug 'vim-scripts/abnf'
@@ -389,8 +390,6 @@ let g:quickrun_config = {
 """"""""""""""""""""
 " prabirshrestha/vim-lsp:
 """"""""""""""""""""
-let g:lsp_diagnostics_enabled = 0
-
 let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=lightgreen
 
@@ -424,7 +423,6 @@ let g:lsp_text_edit_enabled = 0
 " ale:
 """"""""""""""""""""
 let g:ale_completion_enabled = 0
-let g:ale_disable_lsp = 1
 
 let g:ale_echo_cursor = 1
 let g:ale_sign_column_always = 1
