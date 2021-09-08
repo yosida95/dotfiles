@@ -23,7 +23,11 @@ if [ -z "$TMUX" ] && (($+commands[tmux])); then
     local choice
     read 'choice?> '
     if [ -n "$choice" ]; then
-      exec tmux new-session -A -s "$choice"
+      if tmux has-session -t "$choice" 2> /dev/null; then
+        exec tmux attach-session -dx -t "$choice"
+      else
+        exec tmux new-session -ADX -s "$choice"
+      fi
     fi
   }
 fi
