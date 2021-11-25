@@ -1,6 +1,6 @@
 if (($+commands[peco])); then
   function peco_select_history() {
-    BUFFER=$(fc -lnr 1| peco --query "$LBUFFER")
+    BUFFER=$(fc -lnr 1| peco --query "$LBUFFER"| sed 's/\\n/\n/g')
     CURSOR=$#BUFFER
     zle -R -c
   }
