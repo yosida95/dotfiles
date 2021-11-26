@@ -9,9 +9,9 @@ if (($+commands[peco])); then
 
   if (($+commands[ghq])); then
     function peco-src () {
-      local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+      local selected_dir=$(ghq list| peco --query "$LBUFFER")
       if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
+        BUFFER="cd $(ghq root)/${selected_dir}"
         zle accept-line
       fi
       zle clear-screen
