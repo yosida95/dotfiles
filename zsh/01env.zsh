@@ -12,3 +12,5 @@ export LESSOPEN="| ${DOTFILES}/lesspipe.sh %s"
 
 export EDITOR='vim'
 export GPG_TTY=$(tty)
+
+export FZF_DEFAULT_OPTS='--layout=reverse --prompt "QUERY> " --color=dark'
