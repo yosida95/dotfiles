@@ -25,6 +25,7 @@ endif
 all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
 		${XDG_CONFIG_HOME}/git/ignore \
+		${XDG_CONFIG_HOME}/kitty/kitty.conf \
 		${HOME}/.hgrc \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
@@ -41,6 +42,12 @@ ${XDG_CONFIG_HOME}/git/config:
 ${XDG_CONFIG_HOME}/git/ignore:
 	mkdir -p $(@D)
 	ln -sr git/ignore $@
+
+${XDG_CONFIG_HOME}/kitty:
+	mkdir -p ${XDG_CONFIG_HOME}/kitty
+
+${XDG_CONFIG_HOME}/kitty/kitty.conf: | ${XDG_CONFIG_HOME}/kitty
+	ln -sr kitty.conf $@
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
 	ln -sr .hgrc $@
