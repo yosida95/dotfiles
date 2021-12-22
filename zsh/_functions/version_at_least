@@ -1,4 +1,4 @@
-function version-at-least() {
+function version_at_least() {
   # https://unix.stackexchange.com/a/567537
   printf '%s\n%s\n' "$2" "$1"| sort --version-sort --check=quiet
 }
