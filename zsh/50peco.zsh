@@ -1,6 +1,6 @@
-if (($+commands[peco])); then
+if (($+commands[fzf])); then
   function peco_select_history() {
-    BUFFER=$(fc -lnr 1| peco --query "$LBUFFER"| sed 's/\\n/\n/g')
+    BUFFER=$(fc -lnr 1| fzf --info=hidden --exact --no-sort --query "$LBUFFER"| sed 's/\\n/\n/g')
     CURSOR=$#BUFFER
     zle -R -c
   }
@@ -9,7 +9,7 @@ if (($+commands[peco])); then
 
   if (($+commands[ghq])); then
     function peco-src () {
-      local selected_dir=$(ghq list| peco --query "$LBUFFER")
+      local selected_dir=$(ghq list| fzf --info=hidden --exact --query "$LBUFFER")
       if [ -n "$selected_dir" ]; then
         BUFFER="cd $(ghq root)/${selected_dir}"
         zle accept-line
