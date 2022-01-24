@@ -15,6 +15,7 @@
 [user]
 	useConfigOnly = true
 	name = Kohei YOSHIDA
+	email = kohei@yosida95.com
 [pull]
 	ff = only
 [format]
