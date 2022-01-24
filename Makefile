@@ -24,6 +24,7 @@ endif
 .PHONY: all
 all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
+		${XDG_CONFIG_HOME}/git/config.gehirninc \
 		${XDG_CONFIG_HOME}/git/ignore \
 		${XDG_CONFIG_HOME}/kitty/kitty.conf \
 		${HOME}/.hgrc \
@@ -38,6 +39,10 @@ ${HOME}/.dircolors:
 ${XDG_CONFIG_HOME}/git/config:
 	mkdir -p $(@D)
 	ln -sr git/config $@
+
+${XDG_CONFIG_HOME}/git/config.gehirninc:
+	mkdir -p $(@D)
+	ln -sr git/config.gehirninc $@
 
 ${XDG_CONFIG_HOME}/git/ignore:
 	mkdir -p $(@D)

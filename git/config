@@ -23,3 +23,7 @@
 	prune = true
 [ghq]
 	root = ~/proj/src
+[includeIf "gitdir:~/proj/src/github.com/GehirnInc/"]
+  path = ~/.config/git/config.gehirninc
+
+# vim: set filetype=gitconfig:
