@@ -86,3 +86,11 @@ if (($+commands[java])); then
       ;;
   esac
 fi
+
+if (($+commands[luarocks])); then
+  . <(luarocks path)
+  path=(
+    $HOME/.luarocks/bin(N-/:a)
+    $path
+  )
+fi
