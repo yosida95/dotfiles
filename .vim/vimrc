@@ -411,6 +411,7 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 let g:lsp_settings = {
 \   'clangd': {'cmd': ['clangd-8', '--background-index']},
 \   'gopls': {'cmd': [lsp_settings#exec_path('gopls'), '-remote=auto']},
+\   'sumneko-lua-language-server': {'cmd': [lsp_settings#exec_path('lua-language-server')]},
 \ }
 
 let g:lsp_settings_filetype_python = 'pyls-ms'
