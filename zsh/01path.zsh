@@ -14,6 +14,7 @@ case "$(uname)" in
       /usr/local/opt/coreutils/libexec/gnubin(N-/:a)
       /usr/local/opt/gnu-sed/libexec/gnubin(N-/:a)
       /usr/local/opt/grep/libexec/gnubin(N-/:a)
+      /usr/local/opt/openssl/bin(N-/:a)
       $path
     )
     ;;
