@@ -8,17 +8,15 @@ fi
 typeset -U PATH path
 export PATH
 
-case "$(uname)" in
-  "Darwin")
-    path=(
-      /usr/local/opt/coreutils/libexec/gnubin(N-/:a)
-      /usr/local/opt/gnu-sed/libexec/gnubin(N-/:a)
-      /usr/local/opt/grep/libexec/gnubin(N-/:a)
-      /usr/local/opt/openssl/bin(N-/:a)
-      $path
-    )
-    ;;
-esac
+if [ "$(uname)" = "Darwin" ] && [ -n "$HOMEBREW_PREFIX" ]; then
+  path=(
+    $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/:a)
+    $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/:a)
+    $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/:a)
+    $HOMEBREW_PREFIX/opt/openssl/bin(N-/:a)
+    $path
+  )
+fi
 
 runtime_versions() {
   find -L $1 -maxdepth 2 -name bin -type d -print0\
