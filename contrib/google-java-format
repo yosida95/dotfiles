@@ -3,7 +3,7 @@
 set -eu
 
 DIRECTORY="${0:h:h}"
-RELEASE="v1.14.0"
+RELEASE="v1.15.0"
 JARNAME="google-java-format-${RELEASE:1}-all-deps.jar"
 JARPATH="${DIRECTORY}/lib/${JARNAME}"
 
