@@ -17,3 +17,8 @@ path=(
   $HOMEBREW_PREFIX/opt/openssl@1.1/bin(N-/:a)
   $path
 )
+
+fpath=(
+  $HOMEBREW_PREFIX/share/zsh/site-functions(N-/:a)
+  $fpath
+)
