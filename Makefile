@@ -68,7 +68,8 @@ ${HOME}/.vim: | \
 		${HOME}/.cache/vimswap \
 		${HOME}/.cache/vimundo \
 		${LOCAL_BIN}/checkstyle \
-		${LOCAL_BIN}/google-java-format
+		${LOCAL_BIN}/google-java-format \
+		${HOME}/.local/share/vim-lsp-settings/settings.json
 	ln -sr .vim $@
 
 ${HOME}/.cache/vimbackup:
@@ -79,6 +80,10 @@ ${HOME}/.cache/vimswap:
 
 ${HOME}/.cache/vimundo:
 	mkdir -p $@
+
+${HOME}/.local/share/vim-lsp-settings/settings.json:
+	mkdir -p $(@D)
+	ln -srf ./.vim/vim-lsp-settings.json $@
 
 ${HOME}/.zshenv:
 	ln -sr ./.zshenv $@

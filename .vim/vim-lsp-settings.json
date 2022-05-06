@@ -1,0 +1,11 @@
+{
+  "clangd": {
+    "cmd": ["clangd-8", "--background-index"]
+  },
+  "gopls": {
+    "args": ["-remote=auto"]
+  },
+  "sumneko-lua-language-server": {
+    "cmd": ["lua-language-server"]
+  }
+}
