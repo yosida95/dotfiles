@@ -85,7 +85,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'thinca/vim-quickrun'
 
-Plug 'dense-analysis/ale', { 'tag': 'v3.1.0' }
+Plug 'dense-analysis/ale', { 'tag': 'v3.2.0' }
 
 Plug 'prabirshrestha/asyncomplete.vim', { 'tag': 'v2.1.0' }
   Plug 'prabirshrestha/asyncomplete-file.vim'
