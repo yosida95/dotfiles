@@ -3,7 +3,16 @@
     "cmd": ["clangd-8", "--background-index"]
   },
   "gopls": {
-    "args": ["-remote=auto"]
+    "args": ["-remote=auto"],
+    "initialization_options": {
+      "analyses": {
+        "unusedparams": true
+      },
+      "completeUnimported": true,
+      "experimentalPostfixCompletions": false,
+      "matcher": "Fuzzy",
+      "staticcheck": true
+    }
   },
   "sumneko-lua-language-server": {
     "cmd": ["lua-language-server"]
