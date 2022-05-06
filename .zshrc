@@ -1,5 +1,7 @@
-# deduplicate $FPATH (keep the first occurrence)
+# deduplicate $PATH and $FPATH. Keep the first (left most) occurrence.
+typeset -U PATH path
 typeset -U FPATH fpath
+
 fpath=(
   ${DOTFILES}/zsh/completion
   ${DOTFILES}/zsh/_functions
