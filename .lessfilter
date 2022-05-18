@@ -1,0 +1,12 @@
+#!/bin/zsh
+set -eu
+
+if [ $# -ne 1 ] || ! (($+commands[source-highlight])); then
+  exit 1
+fi
+
+if file "$1"| grep -vEe '(^|[, ])text($|[, ])' > /dev/null; then
+  exit 1
+fi
+
+source-highlight --failsafe --infer-lang -f esc --style-file=esc.style -i "$1" || exit 0

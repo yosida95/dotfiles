@@ -8,7 +8,11 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 export LESS='-giMR'
 export LESSCHARSET=utf-8
-export LESSOPEN="| ${DOTFILES}/lesspipe.sh %s"
+if (($+commands[lesspipe])); then
+  . <(lesspipe)
+elif (($+commands[lesspipe.sh])); then
+  . <(lesspipe.sh)
+fi
 
 export EDITOR='vim'
 export GPG_TTY=$(tty)

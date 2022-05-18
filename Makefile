@@ -28,6 +28,7 @@ all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/ignore \
 		${XDG_CONFIG_HOME}/kitty/kitty.conf \
 		${HOME}/.hgrc \
+		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
 		${HOME}/.vim \
 		${HOME}/.zshenv \
@@ -59,6 +60,9 @@ ${HOME}/.hgrc: | ${HOME}/.hgignore
 
 ${HOME}/.hgignore:
 	ln -sr .hgignore $@
+
+${HOME}/.lessfilter:
+	ln -sr .lessfilter $@
 
 ${HOME}/.tmux.conf:
 	ln -sr .tmux.conf $@
