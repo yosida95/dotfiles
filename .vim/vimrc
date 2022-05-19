@@ -76,8 +76,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
-Plug 'mattn/sonictemplate-vim'
-
 Plug 'Shougo/unite.vim'
   Plug 'Shougo/vimfiler.vim'
 
