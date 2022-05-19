@@ -6,7 +6,10 @@
     "args": ["-remote=auto"],
     "initialization_options": {
       "analyses": {
-        "unusedparams": true
+        "nilness": true,
+        "useany": true,
+        "unusedparams": true,
+        "unusedwrite": true
       },
       "completeUnimported": true,
       "experimentalPostfixCompletions": false,
