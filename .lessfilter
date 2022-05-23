@@ -5,8 +5,20 @@ if [ $# -ne 1 ] || ! (($+commands[source-highlight])); then
   exit 1
 fi
 
-if file "$1"| grep -vEe '(^|[, ])text($|[, ])' > /dev/null; then
+if file "$1"| grep -qvE '(^|[, ])text($|[, ])'; then
   exit 1
 fi
 
-source-highlight --failsafe --infer-lang -f esc --style-file=esc.style -i "$1" || exit 0
+# https://savannah.gnu.org/bugs/?45299
+if [[ "$1" = *.zsh ]] || file "$1"| grep -qE 'zsh script'; then
+  exit 1
+fi
+
+source-highlight \
+    --failsafe \
+    --infer-lang \
+    --line-number \
+    --out-format=esc256 \
+    --style-file=esc256.style \
+    --input "$1" \
+  || exit 0
