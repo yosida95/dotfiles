@@ -6,12 +6,12 @@ if &compatible
 endif
 
 function! s:source_rc(path, ...) abort
-    let abspath = resolve(expand('~/.vim/rc/' . a:path))
-    execute 'source' fnameescape(abspath)
+  let abspath = resolve(expand('~/.vim/rc/' . a:path))
+  execute 'source' fnameescape(abspath)
 endfunction
 
 augroup MyAutoCmd
-    autocmd!
+  autocmd!
 augroup END
 
 " Backup
@@ -31,7 +31,7 @@ set secure
 " Encodings:
 """"""""""""""""""""
 if has('vim_starting') && &encoding !=# 'utf-8'
-    set encoding=utf-8
+  set encoding=utf-8
 endif
 set fileencodings='ucs-bom,utf-8,euc-jp,iso-2022-jp-3,sjis,cp932'
 
@@ -76,8 +76,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
-Plug 'Shougo/unite.vim'
-  Plug 'Shougo/vimfiler.vim'
+Plug 'lambdalisue/fern.vim', { 'tag': 'v1.46.1' }
+  Plug 'lambdalisue/fern-mapping-project-top.vim'
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
@@ -310,19 +310,63 @@ endfunction
 
 
 """"""""""""""""""""
-" unite.vim:
+" fern.vim
 """"""""""""""""""""
-let g:unite_update_time = 100
-let g:unite_enable_start_insert = 1
-let g:unite_winheight = 15
-let g:unite_enable_auto_select = 0
-let g:unite_force_overwrite_statusline = 0
+let g:fern#default_exclude = '\(^\(\.\(.\+[\-_]\)\?cache\|\.git\|\.hg\|\.tox\|\.venv\|\.DS_Store\|node_modules\|vendor\|__pycache__\)\|\(\.egg-info\|\.pyc\)\)$'
+let g:fern#default_hidden = 1
 
-" noremap <C-B> :Unite buffer<CR>
-" noremap <C-F> :Unite file file/new<CR>
+let g:fern#disable_default_mappings = 1
 
-autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+function! s:init_fern() abort
+  nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
+
+  nmap <buffer> ^ <Plug>(fern-action-project-top)
+  nmap <buffer> ! <Plug>(fern-action-hidden)
+  nmap <buffer> <CR> <Plug>(fern-action-open-or-enter)
+  nmap <buffer> <BS> <Plug>(fern-action-leave)
+  nmap <buffer> <C-L> <Plug>(fern-action-redraw)
+  nmap <buffer> <F5> <Plug>(fern-action-reload)
+
+  nmap <buffer> fi <Plug>(fern-action-include)
+  nmap <buffer> fe <Plug>(fern-action-exclude)
+
+  nmap <buffer> h <Plug>(fern-action-collapse)
+  nmap <buffer> l <Plug>(fern-action-open-or-expand)
+  nmap <buffer> y <Plug>(fern-action-yank)
+
+  nmap <buffer> K <Plug>(fern-action-new-dir)
+  nmap <buffer> N <Plug>(fern-action-new-file)
+  nmap <buffer> Y <Plug>(fern-action-new-path)
+
+  nmap <buffer> <space> <Plug>(fern-action-mark)
+  nmap <buffer> U <Plug>(fern-action-mark:clear)
+  nmap <buffer> c <Plug>(fern-action-copy)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> r <Plug>(fern-action-rename)
+
+  nmap <buffer> z <Plug>(fern-action-zoom)
+  nmap <buffer> Z <Plug>(fern-action-zoom:reset)
+
+  nmap <buffer> <C-C> <Plug>(fern-action-cancel)
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
+" Return a parent directory of the current buffer when the buffer is a file.
+" Otherwise it returns a current working directory.
+" -- https://github.com/lambdalisue/fern.vim/wiki/Tips#how-to-map-a-command-to-open-a-buffer-parent-directory-or-current-working-directory-when-the-buffer-is-not-a-file
+function! s:smart_path() abort
+  if !empty(&buftype) || bufname('%') =~# '^[^:]\+://'
+    return fnamemodify('.', ':p')
+  endif
+  return fnamemodify(expand('%'), ':p:h')
+endfunction
+
+nnoremap <silent> <Leader>e :<C-u>Fern <C-r>=<SID>smart_path()<CR> -drawer<CR>
 
 
 """"""""""""""""""""
@@ -354,26 +398,6 @@ let g:ctrlp_extensions = ['quickfix']
 
 
 """"""""""""""""""""
-" vimfiler.vim:
-""""""""""""""""""""
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimfiler_ignore_pattern = [
-    \ '^\.\(.*[\-_]\)\?cache$',
-    \ '^\.git$', '^\.hg$',
-    \ '^vendor$',
-    \ '^node_modules$',
-    \ '^__pycache__$', '\.coverage', '^\.eggs$', '\.egg-info$', '\.pyc$', '^\.tox$', '^\.venv$', '^wheelhouse$',
-    \ '^.DS_Store$']
-
-call vimfiler#custom#profile('default', 'context', {
-    \   'safe': 0,
-    \ })
-
-nnoremap <leader>e :VimFilerExplorer -winwidth=40<CR>
-
-
-""""""""""""""""""""
 " vim-quickrun:
 """"""""""""""""""""
 let g:quickrun_config = {
@@ -394,11 +418,12 @@ let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=lightgreen
 
 function! s:on_lsp_buffer_enabled() abort
-    nmap <buffer> gd <plug>(lsp-definition)
-    " https://github.com/prabirshrestha/vim-lsp/pull/776#issue-396286634
-    nmap <buffer> gs :rightbelow LspDefinition<CR>
-    nmap <buffer> gv :rightbelow vertical LspDefinition<CR>
-    nmap <buffer> <f2> <plug>(lsp-rename)
+  " https://github.com/prabirshrestha/vim-lsp/pull/776#issue-396286634
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs :rightbelow LspDefinition<CR>
+  nmap <buffer> gv :rightbelow vertical LspDefinition<CR>
+
+  nmap <buffer> <f2> <plug>(lsp-rename)
 endfunction
 
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
@@ -439,19 +464,19 @@ let g:ale_yaml_yamllint_options='-d "{extends: default, rules: {line-length: dis
 " asyncomplete.vim:
 """"""""""""""""""""
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['unite'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+  \ 'name': 'file',
+  \ 'allowlist': ['*'],
+  \ 'blocklist': [],
+  \ 'priority': 10,
+  \ 'completor': function('asyncomplete#sources#file#completor')
+  \ }))
 
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-    \ 'name': 'omni',
-    \ 'allowlist': ['*'],
-    \ 'blocklist': ['c', 'cpp', 'html'],
-    \ 'completor': function('asyncomplete#sources#omni#completor')
-    \  }))
+  \ 'name': 'omni',
+  \ 'allowlist': ['*'],
+  \ 'blocklist': ['c', 'cpp', 'html'],
+  \ 'completor': function('asyncomplete#sources#omni#completor')
+  \  }))
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -491,21 +516,21 @@ let g:vim_json_syntax_conceal = 0
 " vim-markdown
 """"""""""""""""""""
 let g:markdown_fenced_languages = [
-    \ 'css',
-    \ 'coffee',
-    \ 'erb=eruby.html',
-    \ 'go',
-    \ 'html',
-    \ 'javascript',
-    \ 'js=javascript',
-    \ 'json=javascript',
-    \ 'proto',
-    \ 'python',
-    \ 'ruby',
-    \ 'sass',
-    \ 'sh',
-    \ 'xml',
-    \ ]
+  \ 'css',
+  \ 'coffee',
+  \ 'erb=eruby.html',
+  \ 'go',
+  \ 'html',
+  \ 'javascript',
+  \ 'js=javascript',
+  \ 'json=javascript',
+  \ 'proto',
+  \ 'python',
+  \ 'ruby',
+  \ 'sass',
+  \ 'sh',
+  \ 'xml',
+  \ ]
 
 
 """"""""""""""""""""
