@@ -287,6 +287,7 @@ set colorcolumn=80
 set laststatus=2
 set nowrap
 set number
+set signcolumn=yes
 
 
 """"""""""""""""""""
