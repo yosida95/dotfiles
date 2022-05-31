@@ -11,10 +11,11 @@
         "unusedparams": true,
         "unusedwrite": true
       },
+      "buildFlags": [],
       "completeUnimported": true,
       "experimentalPostfixCompletions": false,
       "matcher": "Fuzzy",
-      "staticcheck": true
+      "staticcheck": false
     }
   },
   "sumneko-lua-language-server": {
