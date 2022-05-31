@@ -403,6 +403,8 @@ let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=lightgreen
 
 function! s:on_lsp_buffer_enabled() abort
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+
   " https://github.com/prabirshrestha/vim-lsp/pull/776#issue-396286634
   nmap <buffer> gd <plug>(lsp-definition)
   nmap <buffer> gs :rightbelow LspDefinition<CR>
