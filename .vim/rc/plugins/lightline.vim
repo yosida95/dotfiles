@@ -1,47 +1,63 @@
-function! LightLineFilename()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? g:lightline.fname :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+function! LightLineVerbose()
+  return &filetype !~# '\vfern'
 endfunction
 
-function! LightLineFugitive()
-    if exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? ' '._ : ''
-    endif
-    return ''
+function! LightLineFilename()
+  let readonly = &readonly && &filetype !=# 'help' ? ' ' : ''
+  let fname = expand('%:t') ==# '' ? '[No Name]' : expand('%:t')
+  let modified = &modified ? ' +' : &modifiable ? '' : ' -'
+  return readonly . fname . modified
 endfunction
 
 function! LightLineMode()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
+  return &filetype ==# 'fern' ? 'Fern' : lightline#mode()
 endfunction
 
-function! LightLineModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-    return &ft !~? 'help' && &readonly ? '' : ''
+function! LightLineFugitive()
+  if LightLineVerbose()
+    let head = FugitiveHead()
+    if head !=# ''
+      return ' ' . head
+    endif
+  endif
+  return ''
 endfunction
 
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
-    \     'left': [['mode', 'paste'], ['fugitive', 'filename']],
-    \     'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]],
+    \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
+    \   'right': [['lineinfo'],
+    \             ['percent'],
+    \             ['fileformat', 'fileencoding', 'filetype'],
+    \             ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']],
+    \ },
+    \ 'inactive': {
+    \   'left': [['filename']],
+    \   'right': [['lineinfo'], ['percent']],
+    \ },
+    \ 'component': {
+    \   'lineinfo': '%{%LightLineVerbose() ? ''%3l:%-2c'' : ''''%}',
+    \   'percent': '%{%LightLineVerbose() ? ''%3p%%'' : ''''%}',
+    \   'fileformat': '%{LightLineVerbose() ? &ff : ''''}',
+    \   'fileencoding': '%{LightLineVerbose() ? &fenc !=# "" ? &fenc : &enc : ''''}',
+    \   'filetype': '%{LightLineVerbose() ? &ft !=# "" ? &ft : "no ft" : ''''}',
+    \ },
+    \ 'component_visible_condition': {
+    \   'lineinfo': 'LightLineVerbose()',
+    \   'percent': 'LightLineVerbose()',
+    \   'fileformat': 'LightLineVerbose()',
+    \   'fileencoding': 'LightLineVerbose()',
+    \   'filetype': 'LightLineVerbose()',
     \ },
     \ 'component_function': {
-    \     'filename': 'LightLineFilename',
-    \     'fugitive': 'LightLineFugitive',
-    \     'mode': 'LightLineMode',
+    \   'mode': 'LightLineMode',
+    \   'fugitive': 'LightLineFugitive',
+    \   'filename': 'LightLineFilename',
+    \ },
+    \ 'component_function_visible_condition': {
+    \   'mode': '1',
+    \   'filename': '1',
     \ },
     \ 'component_expand': {
     \   'linter_checking': 'lightline#ale#checking',
@@ -58,8 +74,8 @@ let g:lightline = {
     \   'linter_ok': 'right',
     \ },
     \ 'separator': {
-    \     'left': '', 'right': ''
+    \   'left': '', 'right': ''
     \ },
     \ 'subseparator': {
-    \     'left': '', 'right': ''
+    \   'left': '', 'right': ''
     \ }}
