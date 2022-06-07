@@ -328,6 +328,7 @@ function! s:init_fern() abort
 
   nmap <buffer> h <Plug>(fern-action-collapse)
   nmap <buffer> l <Plug>(fern-action-open-or-expand)
+  nmap <buffer> o <Plug>(fern-action-open)
   nmap <buffer> y <Plug>(fern-action-yank)
 
   nmap <buffer> K <Plug>(fern-action-new-dir)
