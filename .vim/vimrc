@@ -363,7 +363,8 @@ function! s:smart_path() abort
   return fnamemodify(expand('%'), ':p:h')
 endfunction
 
-nnoremap <silent> <Leader>e :<C-u>Fern <C-r>=<SID>smart_path()<CR> -drawer<CR>
+nnoremap <silent> <Leader>e :Fern . -drawer -reveal=% -toggle<CR>
+nnoremap <silent> <Leader>f :Fern <C-R>=<SID>smart_path()<CR><CR>
 
 
 """"""""""""""""""""
