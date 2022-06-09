@@ -354,18 +354,15 @@ augroup fern-custom
   autocmd FileType fern call s:init_fern()
 augroup END
 
-" Return a parent directory of the current buffer when the buffer is a file.
-" Otherwise it returns a current working directory.
-" -- https://github.com/lambdalisue/fern.vim/wiki/Tips#how-to-map-a-command-to-open-a-buffer-parent-directory-or-current-working-directory-when-the-buffer-is-not-a-file
-function! s:smart_path() abort
-  if !empty(&buftype) || bufname('%') =~# '^[^:]\+://'
-    return fnamemodify('.', ':p')
+" https://github.com/lambdalisue/fern.vim/issues/236#issuecomment-703345436
+function! s:fern_reveal() abort
+  if &modifiable || filereadable(expand('%'))
+    return printf('FernDo FernReveal %s', expand('%:p'))
   endif
-  return fnamemodify(expand('%'), ':p:h')
 endfunction
 
 nnoremap <silent> <Leader>e :Fern . -drawer -reveal=% -toggle<CR>
-nnoremap <silent> <Leader>f :Fern <C-R>=<SID>smart_path()<CR><CR>
+nnoremap <silent> <Leader>f :<C-R>=<SID>fern_reveal()<CR><CR>
 
 
 """"""""""""""""""""
