@@ -410,6 +410,9 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gs :rightbelow LspDefinition<CR>
   nmap <buffer> gv :rightbelow vertical LspDefinition<CR>
 
+  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+
   nmap <buffer> <f2> <plug>(lsp-rename)
 endfunction
 
