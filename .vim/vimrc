@@ -538,6 +538,8 @@ let g:riv_file_link_style = 2 " Sphinx
 let g:riv_fold_level = 3  " Sections,Lists and Blocks.
 let g:riv_fold_blank = 1  " fold all blank lines, show one if more than one.
 
+let g:riv_auto_format_table = 0
+
 
 """"""""""""""""""""
 " rust.vim:
