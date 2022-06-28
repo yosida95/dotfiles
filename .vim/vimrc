@@ -388,6 +388,7 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_switch_buffer = 't'
 
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v(/((\.(git|hg|(.+[\-_])?cache|eggs|tox|venv|DS_Store)|wheelhouse|__pycache__|node_modules|vendor|_build)$|\.coverage))|\.(pyc|egg-info)$'
 
 let g:ctrlp_extensions = ['quickfix']
