@@ -1,0 +1,9 @@
+function packer() {
+  if [[ "$(uname -s)" = Linux ]] && [ ! -r /boot/vmlinuz ]; then
+    echo "$(readlink -f /boot/vmlinuz) is not readable by $USER" >&2
+    return 1
+  fi
+  command packer "$@"
+}
+
+# vim: set filetype=zsh:
