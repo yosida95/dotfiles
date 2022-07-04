@@ -464,7 +464,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
   \ 'name': 'omni',
   \ 'allowlist': ['*'],
-  \ 'blocklist': ['c', 'cpp', 'html'],
+  \ 'blocklist': ['c', 'cpp', 'html', 'sql'],
   \ 'completor': function('asyncomplete#sources#omni#completor')
   \  }))
 
