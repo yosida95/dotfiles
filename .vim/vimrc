@@ -86,7 +86,7 @@ Plug 'prabirshrestha/asyncomplete.vim', { 'tag': 'v2.1.0' }
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'yami-beta/asyncomplete-omni.vim'
 
-Plug 'prabirshrestha/vim-lsp', { 'tag': 'v0.1.4' }
+Plug 'prabirshrestha/vim-lsp', { 'branch': 'master' }
   Plug 'prabirshrestha/async.vim'
   Plug 'mattn/vim-lsp-settings'
   Plug 'rhysd/vim-lsp-ale'
