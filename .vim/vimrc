@@ -106,9 +106,6 @@ Plug 'mityu/vim-applescript'
 " blockdiag
 Plug 'mhaig/vim-blockdiag-series'
 
-" Coffee
-Plug 'kchmck/vim-coffee-script'
-
 " CSV
 Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 
@@ -196,9 +193,6 @@ Plug 'tmux-plugins/vim-tmux'
 
 " TOML
 Plug 'cespare/vim-toml', { 'branch': 'main' }
-
-" Closure Templates
-Plug 'duganchen/vim-soy'
 
 call plug#end()
 
@@ -507,7 +501,6 @@ let g:vim_json_syntax_conceal = 0
 """"""""""""""""""""
 let g:markdown_fenced_languages = [
   \ 'css',
-  \ 'coffee',
   \ 'erb=eruby.html',
   \ 'go',
   \ 'html',
