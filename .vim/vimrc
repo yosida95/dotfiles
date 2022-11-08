@@ -413,6 +413,16 @@ endfunction
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 
+" Workaround for https://github.com/prabirshrestha/vim-lsp/issues/1384
+function! s:lsp_capabilities(server_info) abort
+  let cap = lsp#default_get_supported_capabilities({})
+  let cap.textDocument.rename.prepareSupport = v:false
+  return cap
+endfunction
+
+let g:lsp_get_supported_capabilities = [function('s:lsp_capabilities')]
+
+
 """"""""""""""""""""
 " mattn/vim-lsp-settings:
 """"""""""""""""""""
