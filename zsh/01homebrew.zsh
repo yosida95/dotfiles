@@ -11,6 +11,7 @@ done
 
 path=(
   $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/:a)
+  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/:a)
   $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/:a)
   $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/:a)
   $HOMEBREW_PREFIX/opt/openssl/bin(N-/:a)
