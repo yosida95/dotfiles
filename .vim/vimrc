@@ -255,6 +255,36 @@ autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 """"""""""""""""""""
 " Display:
 """"""""""""""""""""
+
+" https://vim-jp.org/vimdoc-ja/term.html#tmux-integration
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  " よりよいマウスサポート、:help 'ttymouse' を参照
+  set ttymouse=sgr
+
+  " フルカラー有効、:help xterm-true-color を参照
+  let &termguicolors = v:true
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+  " bracketed paste モード有効、:help xterm-bracketed-paste を参照
+  let &t_BE = "\<Esc>[?2004h"
+  let &t_BD = "\<Esc>[?2004l"
+  let &t_PS = "\<Esc>[200~"
+  let &t_PE = "\<Esc>[201~"
+
+  " フォーカスイベントの追跡有効、:help xterm-focus-event を参照
+  let &t_fe = "\<Esc>[?1004h"
+  let &t_fd = "\<Esc>[?1004l"
+  execute "set <FocusGained>=\<Esc>[I"
+  execute "set <FocusLost>=\<Esc>[O"
+
+  " 修飾ありカーソルキー有効、:help arrow_modifiers を参照
+  execute "silent! set <xUp>=\<Esc>[@;*A"
+  execute "silent! set <xDown>=\<Esc>[@;*B"
+  execute "silent! set <xRight>=\<Esc>[@;*C"
+  execute "silent! set <xLeft>=\<Esc>[@;*D"
+endif
+
 " colorscheme
 set background=dark
 let g:hybrid_use_Xresources = 1
