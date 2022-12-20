@@ -429,6 +429,8 @@ let g:asyncomplete_auto_completeopt = 0
 """"""""""""""""""""
 let g:lsp_fold_enabled = 0
 
+let g:lsp_document_code_action_signs_enabled = 0
+
 let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=lightgreen
 
