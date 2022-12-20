@@ -124,7 +124,7 @@ Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'tpope/vim-git'
 
 " Go
-Plug 'fatih/vim-go', { 'tag': 'v1.25' }
+Plug 'fatih/vim-go', { 'tag': 'v1.26' }
 
 " HCL
 Plug 'jvirtanen/vim-hcl', { 'branch': 'main' }
