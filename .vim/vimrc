@@ -237,7 +237,7 @@ set matchtime=3 " 0.3 secs
 " set matchpairs& matchpairs+=<:>
 
 set backspace=indent,eol,start
-set completeopt=menuone,preview,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 set virtualedit=block
 
 set autowrite
@@ -416,6 +416,12 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v(/((\.(git|hg|(.+[\-_])?cache|eggs|tox|venv|DS_Store)|wheelhouse|__pycache__|node_modules|vendor|_build)$|\.coverage))|\.(pyc|egg-info)$'
 
 let g:ctrlp_extensions = ['quickfix']
+
+
+""""""""""""""""""""
+" prabirshrestha/asyncomplete.vim
+""""""""""""""""""""
+let g:asyncomplete_auto_completeopt = 0
 
 
 """"""""""""""""""""
