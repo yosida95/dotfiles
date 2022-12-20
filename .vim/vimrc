@@ -54,7 +54,7 @@ Plug 'editorconfig/editorconfig-vim', { 'tag': 'v1.1.1' }
 
 Plug 'vim-scripts/sudo.vim'
 
-Plug 'w0ng/vim-hybrid'
+Plug 'sainnhe/sonokai'
 
 Plug 'tpope/vim-abolish'
 
@@ -286,13 +286,13 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
 endif
 
 " colorscheme
-set background=dark
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+let g:sonokai_style = 'default'
+let g:sonokai_transparent_background = 1
+let g:sonokai_disable_italic_comment = 1
+let g:sonokai_diagnostic_text_highlight = 1
+let g:sonokai_diagnostic_line_highlight = 1
 
-hi Pmenu ctermbg=blue
-hi PmenuSel term=bold ctermfg=white ctermbg=darkred
-hi PMenuSbar ctermbg=blue
+colorscheme sonokai
 
 " list
 set list

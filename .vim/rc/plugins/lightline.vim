@@ -24,7 +24,7 @@ function! LightLineFugitive()
 endfunction
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'sonokai',
     \ 'active': {
     \   'left': [['mode', 'paste'], ['fugitive', 'filename']],
     \   'right': [['lineinfo'],
