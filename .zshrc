@@ -26,17 +26,9 @@ if [ -z "$TMUX" ] && (($+commands[tmux])); then
     if [ -n "$choice" ]; then
       local version="$(tmux -V| cut -d ' ' -f 2)"
       if tmux has-session -t "$choice" 2> /dev/null; then
-        if [ -z "$KITTY_PID" ] && version_at_least "$version" 3.0; then
-          exec tmux attach-session -dx -t "$choice"
-        else
-          exec tmux attach-session -d -t "$choice"
-        fi
+        exec tmux attach-session -d -t "$choice"
       else
-        if [ -z "$KITTY_PID" ] && version_at_least "$version" 3.0; then
-          exec tmux new-session -ADX -s "$choice"
-        else
-          exec tmux new-session -AD -s "$choice"
-        fi
+        exec tmux new-session -AD -s "$choice"
       fi
     fi
   }
