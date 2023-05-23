@@ -1,15 +1,26 @@
 function fixsshauthsock() {
   local prefix="${XDG_RUNTIME_DIR:-~/.ssh/cache}"
 
+  local force=0
+  while getopts 'f' opt; do
+    case "${opt}" in
+      f)
+        force=1
+        ;;
+      *)
+        return 1
+    esac
+  done
+
   if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
     local socket="${prefix}/ssh-agent.tmux"
 
-    if [ -S "$socket" ]; then
+    if [ "$force" -eq 0 ] && [ -S "$socket" ]; then
       export SSH_AUTH_SOCK="$socket"
       return
     fi
 
-    if [ ! -S "$SSH_AUTH_SOCK" ]; then
+    if [ "$force" -ne 0 ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
       unset SSH_AUTH_SOCK
       source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
     fi
