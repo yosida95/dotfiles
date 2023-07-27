@@ -439,8 +439,8 @@ let g:lsp_semantic_enabled = 0
 let g:lsp_format_sync_timeout = 1000
 
 let g:lsp_document_code_action_signs_enabled = 0
+let g:lsp_document_highlight_enabled = 1
 
-let g:lsp_highlight_references_enabled = 1
 highlight lspReference ctermfg=lightgreen
 
 function! s:on_lsp_buffer_enabled() abort
