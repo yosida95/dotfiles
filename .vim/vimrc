@@ -434,6 +434,9 @@ let g:asyncomplete_auto_completeopt = 0
 " prabirshrestha/vim-lsp:
 """"""""""""""""""""
 let g:lsp_fold_enabled = 0
+let g:lsp_use_native_client = 1
+let g:lsp_semantic_enabled = 0
+let g:lsp_format_sync_timeout = 1000
 
 let g:lsp_document_code_action_signs_enabled = 0
 
