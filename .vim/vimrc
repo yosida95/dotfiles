@@ -333,7 +333,10 @@ endfunction
 """"""""""""""""""""
 " fern.vim
 """"""""""""""""""""
-let g:fern#default_exclude = '\(^\(\.\(.\+[\-_]\)\?cache\|\.git\|\.hg\|\.tox\|\.venv\|\.DS_Store\|node_modules\|vendor\|__pycache__\)\|\(\.egg-info\|\.pyc\)\)$'
+let g:fern#default_exclude = '\v(
+      \^(\.((.+[-_])?cache|coverage.*|git|hg|next|tox|venv|DS_Store)|
+      \__pycache__|node_modules|vendor|wheelhouse)|
+      \\.(egg-info|pyc))$'
 let g:fern#default_hidden = 1
 
 let g:fern#disable_default_mappings = 1
@@ -413,7 +416,10 @@ let g:ctrlp_switch_buffer = 't'
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_custom_ignore = '\v(/((\.(git|hg|(.+[\-_])?cache|eggs|tox|venv|DS_Store)|wheelhouse|__pycache__|node_modules|vendor|_build)$|\.coverage))|\.(pyc|egg-info)$'
+let g:ctrlp_custom_ignore = '\v(
+      \/(\.((.+[-_])?cache|coverage.*|eggs|git|hg|next|tox|venv|DS_Store)|
+      \__pycache__|node_modules|vendor|wheelhouse|_build)|
+      \\.(egg-info|pyc))$'
 
 let g:ctrlp_extensions = ['quickfix']
 
