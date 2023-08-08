@@ -1,3 +1,5 @@
+# vim: set filetype=gitconfig:
+
 [init]
 	defaultBranch = main
 [alias]
@@ -24,9 +26,9 @@
 	pretty = fuller
 [fetch]
 	prune = true
+[advice]
+	detachedHead = false
 [ghq]
 	root = ~/proj/src
 [includeIf "gitdir:~/proj/src/github.com/GehirnInc/"]
   path = ~/.config/git/config.gehirninc
-
-# vim: set filetype=gitconfig:
