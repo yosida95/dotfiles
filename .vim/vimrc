@@ -81,12 +81,12 @@ Plug 'lambdalisue/fern.vim', { 'tag': 'v1.51.3' }
 
 Plug 'dense-analysis/ale', { 'tag': 'v3.3.0' }
 
-Plug 'prabirshrestha/asyncomplete.vim', { 'tag': 'v2.1.0' }
+Plug 'prabirshrestha/asyncomplete.vim', { 'commit': '9c7651894c2c6d656c0dc71e87cfabbbb71b9c78' }
   Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'yami-beta/asyncomplete-omni.vim'
 
-Plug 'prabirshrestha/vim-lsp', { 'commit': 'e42203b4f0e46a927dd17b28f142fa91661d7163' }
+Plug 'prabirshrestha/vim-lsp', { 'commit': 'e74bd3c986484845a4b87e5aa013773d52030a75' }
   Plug 'prabirshrestha/async.vim'
   Plug 'mattn/vim-lsp-settings'
   Plug 'rhysd/vim-lsp-ale'
