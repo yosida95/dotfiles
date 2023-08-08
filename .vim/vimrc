@@ -84,7 +84,6 @@ Plug 'dense-analysis/ale', { 'tag': 'v3.3.0' }
 Plug 'prabirshrestha/asyncomplete.vim', { 'commit': '9c7651894c2c6d656c0dc71e87cfabbbb71b9c78' }
   Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  Plug 'yami-beta/asyncomplete-omni.vim'
 
 Plug 'prabirshrestha/vim-lsp', { 'commit': 'e74bd3c986484845a4b87e5aa013773d52030a75' }
   Plug 'prabirshrestha/async.vim'
@@ -504,13 +503,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
   \ 'priority': 10,
   \ 'completor': function('asyncomplete#sources#file#completor')
   \ }))
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-  \ 'name': 'omni',
-  \ 'allowlist': ['*'],
-  \ 'blocklist': ['c', 'cpp', 'html', 'sql'],
-  \ 'completor': function('asyncomplete#sources#omni#completor')
-  \  }))
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
