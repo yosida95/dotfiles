@@ -333,7 +333,7 @@ endfunction
 " fern.vim
 """"""""""""""""""""
 let g:fern#default_exclude = '\v(
-      \^(\.((.+[-_])?cache|coverage.*|git|hg|next|tox|venv|DS_Store)|
+      \^(\.((.+[-_])?cache|coverage.*|git|hg|next|swc|tox|venv|DS_Store)|
       \__pycache__|node_modules|vendor|wheelhouse)|
       \\.(egg-info|pyc))$'
 let g:fern#default_hidden = 1
@@ -416,7 +416,7 @@ let g:ctrlp_switch_buffer = 't'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_custom_ignore = '\v(
-      \/(\.((.+[-_])?cache|coverage.*|eggs|git|hg|next|tox|venv|DS_Store)|
+      \/(\.((.+[-_])?cache|coverage.*|eggs|git|hg|next|swc|tox|venv|DS_Store)|
       \__pycache__|node_modules|vendor|wheelhouse|_build)|
       \\.(egg-info|pyc))$'
 
