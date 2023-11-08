@@ -63,9 +63,6 @@ Plug 'itchyny/lightline.vim'
   Plug 'maximbaz/lightline-ale'
 call s:source_rc('plugins/lightline.vim')
 
-Plug 'osyo-manga/vim-precious'
-  Plug 'Shougo/context_filetype.vim'
-
 Plug 'triglav/vim-visual-increment'
 
 Plug 'tpope/vim-surround'
