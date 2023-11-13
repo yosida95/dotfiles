@@ -79,7 +79,6 @@ Plug 'lambdalisue/fern.vim', { 'tag': 'v1.51.3' }
 Plug 'dense-analysis/ale', { 'tag': 'v3.3.0' }
 
 Plug 'prabirshrestha/asyncomplete.vim', { 'commit': '9c7651894c2c6d656c0dc71e87cfabbbb71b9c78' }
-  Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'prabirshrestha/vim-lsp', { 'commit': 'e74bd3c986484845a4b87e5aa013773d52030a75' }
@@ -493,13 +492,6 @@ let g:ale_c_clangformat_executable = 'clang-format-8'
 """"""""""""""""""""
 " asyncomplete.vim:
 """"""""""""""""""""
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-  \ 'name': 'file',
-  \ 'allowlist': ['*'],
-  \ 'blocklist': [],
-  \ 'priority': 10,
-  \ 'completor': function('asyncomplete#sources#file#completor')
-  \ }))
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
