@@ -9,4 +9,5 @@ augroup filetypedetect
   autocmd! BufNewFile,BufRead *.diag setfiletype diag
   autocmd! BufNewFile,BufRead go.mod setfiletype gomod
   autocmd! BufNewFile,BufRead *.mak setfiletype mako
+  autocmd! BufNewFile,BufRead *.njk setfiletype jinja.html
 augroup END
