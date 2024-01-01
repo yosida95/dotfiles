@@ -58,9 +58,10 @@ if (($+commands[luarocks])); then
 fi
 
 path=(
-  /opt/circleci/bin(N-/:a)
-
+  $HOME/proj/bin(N-/:a)
+  $HOME/.local/bin(N-/:a)
   $HOME/.cargo/bin(N-/:a)
   $HOME/.rbenv/bin(N-/:a)
+  /opt/circleci/bin(N-/:a)
   $path
 )
