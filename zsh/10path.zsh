@@ -58,6 +58,7 @@ if (($+commands[luarocks])); then
 fi
 
 path=(
+  $DOTFILES/bin
   $HOME/proj/bin(N-/:a)
   $HOME/.local/bin(N-/:a)
   $HOME/.cargo/bin(N-/:a)

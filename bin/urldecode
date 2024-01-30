@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
+from urllib.parse import unquote_to_bytes
+
+
+def main():
+    encoded = sys.stdin.read()
+    sys.stdout.buffer.write(unquote_to_bytes(encoded.replace('+', ' ')))
+
+
+if __name__ == '__main__':
+    main()
