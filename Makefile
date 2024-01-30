@@ -71,8 +71,6 @@ ${HOME}/.vim: | \
 		${HOME}/.cache/vimbackup \
 		${HOME}/.cache/vimswap \
 		${HOME}/.cache/vimundo \
-		${LOCAL_BIN}/checkstyle \
-		${LOCAL_BIN}/google-java-format \
 		${HOME}/.local/share/vim-lsp-settings/settings.json
 	ln -sr .vim $@
 
@@ -120,11 +118,3 @@ ${KUBECTL_COMP_DIR}/_kubectl:
 	mkdir -p $(@D)
 	kubectl completion zsh > $@
 	ln -srf $@ zsh/completion/_kubectl
-
-${LOCAL_BIN}/checkstyle:
-	mkdir -p $(@D)
-	ln -sr contrib/checkstyle $@
-
-${LOCAL_BIN}/google-java-format:
-	mkdir -p $(@D)
-	ln -sr contrib/google-java-format $@
