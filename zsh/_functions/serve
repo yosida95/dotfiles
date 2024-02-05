@@ -1,0 +1,16 @@
+# https://github.com/vercel/serve/issues/770
+
+function serve() {
+  typeset -A OPTIONS
+  zparseopts -E -M -A OPTIONS h -help=h v -version=v
+
+  if (($+OPTIONS[-h])) || (($+OPTIONS[-v])); then
+    command serve "$@"
+    return $?
+  fi
+
+  command serve --no-clipboard "$@"
+  return  $?
+}
+
+# vim: set filetype=zsh:
