@@ -9,7 +9,7 @@ function serve() {
     return $?
   fi
 
-  command serve --no-clipboard "$@"
+  command serve --no-clipboard --no-port-switching "$@"
   return  $?
 }
 
