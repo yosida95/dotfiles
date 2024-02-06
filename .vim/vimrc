@@ -73,7 +73,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
-Plug 'lambdalisue/fern.vim', { 'tag': 'v1.51.3' }
+Plug 'lambdalisue/fern.vim', { 'tag': 'v1.55.0' }
   Plug 'lambdalisue/fern-mapping-project-top.vim'
 
 Plug 'dense-analysis/ale', { 'tag': 'v3.3.0' }
@@ -352,6 +352,7 @@ function! s:init_fern() abort
   nmap <buffer> l <Plug>(fern-action-open-or-expand)
   nmap <buffer> o <Plug>(fern-action-open)
   nmap <buffer> y <Plug>(fern-action-yank)
+  nmap <buffer> L <Plug>(fern-action-expand-tree)
 
   nmap <buffer> K <Plug>(fern-action-new-dir)
   nmap <buffer> N <Plug>(fern-action-new-file)
