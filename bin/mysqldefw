@@ -1,0 +1,22 @@
+#!/bin/zsh
+set -eu
+
+if ! (($+commands[mysqldef])); then
+  echo "mysqldef not found"
+  exit 1
+fi
+
+ARGS=("$@")
+for i in {1..$((${#ARGS} - 1))}; do
+  case "${ARGS[i]}" in
+    -S|--socket)
+      fname="${HOME}/.config/mysqldefw/${ARGS[i+1]:t}.txt.age"
+      if [ -r "$fname" ]; then
+        export MYSQL_PWD=$(age -d "$fname")
+      fi
+      break
+      ;;
+  esac
+done
+
+exec mysqldef "$@"
