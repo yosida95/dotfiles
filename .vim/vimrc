@@ -256,7 +256,7 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   set ttymouse=sgr
 
   " フルカラー有効、:help xterm-true-color を参照
-  let &termguicolors = v:true
+  set termguicolors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
@@ -280,8 +280,11 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
 endif
 
 " colorscheme
-let g:sonokai_style = 'default'
-let g:sonokai_transparent_background = 1
+set background=dark
+
+let g:sonokai_style = 'shusia'
+let g:sonokai_transparent_background = 0
+let g:sonokai_enable_italic = 0
 let g:sonokai_disable_italic_comment = 1
 let g:sonokai_diagnostic_text_highlight = 1
 let g:sonokai_diagnostic_line_highlight = 1
