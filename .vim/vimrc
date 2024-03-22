@@ -289,6 +289,17 @@ let g:sonokai_disable_italic_comment = 1
 let g:sonokai_diagnostic_text_highlight = 1
 let g:sonokai_diagnostic_line_highlight = 1
 
+function! s:sonokai_custom() abort
+  " Link a highlight group to a predefined highlight group.
+  " See `colors/sonokai.vim` for all predefined highlight groups.
+  highlight! link LineNr Grey
+endfunction
+
+augroup SonokaiCustom
+  autocmd!
+  autocmd ColorScheme sonokai call s:sonokai_custom()
+augroup END
+
 colorscheme sonokai
 
 " list
