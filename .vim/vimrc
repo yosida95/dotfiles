@@ -425,12 +425,11 @@ let g:ctrlp_switch_buffer = 't'
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_custom_ignore = '\v(
-      \/(\.((.+[-_])?cache|coverage.*|eggs|git|hg|next|swc|tox|venv|DS_Store)|
-      \__pycache__|node_modules|vendor|wheelhouse|_build)|
-      \\.(egg-info|pyc))$'
-
 let g:ctrlp_extensions = ['quickfix']
+let g:ctrlp_custom_ignore = {
+  \   'dir': '\v/(\.((.+[-_])?cache|eggs|git|hg|next|swc|tox|venv)|__pycache__|dist|node_modules|vendor|wheelhouse|_build)$',
+  \   'file': '\v(/(\.(coverage.*|DS_Store))|\.(egg-info|pyc))$',
+  \ }
 
 
 """"""""""""""""""""
@@ -506,7 +505,6 @@ let g:ale_c_clangformat_executable = 'clang-format-8'
 """"""""""""""""""""
 " asyncomplete.vim:
 """"""""""""""""""""
-
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR>    pumvisible() ? asyncomplete#close_popup() : "\<CR>"
