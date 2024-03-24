@@ -18,3 +18,5 @@ export EDITOR='vim'
 export GPG_TTY=$(tty)
 
 export JQ_COLORS="1;33:1;31:1;31:1;31:1;32:1;37:1;37"
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
