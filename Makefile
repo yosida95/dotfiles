@@ -83,6 +83,7 @@ ${ZSH_COMPLETION}/_git: \
 		${GIT_VERSION_DIR}/git-completion.zsh \
 		${ZSH_COMPLETION}/git-completion.bash
 	ln -srf $< $@
+	rm -f ${HOME}/.zcompdump
 
 ${ZSH_COMPLETION}/git-completion.bash: ${GIT_VERSION_DIR}/git-completion.bash
 	ln -srf $< $@
@@ -101,6 +102,7 @@ ${HOME}/.zshrc: | ${ZSH_COMPLETION}/_ghq
 
 ${ZSH_COMPLETION}/_ghq: ${GHQ_VERSION_DIR}/_ghq
 	ln -srf $< $@
+	rm -f ${HOME}/.zcompdump
 
 ${GHQ_VERSION_DIR}/_ghq:
 	mkdir -p $(@D)
@@ -114,6 +116,7 @@ ${HOME}/.zshrc: | ${ZSH_COMPLETION}/_kubectl
 
 ${ZSH_COMPLETION}/_kubectl: ${KUBECTL_VERSION_DIR}/_kubectl
 	ln -srf $< $@
+	rm -f ${HOME}/.zcompdump
 
 ${KUBECTL_VERSION_DIR}/_kubectl:
 	mkdir -p $(@D)
