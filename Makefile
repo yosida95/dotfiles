@@ -1,25 +1,16 @@
 LOCAL_BIN := ${HOME}/.local/bin
 XDG_CONFIG_HOME ?= ${HOME}/.config
 
-ZSH_COMP_SCRIPT :=
+ZSH_COMPLETION := zsh/completion
 
 GIT_VERSION := v$(shell git --version 2> /dev/null| cut -d ' ' -f 3)
-GIT_COMP_DIR := zsh/completion/git/${GIT_VERSION}
-ifneq (${GIT_VERSION},v)
-ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${GIT_COMP_DIR}/git-completion.zsh
-endif
+GIT_VERSION_DIR := ${ZSH_COMPLETION}/git/${GIT_VERSION}
 
 GHQ_VERSION := v$(shell ghq --version 2> /dev/null| cut -d ' ' -f 3)
-GHQ_COMP_DIR := zsh/completion/ghq/${GHQ_VERSION}
-ifneq (${GHQ_VERSION},v)
-ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${GHQ_COMP_DIR}/_ghq
-endif
+GHQ_VERSION_DIR := zsh/completion/ghq/${GHQ_VERSION}
 
 KUBECTL_VERSION := $(shell kubectl version --client --output json 2> /dev/null| jq -r .clientVersion.gitVersion)
-KUBECTL_COMP_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
-ifneq (${KUBECTL_VERSION},)
-ZSH_COMP_SCRIPT := ${ZSH_COMP_SCRIPT} ${KUBECTL_COMP_DIR}/_kubectl
-endif
+KUBECTL_VERSION_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
@@ -49,10 +40,8 @@ ${XDG_CONFIG_HOME}/git/ignore:
 	mkdir -p $(@D)
 	ln -sr git/ignore $@
 
-${XDG_CONFIG_HOME}/kitty:
-	mkdir -p ${XDG_CONFIG_HOME}/kitty
-
-${XDG_CONFIG_HOME}/kitty/kitty.conf: | ${XDG_CONFIG_HOME}/kitty
+${XDG_CONFIG_HOME}/kitty/kitty.conf:
+	mkdir -p $(@D)
 	ln -sr kitty.conf $@
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
@@ -74,13 +63,7 @@ ${HOME}/.vim: | \
 		${HOME}/.local/share/vim-lsp-settings/settings.json
 	ln -sr .vim $@
 
-${HOME}/.cache/vimbackup:
-	mkdir -p $@
-
-${HOME}/.cache/vimswap:
-	mkdir -p $@
-
-${HOME}/.cache/vimundo:
+${HOME}/.cache/vimbackup ${HOME}/.cache/vimswap ${HOME}/.cache/vimundo:
 	mkdir -p $@
 
 ${HOME}/.local/share/vim-lsp-settings/settings.json:
@@ -90,31 +73,49 @@ ${HOME}/.local/share/vim-lsp-settings/settings.json:
 ${HOME}/.zshenv:
 	ln -sr ./.zshenv $@
 
-${HOME}/.zshrc: | ${ZSH_COMP_SCRIPT}
+${HOME}/.zshrc:
 	ln -sr ./.zshrc $@
 
-${GIT_COMP_DIR}/git-completion.zsh: ${GIT_COMP_DIR}/git-completion.bash
-	mkdir -p $(@D)
-	curl -L \
-		-o $@ \
-		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/git-completion.zsh
-	ln -srf $@ zsh/completion/_git
+ifneq (${GIT_VERSION},v)
+${HOME}/.zshrc: | ${ZSH_COMPLETION}/_git
 
-${GIT_COMP_DIR}/git-completion.bash:
-	mkdir -p $(@D)
-	curl -L \
-		-o $@ \
-		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/git-completion.bash
-	ln -srf $@ zsh/completion/git-completion.bash
+${ZSH_COMPLETION}/_git: \
+		${GIT_VERSION_DIR}/git-completion.zsh \
+		${ZSH_COMPLETION}/git-completion.bash
+	ln -srf $< $@
 
-${GHQ_COMP_DIR}/_ghq:
-	mkdir -p $(@D)
-	curl -L \
-		-o $@ \
-		https://raw.githubusercontent.com/x-motemen/ghq/${GHQ_VERSION}/misc/zsh/_ghq
-	ln -srf $@ zsh/completion/_ghq
+${ZSH_COMPLETION}/git-completion.bash: ${GIT_VERSION_DIR}/git-completion.bash
+	ln -srf $< $@
 
-${KUBECTL_COMP_DIR}/_kubectl:
+${GIT_VERSION_DIR}/git-completion.%:
+	mkdir -p $(@D)
+	curl -sSL \
+		-o $@ \
+		https://raw.githubusercontent.com/git/git/${GIT_VERSION}/contrib/completion/$(@F)
+
+${GIT_VERSION_DIR}/git-completion.zsh: ${GIT_VERSION_DIR}/git-completion.bash
+endif
+
+ifneq (${GHQ_VERSION},v)
+${HOME}/.zshrc: | ${ZSH_COMPLETION}/_ghq
+
+${ZSH_COMPLETION}/_ghq: ${GHQ_VERSION_DIR}/_ghq
+	ln -srf $< $@
+
+${GHQ_VERSION_DIR}/_ghq:
+	mkdir -p $(@D)
+	curl -sSL \
+		-o $@ \
+		https://raw.githubusercontent.com/x-motemen/ghq/${GHQ_VERSION}/misc/zsh/$(@F)
+endif
+
+ifneq (${KUBECTL_VERSION},)
+${HOME}/.zshrc: | ${ZSH_COMPLETION}/_kubectl
+
+${ZSH_COMPLETION}/_kubectl: ${KUBECTL_VERSION_DIR}/_kubectl
+	ln -srf $< $@
+
+${KUBECTL_VERSION_DIR}/_kubectl:
 	mkdir -p $(@D)
 	kubectl completion zsh > $@
-	ln -srf $@ zsh/completion/_kubectl
+endif
