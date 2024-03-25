@@ -8,7 +8,7 @@ fpath=(
   $fpath
 )
 
-for config in $DOTFILES/zsh/*.zsh; do
+for config in $DOTFILES/zsh/*.zsh(N.onn); do
   source $config
 done
 unset config

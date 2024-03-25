@@ -9,18 +9,18 @@ path=(
   /opt/circleci/bin(N-/:a)
 
   # Emit only the latest version
-  /opt/erlang/*/bin(N/On[1])
-  /opt/go/*/bin(N/On[1])
-  /opt/gradle/*/bin(N/On[1])
-  /opt/node/*/bin(N/On[1])
-  /opt/protobuf/*/bin(N/On[1])
-  /opt/scala/*/bin(N/On[1])
-  /opt/sbt/*/bin(N/On[1])
-  /opt/tmux/*/bin(N/On[1])
-  /opt/vim/*/bin(N/On[1])
+  /opt/erlang/*/bin(N/Onn[1]:a)
+  /opt/go/*/bin(N/Onn[1]:a)
+  /opt/gradle/*/bin(N/Onn[1]:a)
+  /opt/node/*/bin(N/Onn[1]:a)
+  /opt/protobuf/*/bin(N/Onn[1]:a)
+  /opt/scala/*/bin(N/Onn[1]:a)
+  /opt/sbt/*/bin(N/Onn[1]:a)
+  /opt/tmux/*/bin(N/Onn[1]:a)
+  /opt/vim/*/bin(N/Onn[1]:a)
 
   # Emit all installed versions
-  /opt/python/*/bin(N/On)
+  /opt/python/*/bin(N/Onn:a)
 
   $path
 )
