@@ -18,7 +18,6 @@ all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
 		${XDG_CONFIG_HOME}/git/config.gehirninc \
 		${XDG_CONFIG_HOME}/git/ignore \
-		${XDG_CONFIG_HOME}/kitty/kitty.conf \
 		${HOME}/.hgrc \
 		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
@@ -29,27 +28,14 @@ all: | ${HOME}/.dircolors \
 ${HOME}/.dircolors:
 	ln -sr .dircolors $@
 
-${XDG_CONFIG_HOME}/git/config:
+${XDG_CONFIG_HOME}/%: .config/%
 	mkdir -p $(@D)
-	ln -sr git/config $@
-
-${XDG_CONFIG_HOME}/git/config.gehirninc:
-	mkdir -p $(@D)
-	ln -sr git/config.gehirninc $@
-
-${XDG_CONFIG_HOME}/git/ignore:
-	mkdir -p $(@D)
-	ln -sr git/ignore $@
-
-${XDG_CONFIG_HOME}/kitty/kitty.conf:
-	mkdir -p $(@D)
-	ln -sr kitty.conf $@
+	ln -srT $< $@
 
 ifeq ($(UNAME),Darwin)
-all: | ${XDG_CONFIG_HOME}/karabiner
-
-${XDG_CONFIG_HOME}/karabiner: .config/karabiner
-	ln -srT $< $@
+all: \
+		${XDG_CONFIG_HOME}/karabiner \
+		${XDG_CONFIG_HOME}/kitty/kitty.conf
 endif
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
