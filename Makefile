@@ -18,6 +18,7 @@ all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
 		${XDG_CONFIG_HOME}/git/config.gehirninc \
 		${XDG_CONFIG_HOME}/git/ignore \
+		${XDG_CONFIG_HOME}/yamllint/config \
 		${HOME}/.hgrc \
 		${HOME}/.lessfilter \
 		${HOME}/.tmux.conf \
