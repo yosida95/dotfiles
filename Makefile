@@ -1,5 +1,6 @@
 LOCAL_BIN := ${HOME}/.local/bin
 XDG_CONFIG_HOME ?= ${HOME}/.config
+UNAME := $(shell uname)
 
 ZSH_COMPLETION := zsh/completion
 
@@ -43,6 +44,13 @@ ${XDG_CONFIG_HOME}/git/ignore:
 ${XDG_CONFIG_HOME}/kitty/kitty.conf:
 	mkdir -p $(@D)
 	ln -sr kitty.conf $@
+
+ifeq ($(UNAME),Darwin)
+all: | ${XDG_CONFIG_HOME}/karabiner
+
+${XDG_CONFIG_HOME}/karabiner: .config/karabiner
+	ln -srT $< $@
+endif
 
 ${HOME}/.hgrc: | ${HOME}/.hgignore
 	ln -sr .hgrc $@
