@@ -215,8 +215,8 @@ nmap <Esc><Esc> :noh<CR>
 """"""""""""""""""""
 set expandtab
 set smarttab
-set tabstop=2
-set shiftwidth=2
+set shiftwidth=4
+set softtabstop=-1  " align with shiftwidth
 set shiftround
 
 set autoindent
@@ -542,7 +542,7 @@ let g:vim_json_syntax_conceal = 0
 """"""""""""""""""""
 " vim-markdown
 """"""""""""""""""""
-
+let g:markdown_recommended_style = 0
 let g:vim_markdown_folding_disabled = 1
 let g:markdown_fenced_languages = [
   \ 'js=javascript',
