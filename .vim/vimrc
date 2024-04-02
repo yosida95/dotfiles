@@ -26,6 +26,8 @@ set undodir=$HOME/.cache/vimundo/
 
 set secure
 
+set maxmempattern=2048
+
 
 """"""""""""""""""""
 " Encodings:
