@@ -29,7 +29,7 @@ all: | ${HOME}/.dircolors \
 ${HOME}/.dircolors:
 	ln -sr .dircolors $@
 
-${XDG_CONFIG_HOME}/%: .config/%
+${XDG_CONFIG_HOME}/%: %
 	mkdir -p $(@D)
 	ln -srT $< $@
 
