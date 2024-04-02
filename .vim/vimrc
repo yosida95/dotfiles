@@ -304,7 +304,7 @@ colorscheme sonokai
 
 " list
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:$,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:↲,nbsp:%
 
 " messages
 set shortmess=tcI
