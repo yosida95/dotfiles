@@ -1,7 +1,9 @@
-# vim: set filetype=gitconfig:
+# vim: set filetype=gitconfig shiftwidth=0 noexpandtab:
 
 [init]
 	defaultBranch = main
+[core]
+	whitespace = trailing-space,space-before-tab,cr-at-eol
 [alias]
 	pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
 [color]
@@ -31,4 +33,4 @@
 [ghq]
 	root = ~/proj/src
 [includeIf "gitdir:~/proj/src/github.com/GehirnInc/"]
-  path = ~/.config/git/config.gehirninc
+	path = ~/.config/git/config.gehirninc
