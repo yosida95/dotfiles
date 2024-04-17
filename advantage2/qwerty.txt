@@ -7,10 +7,10 @@
 [obrack]>[intl-\]
 [cbrack]>[\]
 [caps]>[lctrl]
-* japanese_kana
-[lctrl]>[144]
 * japanese_eisuu
-[rctrl]>[145]
+[lctrl]>[145]
+* F14
+[rctrl]>[105]
 [rwin]>[ralt]
 [home]>[lwin]
 [end]>[obrack]
