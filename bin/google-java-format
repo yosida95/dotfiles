@@ -1,15 +1,15 @@
 #!/usr/bin/env zsh
-
 set -eu
 
-DIRECTORY="${0:h:h}"
-RELEASE="v1.15.0"
+RELEASE="v1.22.0"
+DIRECTORY="${XDG_CACHE_HOME:-$HOME/.cache}/google-java-format"
 JARNAME="google-java-format-${RELEASE:1}-all-deps.jar"
-JARPATH="${DIRECTORY}/lib/${JARNAME}"
+JARPATH="${DIRECTORY}/${JARNAME}"
 
 if [ ! -f "${JARPATH}" ]; then
+  install --mode "0755" --directory "$DIRECTORY"
   curl -Lf  -o "${JARPATH}" \
     "https://github.com/google/google-java-format/releases/download/${RELEASE}/${JARNAME}"
 fi
 
-exec java -jar ${JARPATH} "$@"
+exec java -jar "$JARPATH" "$@"
