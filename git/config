@@ -18,6 +18,7 @@
 [push]
 	default = simple
 	followTags = true
+	autoSetupRemote = true
 [user]
 	useConfigOnly = true
 	name = Kohei YOSHIDA
@@ -34,3 +35,9 @@
 	root = ~/proj/src
 [includeIf "gitdir:~/proj/src/github.com/GehirnInc/"]
 	path = ~/.config/git/config.gehirninc
+[commit]
+	verbose = true
+[url "ssh://git@github.com/"]
+	pushInsteadOf = "https://github.com/"
+[log]
+	date = iso
