@@ -182,7 +182,7 @@ Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'racer-rust/vim-racer'
 
 " systemd
-Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'https://codeberg.org/Dokana/vim-systemd-syntax.git'
 
 " tmux
 Plug 'tmux-plugins/vim-tmux'
