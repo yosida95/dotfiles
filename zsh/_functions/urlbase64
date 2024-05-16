@@ -1,0 +1,10 @@
+urlbase64() {
+  local SET=("+/" "-_")
+  if (($argv[(I)-d])) || (($argv[(I)--decode])); then
+    tr -- "${(Oa)SET[@]}"| base64 "$@"
+    return
+  fi
+  base64 "$@"| tr -- "${SET[@]}"
+}
+
+# vim: set filetype=zsh:
