@@ -1,0 +1,9 @@
+function smtpauth() {
+  if [ $# -ne 2 ]; then
+    printf "Usage: %s [username] [password]\n" "$0"
+    return 1
+  fi
+  printf '\x00%s\x00%s' $1 $2| base64 -w0
+}
+
+# vim: set filetype=zsh:
