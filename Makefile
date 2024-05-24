@@ -13,6 +13,9 @@ GHQ_VERSION_DIR := zsh/completion/ghq/${GHQ_VERSION}
 KUBECTL_VERSION := $(shell kubectl version --client --output json 2> /dev/null| jq -r .clientVersion.gitVersion)
 KUBECTL_VERSION_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
 
+KUSTOMIZE_VERSION := $(shell kustomize version 2> /dev/null)
+KUSTOMIZE_VERSION_DIR := zsh/completion/kustomize/${KUSTOMIZE_VERSION}
+
 .PHONY: all
 all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/git/config \
@@ -116,4 +119,16 @@ ${ZSH_COMPLETION}/_kubectl: ${KUBECTL_VERSION_DIR}/_kubectl
 ${KUBECTL_VERSION_DIR}/_kubectl:
 	mkdir -p $(@D)
 	kubectl completion zsh > $@
+endif
+
+ifneq (${KUSTOMIZE_VERSION},)
+${HOME}/.zshrc: | ${ZSH_COMPLETION}/_kustomize
+
+${ZSH_COMPLETION}/_kustomize: ${KUSTOMIZE_VERSION_DIR}/_kustomize
+	ln -srf $< $@
+	rm -f ${HOME}/.zcompdump
+
+${KUSTOMIZE_VERSION_DIR}/_kustomize:
+	mkdir -p $(@D)
+	kustomize completion zsh > $@
 endif

@@ -10,3 +10,5 @@
 /zsh/completion/ghq
 /zsh/completion/_kubectl
 /zsh/completion/kubectl
+/zsh/completion/_kustomize
+/zsh/completion/kustomize
