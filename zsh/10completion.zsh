@@ -1,3 +1,3 @@
-zstyle ':completion:*:*:git:*' script $DOTFILES/zsh/completion/git-completion.bash
+zstyle ':completion:*:*:git:*' script $DOTFILES/zsh/completion/autoload/git-completion.bash
 
 autoload -Uz +X compinit && compinit

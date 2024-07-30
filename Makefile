@@ -2,10 +2,8 @@ LOCAL_BIN := ${HOME}/.local/bin
 XDG_CONFIG_HOME ?= ${HOME}/.config
 UNAME := $(shell uname)
 
-ZSH_COMPLETION := zsh/completion
-
 GIT_VERSION := v$(shell git --version 2> /dev/null| cut -d ' ' -f 3)
-GIT_VERSION_DIR := ${ZSH_COMPLETION}/git/${GIT_VERSION}
+GIT_VERSION_DIR := zsh/completion/git/${GIT_VERSION}
 
 GHQ_VERSION := v$(shell ghq --version 2> /dev/null| cut -d ' ' -f 3)
 GHQ_VERSION_DIR := zsh/completion/ghq/${GHQ_VERSION}
@@ -15,6 +13,9 @@ KUBECTL_VERSION_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
 
 KUSTOMIZE_VERSION := $(shell kustomize version 2> /dev/null)
 KUSTOMIZE_VERSION_DIR := zsh/completion/kustomize/${KUSTOMIZE_VERSION}
+
+REBAR_VERSION := $(shell rebar3 version 2> /dev/null| cut -d ' ' -f 2)
+REBAR_VERSION_DIR := zsh/completion/rebar3/${REBAR_VERSION}
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
@@ -75,15 +76,17 @@ ${HOME}/.zshrc:
 	ln -sr ./.zshrc $@
 
 ifneq (${GIT_VERSION},v)
-${HOME}/.zshrc: | ${ZSH_COMPLETION}/_git
+${HOME}/.zshrc: | zsh/completion/autoload/_git
 
-${ZSH_COMPLETION}/_git: \
+zsh/completion/autoload/_git: \
 		${GIT_VERSION_DIR}/git-completion.zsh \
-		${ZSH_COMPLETION}/git-completion.bash
+		zsh/completion/autoload/git-completion.bash
+	mkdir -p $(@D)
 	ln -srf $< $@
 	rm -f ${HOME}/.zcompdump
 
-${ZSH_COMPLETION}/git-completion.bash: ${GIT_VERSION_DIR}/git-completion.bash
+zsh/completion/autoload/git-completion.bash: ${GIT_VERSION_DIR}/git-completion.bash
+	mkdir -p $(@D)
 	ln -srf $< $@
 
 ${GIT_VERSION_DIR}/git-completion.%:
@@ -96,9 +99,10 @@ ${GIT_VERSION_DIR}/git-completion.zsh: ${GIT_VERSION_DIR}/git-completion.bash
 endif
 
 ifneq (${GHQ_VERSION},v)
-${HOME}/.zshrc: | ${ZSH_COMPLETION}/_ghq
+${HOME}/.zshrc: | zsh/completion/autoload/_ghq
 
-${ZSH_COMPLETION}/_ghq: ${GHQ_VERSION_DIR}/_ghq
+zsh/completion/autoload/_ghq: ${GHQ_VERSION_DIR}/_ghq
+	mkdir -p $(@D)
 	ln -srf $< $@
 	rm -f ${HOME}/.zcompdump
 
@@ -110,9 +114,10 @@ ${GHQ_VERSION_DIR}/_ghq:
 endif
 
 ifneq (${KUBECTL_VERSION},)
-${HOME}/.zshrc: | ${ZSH_COMPLETION}/_kubectl
+${HOME}/.zshrc: | zsh/completion/autoload/_kubectl
 
-${ZSH_COMPLETION}/_kubectl: ${KUBECTL_VERSION_DIR}/_kubectl
+zsh/completion/autoload/_kubectl: ${KUBECTL_VERSION_DIR}/_kubectl
+	mkdir -p $(@D)
 	ln -srf $< $@
 	rm -f ${HOME}/.zcompdump
 
@@ -122,9 +127,10 @@ ${KUBECTL_VERSION_DIR}/_kubectl:
 endif
 
 ifneq (${KUSTOMIZE_VERSION},)
-${HOME}/.zshrc: | ${ZSH_COMPLETION}/_kustomize
+${HOME}/.zshrc: | zsh/completion/autoload/_kustomize
 
-${ZSH_COMPLETION}/_kustomize: ${KUSTOMIZE_VERSION_DIR}/_kustomize
+zsh/completion/autoload/_kustomize: ${KUSTOMIZE_VERSION_DIR}/_kustomize
+	mkdir -p $(@D)
 	ln -srf $< $@
 	rm -f ${HOME}/.zcompdump
 

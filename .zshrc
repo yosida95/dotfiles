@@ -3,7 +3,7 @@ typeset -U PATH path
 typeset -U FPATH fpath
 
 fpath=(
-  ${DOTFILES}/zsh/completion
+  ${DOTFILES}/zsh/completion/autoload
   ${DOTFILES}/zsh/_functions
   $fpath
 )
