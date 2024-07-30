@@ -83,8 +83,7 @@ Plug 'dense-analysis/ale', { 'commit': '3220b94d2053e8051023fc6f79c00651071b1440
 Plug 'prabirshrestha/asyncomplete.vim', { 'commit': '9c7651894c2c6d656c0dc71e87cfabbbb71b9c78' }
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-Plug 'prabirshrestha/vim-lsp', { 'commit': 'e74bd3c986484845a4b87e5aa013773d52030a75' }
-  Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'
   Plug 'rhysd/vim-lsp-ale'
 
