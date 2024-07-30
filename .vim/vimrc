@@ -139,7 +139,6 @@ Plug 'pangloss/vim-javascript'
 
 " JSON
 Plug 'elzr/vim-json'
-Plug 'GutenYe/json5.vim'
 
 " logrotate
 Plug 'moon-musick/vim-logrotate'
