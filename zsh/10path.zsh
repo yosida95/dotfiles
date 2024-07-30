@@ -2,6 +2,7 @@ path=(
   $DOTFILES/bin
   $HOME/proj/bin(N-/:a)
   $HOME/.local/bin(N-/:a)
+  $HOME/.cache/rebar3/bin(N-/:a)
   $HOME/.cargo/bin(N-/:a)
   $HOME/.luarocks/bin(N-/:a)
   $HOME/.rbenv/bin(N-/:a)

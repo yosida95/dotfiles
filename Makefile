@@ -138,3 +138,17 @@ ${KUSTOMIZE_VERSION_DIR}/_kustomize:
 	mkdir -p $(@D)
 	kustomize completion zsh > $@
 endif
+
+ifneq (${REBAR_VERSION},)
+${HOME}/.zshrc: | zsh/completion/rebar3/_rebar3 zsh/completion/rebar3/_rebar3.zwc
+
+zsh/completion/rebar3/_rebar3: ${REBAR_VERSION_DIR}/_build/default/_rebar3
+	ln -srf $< $@
+
+zsh/completion/rebar3/_rebar3.zwc: ${REBAR_VERSION_DIR}/_build/default/_rebar3
+	zsh -c 'zcompile $@ $<'
+
+${REBAR_VERSION_DIR}/_build/default/_rebar3:
+	mkdir -p ${REBAR_VERSION_DIR}
+	(cd ${REBAR_VERSION_DIR} && rebar3 completion --shell zsh)
+endif

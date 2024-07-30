@@ -12,3 +12,4 @@
 /zsh/completion/kubectl
 /zsh/completion/autoload/_kustomize
 /zsh/completion/kustomize
+/zsh/completion/rebar3
