@@ -73,8 +73,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
-Plug 'lambdalisue/fern.vim', { 'tag': 'v1.56.0' }
-  Plug 'lambdalisue/fern-mapping-project-top.vim'
+Plug 'lambdalisue/vim-fern', { 'tag': 'v1.56.1' }
+  Plug 'lambdalisue/vim-fern-mapping-project-top'
 
 Plug 'dense-analysis/ale', { 'commit': '3220b94d2053e8051023fc6f79c00651071b1440' }
 
