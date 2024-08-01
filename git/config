@@ -38,6 +38,7 @@
 [commit]
 	verbose = true
 [url "ssh://git@github.com/"]
+	insteadOf = "git://github.com/"
 	pushInsteadOf = "https://github.com/"
 [log]
 	date = iso
