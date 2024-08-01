@@ -1,2 +1,5 @@
 setlocal shiftwidth=2
-let b:ale_fixers = ['prettier']
+
+if !exists('b:ale_fixers')
+    let b:ale_fixers = ['prettier']
+endif
