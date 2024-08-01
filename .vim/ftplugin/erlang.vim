@@ -1,1 +1,0 @@
-setlocal omnifunc=erlang_complete#Complete

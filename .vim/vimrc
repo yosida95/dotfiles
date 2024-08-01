@@ -110,8 +110,6 @@ Plug 'dart-lang/dart-vim-plugin', { 'for': ['dart'] }
 Plug 'ekalinin/Dockerfile.vim'
 
 " Erlang
-Plug 'vim-erlang/vim-erlang-compiler', { 'for': ['erlang'] }
-Plug 'vim-erlang/vim-erlang-omnicomplete', { 'for': ['erlang'] }
 Plug 'vim-erlang/vim-erlang-runtime'
 
 " Git
