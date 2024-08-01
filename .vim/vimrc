@@ -145,6 +145,7 @@ Plug 'moon-musick/vim-logrotate'
 Plug 'tbastos/vim-lua'
 
 " Markdown
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " NGINX
