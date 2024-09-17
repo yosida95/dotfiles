@@ -24,7 +24,6 @@ setopt LIST_TYPES
 zmodload zsh/complist
 
 # Colored completion
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:*:*:*' menu select
 
 # Smart case matching
@@ -36,7 +35,6 @@ zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)
 
 # Cache completion candidates
 zstyle ':completion::complete:*' use-cache on
-
 
 # Automatically do rehash
 zstyle ':completion:*' rehash true
