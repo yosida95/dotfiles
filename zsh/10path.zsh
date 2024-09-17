@@ -33,6 +33,7 @@ path=(
   $HOME/.luarocks/bin(N-/:a)
   $HOME/.rbenv/bin(N-/:a)
 
+  $HOME/.local/google-cloud-sdk/bin(N-/:a)
   /opt/circleci/bin(N-/:a)
 
   # Emit only the latest version
