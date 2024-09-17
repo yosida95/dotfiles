@@ -30,8 +30,8 @@ all: | ${HOME}/.dircolors \
 		${HOME}/.zshenv \
 		${HOME}/.zshrc
 
-${HOME}/.dircolors:
-	ln -sr .dircolors $@
+${HOME}/.dircolors: third_party/dircolors-solarized/dircolors.256dark.no-bold
+	ln -sfr $< $@
 
 ${XDG_CONFIG_HOME}/%: %
 	mkdir -p $(@D)
