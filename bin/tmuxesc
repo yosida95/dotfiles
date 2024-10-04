@@ -1,0 +1,89 @@
+#!python3
+
+import os
+import sys
+
+CHAR_0 = 0x30
+CHAR_A = 0x41
+CHAR_a = 0x61
+CHAR_BSLASH = 0x5C
+
+ALT = {
+    0x22: 0x22,  # \"
+    0x5C: 0x5C,  # \\
+    0x61: 0x07,  # \a
+    0x62: 0x08,  # \b
+    0x65: 0x1B,  # \e
+    0x66: 0x0C,  # \f
+    0x6E: 0x0A,  # \n
+    0x72: 0x0D,  # \r
+    0x74: 0x09,  # \t
+    0x76: 0x0B,  # \v
+}
+
+
+def main(argv=sys.argv):
+    if len(argv) < 2:
+        sys.exit(1)
+    code = argv[1].encode(
+        sys.stdout.encoding  # Hope compatible with ASCII in range(0, 127)
+    )
+
+    out = bytearray()
+    tmux = os.getenv("TMUX") is not None
+    if tmux:
+        out.extend(b"\x1bPtmux;")
+    i = 0
+    while i < len(code):
+        char = code[i]
+        if char == CHAR_BSLASH and i + 1 < len(code):
+            i += 1
+            char = code[i]
+            if char in ALT:
+                char = ALT[char]
+                i += 1
+            elif char in b"c":
+                break  # \c: produce no further output
+            elif char in b"01234567":
+                char, j = 0, 0
+                while j < 3 and i + j < len(code):
+                    char2 = code[i + j]
+                    if char2 not in b"01234567":
+                        break
+                    char <<= 3
+                    char += char2 - CHAR_0
+                    j += 1
+                char &= 0xFF
+                i += j
+            elif char in b"x":
+                i += 1
+                char, j = 0, 0
+                while j < 2 and i + j < len(code):
+                    char2 = code[i + j]
+                    if char2 in b"0123456789":
+                        char2 -= CHAR_0
+                    elif char2 in b"ABCDEF":
+                        char2 -= CHAR_A - 10
+                    elif char2 in b"abcdef":
+                        char2 -= CHAR_a - 10
+                    else:
+                        break
+                    char <<= 4
+                    char += char2
+                    j += 1
+                i += j
+            else:
+                out.append(CHAR_BSLASH)
+                i += 1
+        else:
+            i += 1
+        if char == 0x1B and tmux:
+            out.append(char)
+        out.append(char)
+    if tmux:
+        out.extend(b"\x1b\\")
+    sys.stdout.buffer.write(out)
+
+
+if __name__ == "__main__":
+    main()
