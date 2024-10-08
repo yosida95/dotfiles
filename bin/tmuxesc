@@ -1,5 +1,29 @@
 #!python3
 
+r"""
+Copyright (c) 2024 Kohei YOSHIDA <https://yosida95.com/>.
+
+tmuxesc converts data into the tmux passthrough escape sequence format [1] if
+executed inside a tmux session, and prints it.
+
+tmuxesc also recognizes the following printf(1)-style escape sequences that
+start with a backslash.
+
+* \"
+* \\
+* \a
+* \b
+* \c
+* \e
+* \f
+* \n
+* \r
+* \t
+* \v
+
+[1]: https://github.com/tmux/tmux/wiki/FAQ#what-is-the-passthrough-escape-sequence-and-how-do-i-use-it
+"""
+
 import os
 import sys
 
