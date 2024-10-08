@@ -1,40 +1,26 @@
 function fixsshauthsock() {
-  local prefix="${XDG_RUNTIME_DIR:-~/.ssh/cache}"
-
-  local force=0
-  while getopts 'f' opt; do
-    case "${opt}" in
-      f)
-        force=1
-        ;;
-      *)
-        return 1
-    esac
-  done
+  local PREFIX="${XDG_RUNTIME_DIR:-~/.ssh/cache}"
+  local SOCKET
 
   if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
-    local socket="${prefix}/ssh-agent.tmux"
-
-    if [ "$force" -eq 0 ] && [ -S "$socket" ]; then
-      export SSH_AUTH_SOCK="$socket"
-      return
-    fi
-
-    if [ "$force" -ne 0 ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+    if [[ "$SSH_AUTH_SOCK" = ${PREFIX}/ssh-agent.tmux.* ]] || [ ! -S "$SSH_AUTH_SOCK" ]; then
       unset SSH_AUTH_SOCK
       source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
     fi
 
     if [ -S "$SSH_AUTH_SOCK" ]; then
-      ln -sf "$SSH_AUTH_SOCK" "$socket"
-      export SSH_AUTH_SOCK="$socket"
+      SOCKET="${PREFIX}/ssh-agent.tmux.$(tmux display -p '#{session_id}')"
+      if [ "${SOCKET:A}" != "$SSH_AUTH_SOCK" ]; then
+        ln -sf "$SSH_AUTH_SOCK" "$SOCKET"
+      fi
+      export SSH_AUTH_SOCK="$SOCKET"
       return
     fi
   fi
 
-  local socket="${prefix}/ssh-agent.socket"
-  if [ ! -S "$SSH_AUTH_SOCK" ] && [ -S "$socket" ]; then
-    export SSH_AUTH_SOCK="$socket"
+  SOCKET="${PREFIX}/ssh-agent.socket"
+  if [ ! -S "$SSH_AUTH_SOCK" ] && [ -S "$SOCKET" ]; then
+    export SSH_AUTH_SOCK="$SOCKET"
   fi
 }
 
