@@ -1,4 +1,4 @@
-function fixsshauthsock() {
+function update-ssh-auth-sock() {
   local PREFIX="${XDG_RUNTIME_DIR:-~/.ssh/cache}"
   local SOCKET
 
