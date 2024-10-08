@@ -4,6 +4,7 @@ function fixsshauthsock() {
 
   if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
     if [[ "$SSH_AUTH_SOCK" = ${PREFIX}/ssh-agent.tmux.* ]] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+      find -P "$PREFIX" -mindepth 1 -maxdepth 1 -name 'ssh-agent.tmux.*' -xtype l -print -delete
       unset SSH_AUTH_SOCK
       source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
     fi
