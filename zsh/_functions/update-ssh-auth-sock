@@ -1,28 +1,68 @@
-function update-ssh-auth-sock() {
-  local PREFIX="${XDG_RUNTIME_DIR:-~/.ssh/cache}"
-  local SOCKET
+#!/bin/zsh
 
-  if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
-    if [[ "$SSH_AUTH_SOCK" = ${PREFIX}/ssh-agent.tmux.* ]] || [ ! -S "$SSH_AUTH_SOCK" ]; then
-      find -P "$PREFIX" -mindepth 1 -maxdepth 1 -name 'ssh-agent.tmux.*' -xtype l -print -delete
-      unset SSH_AUTH_SOCK
-      source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
-    fi
+# the function body (with no surrounding ‘funcname() {...}’) is taken to be the
+# complete contents of the file. This form allows the file to be used directly
+# as an executable shell script.
+# -- https://zsh.sourceforge.io/Doc/Release/Functions.html
 
-    if [ -S "$SSH_AUTH_SOCK" ]; then
-      SOCKET="${PREFIX}/ssh-agent.tmux.$(tmux display -p '#{session_id}')"
-      if [ "${SOCKET:A}" != "$SSH_AUTH_SOCK" ]; then
-        ln -sf "$SSH_AUTH_SOCK" "$SOCKET"
-      fi
-      export SSH_AUTH_SOCK="$SOCKET"
-      return
-    fi
+local PREFIX=${XDG_RUNTIME_DIR:-$HOME/.ssh/cache}
+local SOCKET
+
+local clean=0
+local session
+while getopts 'ct:' opt; do
+  case "${opt}" in
+    c)
+      clean=1
+      ;;
+    t)
+      session=$OPTARG
+      ;;
+    *)
+      return 1
+  esac
+done
+
+function tmux-ssh-auth-sock() {
+  if [ -n "$session" ] || [ -n "$TMUX" ]; then
+    echo "$PREFIX/ssh-agent.tmux.${session:-$(tmux display -p '#{session_id}')}"
+    return
   fi
-
-  SOCKET="${PREFIX}/ssh-agent.socket"
-  if [ ! -S "$SSH_AUTH_SOCK" ] && [ -S "$SOCKET" ]; then
-    export SSH_AUTH_SOCK="$SOCKET"
-  fi
+  return 1
 }
+
+function clean-ssh-auth-sock() {
+  if `tmux-ssh-auth-sock >/dev/null`; then
+    rm -f "$(tmux-ssh-auth-sock)"
+  fi
+  find -P "$PREFIX" -mindepth 1 -maxdepth 1 -name 'ssh-agent.tmux.*' -xtype l -print -delete 2> /dev/null || true
+}
+
+if ((clean)); then
+  clean-ssh-auth-sock
+  return
+fi
+
+if [ -n "$TMUX" ] && [ -n "$SSH_CLIENT" ]; then
+  if [[ "$SSH_AUTH_SOCK" = ${PREFIX}/ssh-agent.tmux.* ]] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+    clean-ssh-auth-sock
+    unset SSH_AUTH_SOCK
+    source <(tmux showenv -s SSH_AUTH_SOCK 2>/dev/null)
+  fi
+
+  if [ -S "$SSH_AUTH_SOCK" ]; then
+    SOCKET="$(tmux-ssh-auth-sock)"
+    if [ "${SOCKET:A}" != "$SSH_AUTH_SOCK" ]; then
+      ln -sf "$SSH_AUTH_SOCK" "$SOCKET"
+    fi
+    export SSH_AUTH_SOCK="$SOCKET"
+    return
+  fi
+fi
+
+SOCKET="${PREFIX}/ssh-agent.socket"
+if [ ! -S "$SSH_AUTH_SOCK" ] && [ -S "$SOCKET" ]; then
+  export SSH_AUTH_SOCK="$SOCKET"
+fi
 
 # vim: set filetype=zsh:
