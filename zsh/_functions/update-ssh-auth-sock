@@ -38,6 +38,13 @@ function clean-ssh-auth-sock() {
   find -P "$PREFIX" -mindepth 1 -maxdepth 1 -name 'ssh-agent.tmux.*' -xtype l -print -delete 2> /dev/null || true
 }
 
+if ((ZSH_EVAL_CONTEXT[(I)loadautofunc])); then
+  TRAPEXIT() {
+    unset -f tmux-ssh-auth-sock
+    unset -f clean-ssh-auth-sock
+  }
+fi
+
 if ((clean)); then
   clean-ssh-auth-sock
   return
