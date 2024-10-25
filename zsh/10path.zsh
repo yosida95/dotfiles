@@ -75,3 +75,11 @@ fi
 if (($+commands[luarocks])); then
   . <(luarocks path)
 fi
+
+if (( $path[(I)/snap/bin] )); then
+  () {
+    if [ "$#" -gt 0 ]; then
+      export MANPATH=":${(j.:.)@}"
+    fi
+  } /snap/*/current/man(N-/:a) /snap/*/current/share/man(N-/:a)
+fi
