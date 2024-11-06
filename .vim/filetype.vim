@@ -3,10 +3,12 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-  autocmd! BufNewFile,BufRead *.abnf,*.bnf setfiletype abnf
-  autocmd! BufNewFile,BufRead *.as setfiletype actionscript
-  autocmd! BufNewFile,BufRead .clang-format setfiletype yaml
-  autocmd! BufNewFile,BufRead *.diag setfiletype diag
-  autocmd! BufNewFile,BufRead go.mod setfiletype gomod
-  autocmd! BufNewFile,BufRead *.mak setfiletype mako
+  au BufNewFile,BufRead *.abnf,*.bnf setfiletype abnf
+  au BufNewFile,BufRead *.as setfiletype actionscript
+  au BufNewFile,BufRead .clang-format setfiletype yaml
+  au BufNewFile,BufRead *.diag setfiletype diag
+  au BufNewFile,BufRead go.mod setfiletype gomod
+  " jinja2 bundled with ansible-vim
+  au BufNewFile,BufRead *.j2 setfiletype jinja2
+  au BufNewFile,BufRead *.jinja2,*.njk setfiletype html.jinja2
 augroup END

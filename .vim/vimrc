@@ -162,8 +162,6 @@ Plug 'uarun/vim-protobuf'
 
 " Python
 Plug 'vim-python/python-syntax'
-Plug 'sophacles/vim-bundle-mako'
-Plug 'Glench/Vim-Jinja2-Syntax'
 
 " reStructuredText
 Plug 'Rykka/riv.vim', { 'for': ['rst'] }
@@ -538,12 +536,6 @@ let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors = 0
 let g:python_highlight_func_calls = 0
 let g:python_highlight_all = 1  " enable all highlighting except for the above
-
-
-""""""""""""""""""""
-" Vim-Jinja2-Syntax'
-""""""""""""""""""""
-let g:jinja_syntax_html = 0
 
 
 """"""""""""""""""""
