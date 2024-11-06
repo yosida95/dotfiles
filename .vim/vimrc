@@ -541,6 +541,12 @@ let g:python_highlight_all = 1  " enable all highlighting except for the above
 
 
 """"""""""""""""""""
+" Vim-Jinja2-Syntax'
+""""""""""""""""""""
+let g:jinja_syntax_html = 0
+
+
+""""""""""""""""""""
 " riv.vim:
 """"""""""""""""""""
 let g:riv_file_link_style = 2 " Sphinx
