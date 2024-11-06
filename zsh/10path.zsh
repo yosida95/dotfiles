@@ -83,3 +83,8 @@ if (( $path[(I)/snap/bin] )); then
     fi
   } /snap/*/current/man(N-/:a) /snap/*/current/share/man(N-/:a)
 fi
+
+if [[ $commands[gcloud] == $HOME/.local/google-cloud-sdk/* ]] && [ -x "$HOME/.venvs/gcloud/bin/python3" ]; then
+  export CLOUDSDK_PYTHON="$HOME/.venvs/gcloud/bin/python3"
+  export CLOUDSDK_PYTHON_SITEPACKAGES=1
+fi
