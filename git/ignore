@@ -1,5 +1,4 @@
-# .vimrc.local
-.vimrc.local
+.envrc
 
 
 # https://raw.githubusercontent.com/github/gitignore/29bd7031a7e33fcb87a20fde393fcb3323a17232/Global/VirtualEnv.gitignore

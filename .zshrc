@@ -18,6 +18,10 @@ autoload -Uz $DOTFILES/zsh/_functions/*(:t)
 
 update-ssh-auth-sock
 
+if (($+commands[direnv])); then
+  . <(direnv hook zsh)
+fi
+
 if [ -z "$TMUX" ] && (($+commands[tmux])); then
   () {
     (tmux list-session 2>/dev/null || :)| sed -e $'s/^/\t/g'
