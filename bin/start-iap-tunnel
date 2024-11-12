@@ -1,0 +1,24 @@
+#!/bin/zsh
+set -eu
+
+if [ $# -lt 2 ]; then
+  printf "Usage: [hostname] [port]\n" $1 >&2
+  exit 1
+fi
+
+TOKENS=(${(s/./)1})
+if [ ${#TOKENS} -lt 4 ] || [ ${#TOKENS} -gt 5 ]; then
+  printf "Invalid hostname: %s\n" $1 >&2
+  exit 1
+fi
+
+FLAGS=(${TOKENS[1]} $2 --project ${TOKENS[-2]})
+if [ ${#TOKENS} -eq 5 ]; then
+  FLAGS=($FLAGS --zone ${TOKENS[2]})
+fi
+
+exec gcloud compute start-iap-tunnel \
+  "${FLAGS[@]}" \
+  --listen-on-stdin \
+  --iap-tunnel-disable-connection-check \
+  "${@:3}"
