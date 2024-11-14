@@ -4,5 +4,7 @@ rules:
   line-length:
     max: 100
     allow-non-breakable-words: true
+  truthy:
+    check-keys: false
 
 # vim: set filetype=yaml:
