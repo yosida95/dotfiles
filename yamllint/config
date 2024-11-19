@@ -6,5 +6,8 @@ rules:
     allow-non-breakable-words: true
   truthy:
     check-keys: false
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: false
 
 # vim: set filetype=yaml:
