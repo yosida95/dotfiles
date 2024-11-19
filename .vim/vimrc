@@ -447,8 +447,17 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> K <plug>(lsp-hover)
 endfunction
 
-autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup MyAutoCmd
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
+  autocmd User lsp_float_opened nnoremap <buffer> <expr> <C-D> lsp#scroll(+4)
+  autocmd User lsp_float_opened nnoremap <buffer> <expr> <C-U> lsp#scroll(-4)
+  autocmd User lsp_float_opened nnoremap <buffer> <C-K> <Plug>(lsp-float-close)
+
+  autocmd User lsp_float_closed nunmap <buffer> <C-D>
+  autocmd User lsp_float_closed nunmap <buffer> <C-U>
+  autocmd User lsp_float_closed nunmap <buffer> <C-K>
+augroup END
 
 """"""""""""""""""""
 " mattn/vim-lsp-settings:
