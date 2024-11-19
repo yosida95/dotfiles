@@ -202,7 +202,7 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-nmap <Esc><Esc> :noh<CR>
+nnoremap <C-N><C-N> <Cmd>noh<CR>
 
 
 """"""""""""""""""""
