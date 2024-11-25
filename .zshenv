@@ -1,8 +1,5 @@
 export DOTFILES="${$(print -P %N):A:h}"
-
 export LANG=en_US.UTF-8
-export LANGUAGE=$LANG
-export LC_ALL=$LANG
 
 # Mercurial
 export HGENCODING='utf-8'
