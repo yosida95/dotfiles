@@ -1,11 +1,18 @@
 # deduplicate $PATH and $FPATH. Keep the first (left most) occurrence.
-typeset -U PATH path
-typeset -U FPATH fpath
+typeset -TU PATH path
+typeset -TU FPATH fpath
+typeset -TUx MANPATH manpath
 
 fpath=(
   ${DOTFILES}/zsh/completion/autoload
   ${DOTFILES}/zsh/_functions
   $fpath
+)
+
+manpath=(
+  ""
+  /snap/*/current/man(N-/:a)
+  /snap/*/current/share/man(N-/:a)
 )
 
 for config in $DOTFILES/zsh/*.zsh(N.onn); do

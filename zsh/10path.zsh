@@ -74,11 +74,3 @@ if (($+commands[java])); then
     export JAVA_HOME="${commands[java]:A:h:h}"
   fi
 fi
-
-if (( $path[(I)/snap/bin] )); then
-  () {
-    if [ "$#" -gt 0 ]; then
-      export MANPATH=":${(j.:.)@}"
-    fi
-  } /snap/*/current/man(N-/:a) /snap/*/current/share/man(N-/:a)
-fi
