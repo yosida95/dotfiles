@@ -60,6 +60,9 @@ if (($+commands[go])); then
   else
     unset GOROOT
   fi
+  export GOPATH=$HOME/proj
+  export GOBIN=$GOPATH/bin
+  export GOPRIVATE=github.com/yosida95,github.com/GehirnInc
 fi
 
 if (($+commands[java])); then
@@ -70,10 +73,6 @@ if (($+commands[java])); then
   else
     export JAVA_HOME="${commands[java]:A:h:h}"
   fi
-fi
-
-if (($+commands[luarocks])); then
-  . <(luarocks path)
 fi
 
 if (( $path[(I)/snap/bin] )); then
