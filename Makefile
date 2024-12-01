@@ -19,6 +19,7 @@ REBAR_VERSION_DIR := zsh/completion/rebar3/${REBAR_VERSION}
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
+		${XDG_CONFIG_HOME}/atuin/config.toml \
 		${XDG_CONFIG_HOME}/git/config \
 		${XDG_CONFIG_HOME}/git/config.gehirninc \
 		${XDG_CONFIG_HOME}/git/ignore \

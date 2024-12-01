@@ -23,3 +23,7 @@ if [[ (($+commands[python])) || (($+commands[python3])) ]]; then
   export PIPENV_VENV_IN_PROJECT="1"
   export PIPENV_VERBOSITY="-1"
 fi
+
+if (($+commands[atuin])); then
+  . <(atuin init zsh --disable-up-arrow)
+fi
