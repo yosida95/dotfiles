@@ -63,7 +63,5 @@ Temporary Items
 Session.vim
 # temporary
 .netrwhist
-# auto-generated tag files
-tags
 
 # End of https://www.gitignore.io/api/linux,osx,vim
