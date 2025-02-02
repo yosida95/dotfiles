@@ -1,5 +1,4 @@
 * top
-[scroll]>[shutdn]
 [=]>[`]
 [hyphen]>[=]
 [\]>[hyphen]
@@ -9,8 +8,11 @@
 [caps]>[lctrl]
 * japanese_eisuu
 [lctrl]>[145]
-* F14
-[rctrl]>[105]
+* F13 - F16
+[prtscr]>[104]
+[scroll]>[105]
+[pause]>[106]
+[rctrl]>[107]
 [rwin]>[ralt]
 [home]>[lwin]
 [end]>[obrack]
