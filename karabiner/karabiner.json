@@ -131,6 +131,34 @@
                 ]
               }
             ]
+          },
+          {
+            "description": "button8 -> F16",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "pointing_button": "button8"
+                },
+                "to": [
+                  {
+                    "key_code": "f16"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1390,
+                        "product_id": 305,
+                        "is_pointing_device": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
