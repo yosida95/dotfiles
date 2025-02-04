@@ -1,58 +1,172 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "ctrl + japanese_eisuu -> japanese_kana",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "japanese_eisuu",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "japanese_kana"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 258,
-                        "vendor_id": 10730
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "non_us_backslash"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_top_case_key_code": "keyboard_fn"
-                                }
-                            ]
-                        }
+  "profiles": [
+    {
+      "name": "yosida95",
+      "selected": true,
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "ctrl + japanese_eisuu -> japanese_kana",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "japanese_eisuu",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
                     ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "japanese_kana"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "ctrl + button4 -> ctrl + left_arrow",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  },
+                  "pointing_button": "button4"
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": [
+                      "control"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "ctrl + button5 -> ctrl + right_arrow",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  },
+                  "pointing_button": "button5"
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": [
+                      "control"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "shift + button4 -> control + shift + tab",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "shift"
+                    ]
+                  },
+                  "pointing_button": "button4"
+                },
+                "to": [
+                  {
+                    "key_code": "tab",
+                    "modifiers": [
+                      "shift",
+                      "control"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
+                      "^net\\.kovidgoyal\\.kitty$"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "shift + button5 -> control + tab",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "shift"
+                    ]
+                  },
+                  "pointing_button": "button5"
+                },
+                "to": [
+                  {
+                    "key_code": "tab",
+                    "modifiers": [
+                      "control"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "identifiers": {
+            "vendor_id": 10730,
+            "product_id": 258,
+            "is_keyboard": true
+          },
+          "simple_modifications": [
+            {
+              "from": {
+                "key_code": "non_us_backslash"
+              },
+              "to": [
+                {
+                  "apple_vendor_top_case_key_code": "keyboard_fn"
                 }
-            ],
-            "name": "yosida95",
-            "selected": true,
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "keyboard_type_v2": "ansi"
+              ]
             }
+          ]
+        },
+        {
+          "identifiers": {
+            "vendor_id": 1390,
+            "product_id": 305,
+            "is_pointing_device": true
+          },
+          "ignore": false
         }
-    ]
+      ],
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
 }
