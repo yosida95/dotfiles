@@ -133,6 +133,43 @@
             ]
           },
           {
+            "description": "button6 -> ctrl + cmd + D",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "pointing_button": "button6",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "d",
+                    "modifiers": [
+                      "control",
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1390,
+                        "product_id": 305,
+                        "is_pointing_device": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "button8 -> F16",
             "manipulators": [
               {
