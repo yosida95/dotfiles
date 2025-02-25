@@ -3,13 +3,5 @@
 /.vim/autoload/plug.vim*
 
 *.zwc
-/zsh/completion/autoload/_git
-/zsh/completion/autoload/git-completion.bash
-/zsh/completion/git
-/zsh/completion/autoload/_ghq
-/zsh/completion/ghq
-/zsh/completion/autoload/_kubectl
-/zsh/completion/kubectl
-/zsh/completion/autoload/_kustomize
-/zsh/completion/kustomize
-/zsh/completion/rebar3
+/zsh/completion/_rebar3
+/zsh/completion/vendor/*

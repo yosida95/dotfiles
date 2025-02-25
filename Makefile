@@ -3,19 +3,19 @@ XDG_CONFIG_HOME ?= ${HOME}/.config
 UNAME := $(shell uname)
 
 GIT_VERSION := v$(shell git --version 2> /dev/null| cut -d ' ' -f 3)
-GIT_VERSION_DIR := zsh/completion/git/${GIT_VERSION}
+GIT_VERSION_DIR := zsh/completion/vendor/git/${GIT_VERSION}
 
 GHQ_VERSION := v$(shell ghq --version 2> /dev/null| cut -d ' ' -f 3)
-GHQ_VERSION_DIR := zsh/completion/ghq/${GHQ_VERSION}
+GHQ_VERSION_DIR := zsh/completion/vendor/ghq/${GHQ_VERSION}
 
 KUBECTL_VERSION := $(shell kubectl version --client --output json 2> /dev/null| jq -r .clientVersion.gitVersion)
-KUBECTL_VERSION_DIR := zsh/completion/kubectl/${KUBECTL_VERSION}
+KUBECTL_VERSION_DIR := zsh/completion/vendor/kubectl/${KUBECTL_VERSION}
 
 KUSTOMIZE_VERSION := $(shell kustomize version 2> /dev/null)
-KUSTOMIZE_VERSION_DIR := zsh/completion/kustomize/${KUSTOMIZE_VERSION}
+KUSTOMIZE_VERSION_DIR := zsh/completion/vendor/kustomize/${KUSTOMIZE_VERSION}
 
 REBAR_VERSION := $(shell rebar3 version 2> /dev/null| cut -d ' ' -f 2)
-REBAR_VERSION_DIR := zsh/completion/rebar3/${REBAR_VERSION}
+REBAR_VERSION_DIR := zsh/completion/vendor/rebar3/${REBAR_VERSION}
 
 .PHONY: all
 all: | ${HOME}/.dircolors \
@@ -141,12 +141,12 @@ ${KUSTOMIZE_VERSION_DIR}/_kustomize:
 endif
 
 ifneq (${REBAR_VERSION},)
-${HOME}/.zshrc: | zsh/completion/rebar3/_rebar3 zsh/completion/rebar3/_rebar3.zwc
+${HOME}/.zshrc: | zsh/completion/_rebar3 zsh/completion/_rebar3.zwc
 
-zsh/completion/rebar3/_rebar3: ${REBAR_VERSION_DIR}/_build/default/_rebar3
+zsh/completion/_rebar3: ${REBAR_VERSION_DIR}/_build/default/_rebar3
 	ln -srf $< $@
 
-zsh/completion/rebar3/_rebar3.zwc: ${REBAR_VERSION_DIR}/_build/default/_rebar3
+zsh/completion/_rebar3.zwc: ${REBAR_VERSION_DIR}/_build/default/_rebar3
 	zsh -c 'zcompile $@ $<'
 
 ${REBAR_VERSION_DIR}/_build/default/_rebar3:
