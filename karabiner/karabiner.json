@@ -138,12 +138,7 @@
               {
                 "type": "basic",
                 "from": {
-                  "pointing_button": "button6",
-                  "modifiers": {
-                    "mandatory": [
-                      "control"
-                    ]
-                  }
+                  "pointing_button": "button6"
                 },
                 "to": [
                   {
