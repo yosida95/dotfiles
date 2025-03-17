@@ -440,9 +440,6 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gi <plug>(lsp-implementation)
   nmap <buffer> gt <plug>(lsp-type-definition)
 
-  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-
   nmap <buffer> <f2> <plug>(lsp-rename)
   nmap <buffer> K <plug>(lsp-hover)
 endfunction
@@ -488,6 +485,9 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 'normal'
 
 let g:ale_c_clangformat_executable = 'clang-format-8'
+
+nmap <silent> [g <plug>(ale_previous_wrap)
+nmap <silent> ]g <plug>(ale_next_wrap)
 
 
 """"""""""""""""""""
