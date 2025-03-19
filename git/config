@@ -44,3 +44,7 @@
 	date = iso
 [tag]
 	sort = version:refname
+[status]
+	submoduleSummary = true
+[diff]
+	submodule = log
