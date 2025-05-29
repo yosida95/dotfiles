@@ -165,6 +165,60 @@
             ]
           },
           {
+            "description": "button4 -> cmd + [",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "pointing_button": "button4"
+                },
+                "to": [
+                  {
+                    "key_code": "open_bracket",
+                    "modifiers": [
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.apple.Safari$"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "button5 -> cmd + ]",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "pointing_button": "button5"
+                },
+                "to": [
+                  {
+                    "key_code": "close_bracket",
+                    "modifiers": [
+                      "command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.apple.Safari$"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "button8 -> F16",
             "manipulators": [
               {
