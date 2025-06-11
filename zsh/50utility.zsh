@@ -27,3 +27,7 @@ fi
 if (($+commands[atuin])); then
   . <(atuin init zsh --disable-up-arrow)
 fi
+
+if (($+commands[uv])); then
+  export UV_PYTHON_DOWNLOADS="manual"
+fi
