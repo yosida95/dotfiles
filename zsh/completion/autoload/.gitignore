@@ -1,8 +1,6 @@
 _ghq
-
 _git
 git-completion.bash
-
 _kubectl
-
 _kustomize
+_tailscale

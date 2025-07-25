@@ -17,6 +17,9 @@ KUSTOMIZE_VERSION_DIR := zsh/completion/vendor/kustomize/${KUSTOMIZE_VERSION}
 REBAR_VERSION := $(shell rebar3 version 2> /dev/null| cut -d ' ' -f 2)
 REBAR_VERSION_DIR := zsh/completion/vendor/rebar3/${REBAR_VERSION}
 
+TAILSCALE_VERSION := $(shell tailscale version --json 2> /dev/null| jq -r .short)
+TAILSCALE_VERSION_DIR := zsh/completion/vendor/tailscale/${TAILSCALE_VERSION}
+
 .PHONY: all
 all: | ${HOME}/.dircolors \
 		${XDG_CONFIG_HOME}/atuin/config.toml \
@@ -152,4 +155,17 @@ zsh/completion/_rebar3.zwc: ${REBAR_VERSION_DIR}/_build/default/_rebar3
 ${REBAR_VERSION_DIR}/_build/default/_rebar3:
 	mkdir -p ${REBAR_VERSION_DIR}
 	(cd ${REBAR_VERSION_DIR} && rebar3 completion --shell zsh)
+endif
+
+ifneq (${TAILSCALE_VERSION},)
+${HOME}/.zshrc: | zsh/completion/autoload/_tailscale
+
+zsh/completion/autoload/_tailscale: ${TAILSCALE_VERSION_DIR}/_tailscale
+	mkdir -p $(@D)
+	ln -srf $< $@
+	rm -f ${HOME}/.zcompdump
+
+${TAILSCALE_VERSION_DIR}/_tailscale:
+	mkdir -p $(@D)
+	tailscale completion zsh > $@
 endif

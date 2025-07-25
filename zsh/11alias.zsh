@@ -12,4 +12,8 @@ alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn}'
 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias vlc="osascript ${DOTFILES}/macos/vlc.scpt"
+
+  if [ -x "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]; then
+    alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+  fi
 fi
