@@ -321,7 +321,7 @@ set signcolumn=yes
 " fern.vim
 """"""""""""""""""""
 let g:fern#default_exclude = '\v(
-      \^(\.((.+[-_])?cache|coverage.*|git|hg|next|swc|tox|venv|DS_Store)|
+      \^(\.((.+[-_])?cache|coverage.*|git|hg|next|react-router|swc|tox|venv|DS_Store)|
       \__pycache__|node_modules|vendor|wheelhouse)|
       \\.(egg-info|pyc))$'
 let g:fern#default_hidden = 1
@@ -406,7 +406,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['quickfix']
 let g:ctrlp_custom_ignore = {
-  \   'dir': '\v/(\.((.+[-_])?cache|eggs|git|hg|next|swc|tox|venv)|__pycache__|dist|node_modules|vendor|wheelhouse|_build)$',
+  \   'dir': '\v/(\.((.+[-_])?cache|eggs|git|hg|next|react-router|swc|tox|venv)|__pycache__|dist|node_modules|vendor|wheelhouse|_build)$',
   \   'file': '\v(/(\.(coverage.*|DS_Store))|\.(egg-info|pyc))$',
   \ }
 
