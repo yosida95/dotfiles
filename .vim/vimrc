@@ -299,9 +299,8 @@ set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:↲,nbsp:%
 set shortmess=nrxtToOIc
 set noshowmode
 
-" cursorline
-autocmd MyAutoCmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
-autocmd MyAutoCmd CursorHold,CursorMovedI * setlocal cursorline
+set cursorline
+set cursorlineopt=number
 
 set cmdheight=2
 set colorcolumn=80
