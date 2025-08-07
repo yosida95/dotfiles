@@ -194,12 +194,6 @@ set smartcase
 set incsearch
 set hlsearch
 
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 nnoremap <C-N><C-N> <Cmd>noh<CR>
@@ -315,6 +309,7 @@ set laststatus=2
 set nowrap
 set number
 set signcolumn=yes
+set scrolloff=50
 
 
 """"""""""""""""""""
