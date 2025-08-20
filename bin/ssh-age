@@ -1,0 +1,16 @@
+#!/bin/zsh
+set -eu
+
+local OPTS=("$@")
+
+typeset -a discard
+zparseopts -a discard -D -F 4 6 A a C f G g K k M N n q s T t V v X x Y y B: b: c: D: E: e: F: I: i: J: L: l: m: O: o: P: p: R: S: W: w: Q:
+
+if [ $# -ge 1 ]; then
+  local file="$HOME/.ssh/sshpass/${1#*@}.age"
+  if [ -f "$file" ]; then
+    exec sshpass -f <(age --decrypt "$file") ssh "${(@)OPTS}"
+  fi
+fi
+
+exec ssh "${(@)OPTS}"
