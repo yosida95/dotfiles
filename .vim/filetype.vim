@@ -12,4 +12,5 @@ augroup filetypedetect
   au BufNewFile,BufRead *.j2 setfiletype jinja2
   au BufNewFile,BufRead *.jinja2,*.njk setfiletype html.jinja2
   au BufNewFile,BufRead uv.lock setfiletype toml
+  au BufNewFile,BufRead etc/kea/*.conf setfiletype json
 augroup END
