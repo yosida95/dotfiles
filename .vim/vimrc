@@ -306,7 +306,7 @@ set laststatus=2
 set nowrap
 set number
 set signcolumn=yes
-set scrolloff=50
+set scrolloff=5
 
 
 """"""""""""""""""""
