@@ -63,8 +63,6 @@ Plug 'itchyny/lightline.vim'
   Plug 'maximbaz/lightline-ale'
 call s:source_rc('plugins/lightline.vim')
 
-Plug 'triglav/vim-visual-increment'
-
 Plug 'tpope/vim-surround'
 
 Plug 'ctrlpvim/ctrlp.vim'
