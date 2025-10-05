@@ -1,0 +1,3 @@
+function vimsudo() { vim "sudo:${^@}" }
+
+# vim: set filetype=zsh:
