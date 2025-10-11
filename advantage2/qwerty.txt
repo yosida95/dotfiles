@@ -3,7 +3,7 @@
 [hyphen]>[=]
 [\]>[hyphen]
 [`]>[escape]
-[obrack]>[intl-\]
+[obrack]>[rctrl]
 [cbrack]>[\]
 [caps]>[lctrl]
 [lctrl]>[lwin]
