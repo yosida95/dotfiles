@@ -255,18 +255,7 @@
             "product_id": 258,
             "is_keyboard": true
           },
-          "fn_function_keys": [
-            {
-              "from": {
-                "key_code": "f6"
-              },
-              "to": [
-                {
-                  "key_code": "f13"
-                }
-              ]
-            }
-          ],
+          "fn_function_keys": [],
           "simple_modifications": [
             {
               "from": {
