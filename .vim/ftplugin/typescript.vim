@@ -1,3 +1,4 @@
+setlocal tabstop=2
 setlocal shiftwidth=2
 
 if !exists('b:ale_fixers')
