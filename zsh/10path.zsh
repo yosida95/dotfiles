@@ -41,6 +41,7 @@ path=(
   /opt/erlang/*/bin(N/Onn[1]:a)
   /opt/go/*/bin(N/Onn[1]:a)
   /opt/gradle/*/bin(N/Onn[1]:a)
+  /opt/jsonnet/*/bin(N/Onn[1]:a)
   /opt/node/*/bin(N/Onn[1]:a)
   /opt/protobuf/*/bin(N/Onn[1]:a)
   /opt/scala/*/bin(N/Onn[1]:a)
