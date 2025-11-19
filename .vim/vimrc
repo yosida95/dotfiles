@@ -136,6 +136,9 @@ Plug 'pangloss/vim-javascript'
 " JSON
 Plug 'elzr/vim-json'
 
+" Jsonnet
+Plug 'google/vim-jsonnet'
+
 " logrotate
 Plug 'moon-musick/vim-logrotate'
 
@@ -517,6 +520,12 @@ let g:go_mod_fmt_autosave = 0
 " vim-json:
 """"""""""""""""""""
 let g:vim_json_syntax_conceal = 0
+
+
+""""""""""""""""""""
+" vim-jsonnet:
+""""""""""""""""""""
+let g:jsonnet_fmt_on_save = 0
 
 
 """"""""""""""""""""
