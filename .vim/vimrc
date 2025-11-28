@@ -74,7 +74,7 @@ let g:echodoc_enable_at_startup = 1
 Plug 'lambdalisue/vim-fern', { 'tag': 'v1.56.1' }
   Plug 'lambdalisue/vim-fern-mapping-project-top'
 
-Plug 'dense-analysis/ale', { 'commit': '3220b94d2053e8051023fc6f79c00651071b1440' }
+Plug 'dense-analysis/ale', { 'commit': '260c756a9b1d92c09adbbb4b366eb27e7336ddf3' }
 
 Plug 'prabirshrestha/asyncomplete.vim', { 'commit': '9c7651894c2c6d656c0dc71e87cfabbbb71b9c78' }
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
