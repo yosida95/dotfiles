@@ -1,0 +1,13 @@
+function switch-opt() {
+  if [ $# -ne 1 ]; then
+    return 1
+  fi
+  if [[ "$1" != /opt/*/*/bin ]]; then
+    echo "runtime path does not match pattern: /opt/*/*/bin" >&2
+    path=($1 $path)
+    return
+  fi
+  path=($1 ${path:#${1:h3}/*/bin})
+}
+
+# vim: set filetype=zsh:
