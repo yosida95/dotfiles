@@ -45,9 +45,15 @@ function go_prompt_info() {
   fi
 }
 
+function node_prompt_info() {
+  if (($+commands[node])); then
+    echo " %F{green}node:%F{cyan}${$(node --version)#v}%f"
+  fi
+}
+
 # Set to blue if $KEYMAP (defaults to "main" if unset) matches "vicmd", to green if the last exit code is 0, otherwise to red.
 PROMPT='$(vcs_prompt_info)%F{cyan}%c %F{${${${${KEYMAP-main}:#vicmd}:+%(?:green:red)}:-blue}}✘╹◡╹✘%f '
-RPROMPT='$(python_prompt_info)$(go_prompt_info)'
+RPROMPT='$(python_prompt_info)$(go_prompt_info)$(node_prompt_info)'
 PROMPT2='%B%F{cyan}%_...%f%b '
 SPROMPT='%B%F{magenta}／人◕ ‿‿ ◕人＼ %F{red}%R%f -> %F{green}%r%f%b [n/y/a/e]? '
 
