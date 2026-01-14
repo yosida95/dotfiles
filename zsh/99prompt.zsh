@@ -32,18 +32,9 @@ function python_prompt_info() {
   if [ -n "$VIRTUAL_ENV" ]; then
     echo -n " %F{green}py:%F{cyan}${${${VIRTUAL_ENV:t}#.venv}:-${VIRTUAL_ENV:h:t}}%f"
   else
-    local py2=${${(MOn)commands:#*/python2.[[:digit:]]##}[1]}
     local py3=${${(MOn)commands:#*/python3.[[:digit:]]##}[1]}
-    if [ -n "$py2" ] || [ -n "$py3" ]; then
-      echo -n " %F{green}py:"
-      if [ -n "$py2" ]; then
-        echo -n "%F{cyan}$($py2 --version 2>&1| cut -d' ' -f2)"
-      fi
-      if [ -n "py3" ]; then
-        [ -z "$py2" ]  || echo -n "%F{green},"
-        echo -n "%F{cyan}$($py3 --version 2>&1| cut -d' ' -f2)"
-      fi
-      echo -n "%f"
+    if [ -x "$py3" ]; then
+      echo -n " %F{green}py:%F{cyan}$($py3 --version 2>&1| cut -d' ' -f2)%f"
     fi
   fi
 }
