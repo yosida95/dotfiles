@@ -273,7 +273,8 @@ endif
 set background=dark
 
 let g:sonokai_style = 'shusia'
-let g:sonokai_transparent_background = 0
+" NOTE(yosida95): Workaround for Kitty + Vim glitch.
+let g:sonokai_transparent_background = 1
 let g:sonokai_enable_italic = 0
 let g:sonokai_disable_italic_comment = 1
 let g:sonokai_diagnostic_text_highlight = 1
