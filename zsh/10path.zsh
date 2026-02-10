@@ -70,7 +70,11 @@ fi
 if (($+commands[java])); then
   if [[ $(uname) == "Darwin" ]]; then
     if [ -x /usr/libexec/java_home ]; then
-      export JAVA_HOME="$(/usr/libexec/java_home)"
+      if JAVA_HOME="$(/usr/libexec/java_home 2> /dev/null)"; then
+        export JAVA_HOME
+      else
+        unset JAVA_HOME
+      fi
     fi
   else
     export JAVA_HOME="${commands[java]:A:h:h}"
