@@ -29,8 +29,8 @@ if (($+commands[atuin])); then
 fi
 
 if (($+commands[fzf])); then
-  export FZF_DEFAULT_OPTS='--exact --layout=reverse --prompt "QUERY> " --color=dark'
-  export FZF_CTRL_R_OPTS='--info=hidden --height=100% --no-sort'
+  export FZF_DEFAULT_OPTS='--exact --layout=reverse --height=100% --info=hidden --prompt "QUERY> " --color=dark'
+  export FZF_CTRL_R_OPTS='--no-sort'
 
   if fzf --zsh >/dev/null 2>&1; then
     if (($+commands[atuin])); then
@@ -49,7 +49,7 @@ if (($+commands[fzf])); then
 
   if (($+commands[ghq])); then
     function fzf-ghq () {
-      local repo=$(ghq list| fzf --info=hidden --query "$LBUFFER")
+      local repo=$(ghq list| fzf --query "$LBUFFER")
       if [ -n "$repo" ]; then
         BUFFER="cd -- $(ghq root)/${(q)repo}"
         zle accept-line
