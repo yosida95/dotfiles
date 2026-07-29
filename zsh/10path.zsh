@@ -26,8 +26,12 @@ fi
 
 path=(
   $DOTFILES/bin
+
   $HOME/proj/bin(N-/:a)
   $HOME/.local/bin(N-/:a)
+
+  $HOME/.local/share/aquaproj-aqua/bin(N-/:a)
+
   $HOME/.cache/rebar3/bin(N-/:a)
   $HOME/.cargo/bin(N-/:a)
   $HOME/.luarocks/bin(N-/:a)
@@ -79,4 +83,8 @@ if (($+commands[java])); then
   else
     export JAVA_HOME="${commands[java]:A:h:h}"
   fi
+fi
+
+if (($+commands[aqua])); then
+  export AQUA_GLOBAL_CONFIG="${DOTFILES}/aqua/aqua.yaml"
 fi
