@@ -1,6 +1,106 @@
 {
   "checksums": [
     {
+      "id": "github_release/github.com/FiloSottile/age/v1.3.1/age-v1.3.1-darwin-arm64.tar.gz",
+      "checksum": "01120EA2CBF0463D4C6BD767F99F3271BBED1CDC8A9AA718A76BA1FE4F01998B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/FiloSottile/age/v1.3.1/age-v1.3.1-linux-amd64.tar.gz",
+      "checksum": "BDC69C09CBDD6CF8B1F333D372A1F58247B3A33146406333E30C0F26E8F51377",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/astral-sh/uv/0.11.28/uv-aarch64-apple-darwin.tar.gz",
+      "checksum": "33540EB7C883AB857EFF79BD5AC2AA31FE27B595ABECB4A9C003A2C998447232",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/astral-sh/uv/0.11.28/uv-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "F02146B371C35C287D860F003ECE7345C86E358A3FD70A9B63700CD141EE7FB4",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/atuinsh/atuin/v18.8.0/atuin-aarch64-apple-darwin.tar.gz",
+      "checksum": "639093C091D19077B06B52B098236075FEEE878F8409858ADB1F875986B8C195",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/atuinsh/atuin/v18.8.0/atuin-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "20422E93D25159F895C1FABBBA6B000BC1EF65D2276CEB09E2902B3DDA8CA422",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/kubernetes-sigs/kustomize/kustomize/v5.8.1/kustomize_v5.8.1_darwin_arm64.tar.gz",
+      "checksum": "8886F8A78474E608CC81234F729FDA188A9767DA23E28925802F00ECE2BAB288",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/kubernetes-sigs/kustomize/kustomize/v5.8.1/kustomize_v5.8.1_linux_amd64.tar.gz",
+      "checksum": "029A7F0F4E1932C52A0476CF02A0FD855C0BB85694B82C338FC648DCB53A819D",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/mikefarah/yq/v4.43.1/yq_darwin_arm64",
+      "checksum": "5E1B309EC8AD480E0A410C85E0C9F81108285475FB3822A33E1CD09B18116123CD36247021BBB24F94AD63C25C9D6BCD1FB148841C6AED86F64F7451EB031CFB",
+      "algorithm": "sha512"
+    },
+    {
+      "id": "github_release/github.com/mikefarah/yq/v4.43.1/yq_linux_amd64",
+      "checksum": "F4B1E1BD7F8AAE1457BEE4762AF2A265FD35E1A68D33D0E5EC93CC621AA6455BBFAF75599B5990C614CB0E27D5AC89B973AC86D3121D516F3FCD9A831BAF9694",
+      "algorithm": "sha512"
+    },
+    {
+      "id": "github_release/github.com/prometheus/prom2json/v1.5.0/prom2json-1.5.0.darwin-arm64.tar.gz",
+      "checksum": "CEE459CA9BDB3FFC5F0ABDE7F9AEBC9D323A02434E6602A624F46632E1C8DACF",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/prometheus/prom2json/v1.5.0/prom2json-1.5.0.linux-amd64.tar.gz",
+      "checksum": "5935363CC8C88360E3AA275DDC5A754AD95F6BAB6B6052978E686300BAA5A4D6",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sqldef/sqldef/v1.0.7/mysqldef_darwin_arm64.zip",
+      "checksum": "63A0EB69372C1909182BCF01D442286E5615B3332D7B4382F4EB15F17812A118",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sqldef/sqldef/v1.0.7/mysqldef_linux_amd64.tar.gz",
+      "checksum": "0635EA5991FB1D1CC448262D480B251503D268DF3EDF6B616FEE583D7004E686",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/x-motemen/ghq/v1.10.1/ghq_darwin_arm64.zip",
+      "checksum": "5E3100DE0C5A248EEBE6AB176AD94D6E12386AF70A58C535368A4301861B1398",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/x-motemen/ghq/v1.10.1/ghq_linux_amd64.zip",
+      "checksum": "32E380AA8AC76FDD58758CC06174D9EE5DB7270BD0CBCC18138B5D36DEF91B6B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/yoheimuta/protolint/v0.51.0/protolint_0.51.0_darwin_arm64.tar.gz",
+      "checksum": "AE119EFAD16147883510E91E8F063936336F8E020BE91507E8CA1C11C4FD957B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/yoheimuta/protolint/v0.51.0/protolint_0.51.0_linux_amd64.tar.gz",
+      "checksum": "FC1FFA0ECC4D68A70D05F75DCD231B3F23F8C9C5BF57A09965D631ABAE1C61B8",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/storage.googleapis.com/skaffold/releases/v2.17.0/skaffold-darwin-arm64",
+      "checksum": "974F22D80BD2A71203E949B32DD52A037FA9C355FB5D60849F2E9E43EA9953AF",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/storage.googleapis.com/skaffold/releases/v2.17.0/skaffold-linux-amd64",
+      "checksum": "12D16E5C18B0232CBE0854D3E8B1581A98E58C1A415B060D4B5DA70E43A17708",
+      "algorithm": "sha256"
+    },
+    {
       "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.544.0/registry.yaml",
       "checksum": "ED73709C88FA03BE758F78C25A35C07D48E2FA9D19E407F89FC36989A306E111",
       "algorithm": "sha256"

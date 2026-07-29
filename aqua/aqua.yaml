@@ -7,3 +7,14 @@ checksum:
 registries:
   - type: standard
     ref: v4.544.0 # renovate: depName=aquaproj/aqua-registry
+packages:
+  - name: astral-sh/uv@0.11.28
+  - name: atuinsh/atuin@v18.8.0
+  - name: FiloSottile/age@v1.3.1
+  - name: GoogleContainerTools/skaffold@v2.17.0
+  - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
+  - name: mikefarah/yq@v4.43.1
+  - name: prometheus/prom2json@v1.5.0
+  - name: sqldef/sqldef/mysqldef@v1.0.7
+  - name: x-motemen/ghq@v1.10.1
+  - name: yoheimuta/protolint@v0.51.0
