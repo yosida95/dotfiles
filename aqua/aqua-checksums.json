@@ -81,6 +81,16 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/suzuki-shunsuke/pinact/v4.1.0/pinact_darwin_arm64.tar.gz",
+      "checksum": "B670063CCFA178CDB5C7107D14E3DE896F10B93EDCC7DBE38B840CB99F2536DB",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/suzuki-shunsuke/pinact/v4.1.0/pinact_linux_amd64.tar.gz",
+      "checksum": "8FCBF1B3E95551C82FD995535E3C1DEFA70E23299CE36EB3AFD6C98778DE6CA0",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/x-motemen/ghq/v1.10.1/ghq_darwin_arm64.zip",
       "checksum": "5E3100DE0C5A248EEBE6AB176AD94D6E12386AF70A58C535368A4301861B1398",
       "algorithm": "sha256"
