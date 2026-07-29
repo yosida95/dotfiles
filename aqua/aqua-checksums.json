@@ -21,13 +21,13 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/atuinsh/atuin/v18.8.0/atuin-aarch64-apple-darwin.tar.gz",
-      "checksum": "639093C091D19077B06B52B098236075FEEE878F8409858ADB1F875986B8C195",
+      "id": "github_release/github.com/atuinsh/atuin/v18.18.0/atuin-aarch64-apple-darwin.tar.gz",
+      "checksum": "E1710AC6128DC668D5AE1CE9C616AF2E149EF796E1BCEEB152C1737238AAB15C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/atuinsh/atuin/v18.8.0/atuin-x86_64-unknown-linux-musl.tar.gz",
-      "checksum": "20422E93D25159F895C1FABBBA6B000BC1EF65D2276CEB09E2902B3DDA8CA422",
+      "id": "github_release/github.com/atuinsh/atuin/v18.18.0/atuin-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "7064479ABEA72B51451375C21DE4690ED285B410F2054B5651C9F63056DC4F36",
       "algorithm": "sha256"
     },
     {
