@@ -31,6 +31,11 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/checkstyle/checkstyle/checkstyle-8.32/checkstyle-8.32-all.jar",
+      "checksum": "5A46440E980A378D73E76C50CA554CD0C38480AC33040ADF16D131D7E16D50A1",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/google/go-jsonnet/v0.21.0/go-jsonnet_Darwin_arm64.tar.gz",
       "checksum": "398189A264E31A2C1316EED8EE6308306A221FD10B72F405DEF0100D295EFEAC",
       "algorithm": "sha256"
@@ -38,6 +43,16 @@
     {
       "id": "github_release/github.com/google/go-jsonnet/v0.21.0/go-jsonnet_Linux_x86_64.tar.gz",
       "checksum": "AD3181FDE77726B02D17EB4E72687020BF2CB35B9336CDEAACA4783C7FF104F7",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/google/google-java-format/v1.22.0/google-java-format_darwin-arm64",
+      "checksum": "2186BFB80E96B29A9170C894D2C7222545CB010DBBE8F112857E3E85957F7D22",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/google/google-java-format/v1.22.0/google-java-format_linux-x86-64",
+      "checksum": "28EB72AA1D2FC75450EF444E8373D388AE1628C9B639107FB96A7169DFAE30AE",
       "algorithm": "sha256"
     },
     {
