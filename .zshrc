@@ -15,10 +15,18 @@ manpath=(
   /snap/*/current/share/man(N-/:a)
 )
 
-for config in $DOTFILES/zsh/*.zsh(N.onn); do
-  source $config
-done
-unset config
+() {
+  local config
+  local -a parts
+
+  for config in {${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles,$DOTFILES/zsh}/*.zsh(N.); do
+    parts+=("${config:t}"$'\0'"$config")
+  done
+
+  for config in ${${(on)parts}#*$'\0'}; do
+    source $config
+  done
+}
 
 # Load custom shell functions
 autoload -Uz $DOTFILES/zsh/_functions/*(:t)
