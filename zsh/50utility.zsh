@@ -32,12 +32,7 @@ if (($+commands[fzf])); then
   export FZF_DEFAULT_OPTS='--exact --layout=reverse --height=100% --info=hidden --prompt "QUERY> " --color=dark'
   export FZF_CTRL_R_OPTS='--no-sort'
 
-  if fzf --zsh >/dev/null 2>&1; then
-    if (($+commands[atuin])); then
-      export FZF_CTRL_R_COMMAND=
-    fi
-    . <(fzf --zsh)
-  elif ! (($+commands[atuin])); then
+  if ! (($+commands[atuin])); then
     function fzf_select_history() {
       BUFFER=$(fc -lnr 1| FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_CTRL_R_OPTS}" fzf --query "$LBUFFER"| sed 's/\\n/\n/g')
       CURSOR=$#BUFFER
