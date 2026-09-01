@@ -17,6 +17,21 @@
                         ]
                     },
                     {
+                        "description": "F16 -> opt + space",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f16" },
+                                "to": [
+                                  {
+                                    "key_code": "spacebar",
+                                    "modifiers": ["option"]
+                                  }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "ctrl + button4 -> ctrl + left_arrow",
                         "manipulators": [
                             {
@@ -171,7 +186,7 @@
                         ]
                     },
                     {
-                        "description": "button8 -> F16",
+                        "description": "button8 -> opt + space",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -187,7 +202,12 @@
                                     }
                                 ],
                                 "from": { "pointing_button": "button8" },
-                                "to": [{ "key_code": "f16" }],
+                                "to": [
+                                  {
+                                    "key_code": "spacebar",
+                                    "modifiers": ["option"]
+                                  }
+                                ],
                                 "type": "basic"
                             }
                         ]
