@@ -11,6 +11,7 @@ augroup filetypedetect
   " jinja2 bundled with ansible-vim
   au BufNewFile,BufRead *.j2 setfiletype jinja2
   au BufNewFile,BufRead *.jinja2,*.njk setfiletype html.jinja2
+  au BufNewFile,BufRead *.plist setfiletype xml
   au BufNewFile,BufRead uv.lock setfiletype toml
   au BufNewFile,BufRead etc/kea/*.conf setfiletype json
 augroup END
