@@ -19,6 +19,7 @@ if (($+commands[luarocks])); then
 fi
 
 if [[ (($+commands[python])) || (($+commands[python3])) ]]; then
+  export PIP_UPLOADED_PRIOR_TO="P7D"
   export VIRTUAL_ENV_DISABLE_PROMPT=1
   export PIPENV_VENV_IN_PROJECT="1"
   export PIPENV_VERBOSITY="-1"
