@@ -1,7 +1,6 @@
 ##############################
 # Changing Directories
 ##############################
-setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt CHASE_DOTS
 setopt PUSHD_IGNORE_DUPS
