@@ -36,6 +36,16 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/dominikh/go-tools/2026.2.1/staticcheck_darwin_arm64.tar.gz",
+      "checksum": "06DB0A00E5D44D0D60BC99DAB10E1BD49103531054D560AF658775450A25F72C",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/dominikh/go-tools/2026.2.1/staticcheck_linux_amd64.tar.gz",
+      "checksum": "91186205A78DB3F2D40EFB3C102749AEF66F85C2204793DE7488D163B655AA7C",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/google/go-jsonnet/v0.22.0/go-jsonnet_0.22.0_darwin_arm64.tar.gz",
       "checksum": "112534191B6E27F2AE01BB80C6AB82950FB7BF5772E2E81C5472F59A069700F5",
       "algorithm": "sha256"
