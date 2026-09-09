@@ -86,6 +86,16 @@
       "algorithm": "sha512"
     },
     {
+      "id": "github_release/github.com/openrdap/rdap/v0.10.2/rdap-darwin-arm64.zip",
+      "checksum": "69240D274F90997C9148F1FD5EE78486356DB63E020DF7FD62D3DE9262DB72BE",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/openrdap/rdap/v0.10.2/rdap-linux-amd64.zip",
+      "checksum": "6269B779A0B398154EB883A529101EAE0F90D45E038B85F13D9A78100A1892F1",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/prometheus/prom2json/v1.5.0/prom2json-1.5.0.darwin-arm64.tar.gz",
       "checksum": "CEE459CA9BDB3FFC5F0ABDE7F9AEBC9D323A02434E6602A624F46632E1C8DACF",
       "algorithm": "sha256"
