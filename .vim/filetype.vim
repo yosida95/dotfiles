@@ -6,6 +6,7 @@ augroup filetypedetect
   au BufNewFile,BufRead *.abnf,*.bnf setfiletype abnf
   au BufNewFile,BufRead *.as setfiletype actionscript
   au BufNewFile,BufRead .clang-format setfiletype yaml
+  au BufNewFile,BufRead .container setfiletype systemd
   au BufNewFile,BufRead *.diag setfiletype diag
   au BufNewFile,BufRead go.mod setfiletype gomod
   " jinja2 bundled with ansible-vim
