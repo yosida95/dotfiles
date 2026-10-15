@@ -26,7 +26,7 @@ packages:
   - name: prometheus/prom2json@v1.5.0
   - name: sqldef/sqldef/mysqldef@v1.0.7
   - name: suzuki-shunsuke/pinact@v4.1.1
-  - name: x-motemen/ghq@v1.10.1
+  - name: x-motemen/ghq@v1.11.2
   - name: yoheimuta/protolint@v0.56.4
   - name: openrdap/rdap@v0.10.2
     registry: local
