@@ -46,6 +46,16 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/getsops/sops/v3.13.3/sops-v3.13.3.darwin.arm64",
+      "checksum": "B97C0D434AAB577DC40310E8D22FF9E45EEF4C80638AB978DAAE9B4681C59286",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/getsops/sops/v3.13.3/sops-v3.13.3.linux.amd64",
+      "checksum": "E5BEC3346A873AE91D871550F3E698C1AAD962AFF462A080E40F25FDE17FEF6B",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/google/go-jsonnet/v0.22.0/go-jsonnet_0.22.0_darwin_arm64.tar.gz",
       "checksum": "112534191B6E27F2AE01BB80C6AB82950FB7BF5772E2E81C5472F59A069700F5",
       "algorithm": "sha256"
