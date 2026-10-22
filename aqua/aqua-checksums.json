@@ -36,13 +36,13 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/dominikh/go-tools/2026.2.1/staticcheck_darwin_arm64.tar.gz",
-      "checksum": "06DB0A00E5D44D0D60BC99DAB10E1BD49103531054D560AF658775450A25F72C",
+      "id": "github_release/github.com/dominikh/go-tools/2026.2.2/staticcheck_darwin_arm64.tar.gz",
+      "checksum": "C054BF7F561F5668175D31EC8770F6104B89CCB41F0F0B4CE92D423C34365417",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/dominikh/go-tools/2026.2.1/staticcheck_linux_amd64.tar.gz",
-      "checksum": "91186205A78DB3F2D40EFB3C102749AEF66F85C2204793DE7488D163B655AA7C",
+      "id": "github_release/github.com/dominikh/go-tools/2026.2.2/staticcheck_linux_amd64.tar.gz",
+      "checksum": "14C081E0F0D05B5A4D4C53FD3D357D4A5AF9D20501465FEFC9024EE828D3AA5C",
       "algorithm": "sha256"
     },
     {

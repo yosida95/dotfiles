@@ -14,7 +14,7 @@ packages:
   - name: astral-sh/uv@0.12.9
   - name: atuinsh/atuin@v18.19.0
   - name: checkstyle/checkstyle@checkstyle-8.32
-  - name: dominikh/go-tools/staticcheck@2026.2.1
+  - name: dominikh/go-tools/staticcheck@2026.2.2
   - name: FiloSottile/age@v1.3.1
   - name: getsops/sops@v3.13.3
   - name: golang/tools/goimports@v0.50.0
