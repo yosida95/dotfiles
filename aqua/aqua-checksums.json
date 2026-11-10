@@ -1,13 +1,13 @@
 {
   "checksums": [
     {
-      "id": "github_release/github.com/FiloSottile/age/v1.3.1/age-v1.3.1-darwin-arm64.tar.gz",
-      "checksum": "01120EA2CBF0463D4C6BD767F99F3271BBED1CDC8A9AA718A76BA1FE4F01998B",
+      "id": "github_release/github.com/FiloSottile/age/v1.3.2/age-v1.3.2-darwin-arm64.tar.gz",
+      "checksum": "E2020B073C44F692685A24D6ABC378817EB81FFAAF49FD0531EF8565F767F2F5",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/FiloSottile/age/v1.3.1/age-v1.3.1-linux-amd64.tar.gz",
-      "checksum": "BDC69C09CBDD6CF8B1F333D372A1F58247B3A33146406333E30C0F26E8F51377",
+      "id": "github_release/github.com/FiloSottile/age/v1.3.2/age-v1.3.2-linux-amd64.tar.gz",
+      "checksum": "CBE24006683F8EB669266162894B9A522A1AF52F2665FBC63A4BB032ED26AC10",
       "algorithm": "sha256"
     },
     {
