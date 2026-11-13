@@ -240,7 +240,6 @@ autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 """"""""""""""""""""
 " Display:
 """"""""""""""""""""
-
 " https://vim-jp.org/vimdoc-ja/term.html#tmux-integration
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   " よりよいマウスサポート、:help 'ttymouse' を参照
@@ -270,30 +269,6 @@ if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
   execute "silent! set <xLeft>=\<Esc>[@;*D"
 endif
 
-" colorscheme
-set background=dark
-
-let g:sonokai_style = 'shusia'
-" NOTE(yosida95): Workaround for Kitty + Vim glitch.
-let g:sonokai_transparent_background = 1
-let g:sonokai_enable_italic = 0
-let g:sonokai_disable_italic_comment = 1
-let g:sonokai_diagnostic_text_highlight = 1
-let g:sonokai_diagnostic_line_highlight = 1
-
-function! s:sonokai_custom() abort
-  " Link a highlight group to a predefined highlight group.
-  " See `colors/sonokai.vim` for all predefined highlight groups.
-  highlight! link LineNr Grey
-endfunction
-
-augroup SonokaiCustom
-  autocmd!
-  autocmd ColorScheme sonokai call s:sonokai_custom()
-augroup END
-
-colorscheme sonokai
-
 " list
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,eol:↲,nbsp:%
@@ -312,6 +287,29 @@ set nowrap
 set number
 set signcolumn=yes
 set scrolloff=5
+
+set background=dark
+
+let g:sonokai_style = 'shusia'
+let g:sonokai_enable_italic = 0
+let g:sonokai_disable_italic_comment = 1
+let g:sonokai_diagnostic_text_highlight = 1
+let g:sonokai_diagnostic_line_highlight = 1
+
+function! s:sonokai_custom() abort
+  " Link a highlight group to a predefined highlight group.
+  " See `colors/sonokai.vim` for all predefined highlight groups.
+  highlight! link LineNr Grey
+endfunction
+
+augroup SonokaiCustom
+  autocmd!
+  autocmd ColorScheme sonokai call s:sonokai_custom()
+augroup END
+
+" NOTE(yosida95): Load the colorscheme after setting cmdheight to work around vim/vim#21871.
+" https://github.com/vim/vim/issues/21871
+colorscheme sonokai
 
 
 """"""""""""""""""""
