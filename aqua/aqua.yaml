@@ -11,7 +11,7 @@ registries:
     type: local
     path: registry.yaml
 packages:
-  - name: astral-sh/uv@0.12.9
+  - name: astral-sh/uv@0.13.9
   - name: atuinsh/atuin@v18.24.2
   - name: checkstyle/checkstyle@checkstyle-8.32
   - name: dominikh/go-tools/staticcheck@2026.2.2
